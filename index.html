@@ -7,8 +7,8 @@
 <meta name="theme-color" content="#0A2E5C">
 
 <!-- ════════════════ SEO Meta ════════════════ -->
-<title>BMA Travel Time Dashboard 2017–2025 · Bangkok Floating Car Method | รายงานอัตราเร็วเฉลี่ย กทม.</title>
-<meta name="description" content="Bangkok Travel Time & average speed Dashboard 2017–2025 — 51 main roads, Floating Car Method survey by Traffic and Transportation Department, BMA. Compared with TomTom Traffic Index 2025.">
+<title>BMA Travel Time Dashboard 2017–2025 · Bangkok Floating Car Method | รายงานความเร็วเฉลี่ย กทม.</title>
+<meta name="description" content="Bangkok Travel Time & Average Speed Dashboard 2017–2025 — 51 main roads, Floating Car Method survey by Traffic and Transportation Department, BMA. Compared with TomTom Traffic Index 2025.">
 <meta name="keywords" content="Bangkok traffic, BMA, travel time, floating car method, TomTom Traffic Index, Bangkok Metropolitan Administration, urban transport, อัตราเร็วเฉลี่ย, สำนักการจราจรและขนส่ง, กรุงเทพมหานคร">
 <meta name="author" content="Prapawadee W., Statistics and Research Group, Policy and Planning Division, Traffic and Transportation Department, Bangkok Metropolitan Administration">
 
@@ -17,7 +17,7 @@
 <meta property="og:locale" content="th_TH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Bangkok Travel Time Dashboard 2017–2025 — BMA Floating Car Survey">
-<meta property="og:description" content="Annual average speed analysis on 51 main roads in Bangkok, surveyed by the Traffic and Transportation Department (BMA) using Floating Car Method, 2017–2025.">
+<meta property="og:description" content="Annual average travel speed analysis on 51 main roads in Bangkok, surveyed by the Traffic and Transportation Department (BMA) using Floating Car Method, 2017–2025.">
 <meta property="og:url" content="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/">
 <meta property="og:site_name" content="BMA Traffic Statistics">
 
@@ -46,9 +46,9 @@
   "@graph": [
     {
       "@type": "Dataset",
-      "name": "Bangkok Travel Time and average speed dataset (2017–2025)",
-      "alternateName": "รายงานข้อมูลเวลาและอัตราเร็วเฉลี่ยในการเดินทาง กรุงเทพมหานคร 2560–2568",
-      "description": "Annual average speed survey on 51 main roads in Bangkok, classified into inner / middle / outer urban zones, during morning (07:00–09:00) and evening (16:00–18:00) rush hours, inbound and outbound. Surveyed by Floating Car Method.",
+      "name": "Bangkok Travel Time and Average Speed Dataset (2017–2025)",
+      "alternateName": "ชุดข้อมูลเวลาและอัตราเร็วเฉลี่ยในการเดินทาง กรุงเทพมหานคร 2560–2568",
+      "description": "Annual average travel speed survey on 51 main roads in Bangkok, classified into inner / middle / outer urban zones, during morning (07:00–09:00) and evening (16:00–18:00) rush hours, inbound and outbound. Surveyed by Floating Car Method.",
       "url": "https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/",
       "keywords": "traffic, travel time, average speed, Floating Car Method, Bangkok, urban transport",
       "creator": {
@@ -67,7 +67,7 @@
       },
       "temporalCoverage": "2017/2025",
       "variableMeasured": [
-        { "@type": "PropertyValue", "name": "average speed", "unitText": "km/h" },
+        { "@type": "PropertyValue", "name": "Average speed", "unitText": "km/h" },
         { "@type": "PropertyValue", "name": "Travel time", "unitText": "min/10 km" }
       ],
       "measurementTechnique": "Floating Car Method",
@@ -89,8 +89,10 @@
 </head>
 <body>
 
+<!-- Skip link for keyboard / screen readers -->
 <a href="#main" class="skip-link" data-i18n="skip">ข้ามไปยังเนื้อหาหลัก</a>
 
+<!-- ════════════════ Top utility bar ════════════════ -->
 <div class="utility-bar" role="banner">
   <div class="utility-inner">
     <div class="utility-left">
@@ -111,19 +113,23 @@
 </div>
 
 <div class="a4-canvas">
+
+<!-- ════════════════ HERO HEADER ════════════════ -->
 <header class="report-hero" role="banner">
   <div class="hero-eyebrow" data-i18n="heroEyebrow">📋 รายงานการจราจร · กรุงเทพมหานคร</div>
   <h1 class="hero-title">
     <span class="hero-line-1" data-i18n="heroTitle1">รายงานสรุปผลการวิเคราะห์</span>
-    <span class="hero-line-2 hl" data-i18n="heroTitle2">เวลาและอัตราเร็วเฉลี่ยในการเดินทาง</span>
+    <span class="hero-line-2 hl" data-i18n="heroTitle2">เวลาและความเร็วเฉลี่ยในการเดินทาง</span>
     <span class="hero-line-3" data-i18n="heroTitle3">ในพื้นที่กรุงเทพมหานคร</span>
   </h1>
   <p class="hero-meta" data-i18n="heroMeta">ช่วงเวลาเร่งด่วน · ปี พ.ศ. 2560–2568 · 51 สายถนน · 3 โซนพื้นที่</p>
-  <p class="hero-method" data-i18n-html="heroMethod">วิธีการสำรวจ: <strong>Floating Car Method</strong></p>
+  <p class="hero-method" data-i18n-html="heroMethod">วิธีการสำรวจ: <strong>Floating Car Method</strong> (รถสำรวจวิ่งจริงตามกระแสจราจร)</p>
   <p class="hero-org" data-i18n="heroOrg">กลุ่มงานสถิติและวิจัย · กองนโยบายและแผนงาน · สำนักการจราจรและขนส่ง · กรุงเทพมหานคร</p>
 </header>
 
 <main id="main" class="a4-body" tabindex="-1">
+
+<!-- ════════════════ INTRO ════════════════ -->
 <section class="intro-box reveal" aria-labelledby="introHead">
   <h2 id="introHead" class="sr-only" data-i18n="introHead">บทนำ</h2>
   <p data-i18n-html="introText"><strong>สำนักการจราจรและขนส่ง กรุงเทพมหานคร</strong> ได้ดำเนินการสำรวจข้อมูลเวลาในการเดินทางด้วยวิธี <strong>Floating Car Method</strong>
@@ -132,11 +138,12 @@
   เพื่อประกอบการกำหนดทิศทางนโยบายการจราจรและพัฒนาระบบขนส่งสาธารณะ</p>
 </section>
 
+<!-- ════════════════ Method Card ════════════════ -->
 <section class="method-card reveal" aria-labelledby="methodHead">
   <div class="method-icon" aria-hidden="true">🚗</div>
   <div class="method-body">
-    <h2 id="methodHead" class="method-title" data-i18n="methodTitle">Floating Car Method</h2>
-    <p class="method-desc" data-i18n="methodDesc">สำรวจข้อมูลด้วย <strong>Floating Car Method</strong> บนเส้นทางที่กำหนด บันทึกเวลาและระยะทางช่วงต้น–ช่วงปลาย ทุกเที่ยวเดินทาง แล้วคำนวณอัตราเร็วเฉลี่ยในการเดินทาง ในช่วงเร่งด่วนเช้า (07:00–09:00) และเร่งด่วนเย็น (16:00–18:00) แยกขาเข้า–ขาออก ทำให้ได้ค่าที่สะท้อนสภาพจราจรจริงของผู้ใช้รถบนถนนสายหลัก</p>
+    <h2 id="methodHead" class="method-title" data-i18n="methodTitle">Floating Car Method — วิธีรถสำรวจลอย</h2>
+    <p class="method-desc" data-i18n="methodDesc">เก็บข้อมูลโดยให้รถสำรวจวิ่งตามกระแสจราจรบนเส้นทางที่กำหนด บันทึกเวลาและระยะทางช่วงต้น–ช่วงปลาย ทุกเที่ยวเดินทาง แล้วคำนวณความเร็วเฉลี่ย ทำซ้ำหลายเที่ยวในช่วงเร่งด่วนเช้า (07:00–09:00) และเร่งด่วนเย็น (16:00–18:00) แยกขาเข้า–ขาออก ทำให้ได้ค่าที่สะท้อนสภาพจราจรจริงของผู้ใช้รถบนถนนสายหลัก</p>
     <div class="method-meta">
       <span class="method-pill" data-i18n="mp1">📍 51 สายถนน</span>
       <span class="method-pill" data-i18n="mp2">🌅 เร่งด่วนเช้า 07:00–09:00</span>
@@ -146,6 +153,7 @@
   </div>
 </section>
 
+<!-- ════════════════ Quick Nav ════════════════ -->
 <nav class="std-nav" aria-label="Section quick links">
   <a href="#tomtom-index" data-i18n="navTomtom">TomTom Index</a>
   <a href="#compare-sjs-tomtom" data-i18n="navCompare">เปรียบเทียบ</a>
@@ -155,6 +163,7 @@
   <a href="#scenario-bau" data-i18n="navBau">คาดการณ์ BAU</a>
 </nav>
 
+<!-- ════════════════ TomTom ════════════════ -->
 <section id="tomtom-index" class="tomtom-section reveal" aria-labelledby="tomtomHead">
   <div class="section-eyebrow" data-i18n="tomtomEyebrow">TomTom Traffic Index 2025</div>
   <h2 class="section-heading" id="tomtomHead" data-i18n="tomtomHeading">มุมมองระดับโลก: กรุงเทพฯ ในดัชนีการจราจร TomTom</h2>
@@ -173,11 +182,12 @@
       <div class="tomtom-stats-row2">
         <div class="tomtom-stat"><div class="tomtom-value">115</div><div class="tomtom-label" data-i18n="tt6l">ชั่วโมง / ปี</div><div class="tomtom-sub-label" data-i18n="tt6s">เวลาสูญเสียช่วงเร่งด่วน (≈ 4 วัน 19 ชม.)</div></div>
       </div>
-      <p class="tomtom-note" data-i18n-html="tomtomNote">⚠️ <strong>กรุงเทพฯ ติดอันดับ 10 ของโลกด้าน Congestion</strong> ใช้เวลาเดินทางมากกว่าช่วง freeflow <strong>67.9%</strong> — ข้อมูล TomTom มาจาก GPS Big Data ครอบคลุมถนนทุกสายรวมทางด่วน 24 ชม. 365 วัน จึงไม่สามารถเปรียบเทียบโดยตรงกับข้อมูล สจส. ที่สำรวจเฉพาะ 51 ถนนหลักด้วย Floating Car Method ในช่วงเร่งด่วนเท่านั้น</p>
+      <p class="tomtom-note" data-i18n-html="tomtomNote">⚠️ <strong>กรุงเทพฯ ติดอันดับ 10 ของโลกด้าน Congestion</strong> ใช้เวลาเดินทางมากกว่าสภาพไหลลื่นถึง <strong>67.9%</strong> — ข้อมูล TomTom มาจาก GPS Big Data ครอบคลุมถนนทุกสายรวมทางด่วน 24 ชม. 365 วัน จึงไม่สามารถเปรียบเทียบโดยตรงกับข้อมูล สจส. ที่สำรวจเฉพาะ 51 ถนนหลักด้วย Floating Car Method ในช่วงเร่งด่วนเท่านั้น</p>
     </div>
   </div>
 </section>
 
+<!-- ════════════════ Comparison Table ════════════════ -->
 <section id="compare-sjs-tomtom" class="compare-card reveal" aria-labelledby="cmpHead">
   <h2 class="compare-title" id="cmpHead" data-i18n="cmpTitle">📊 เปรียบเทียบเชิงตัวเลข: สจส. ปี 2568 และ TomTom Traffic Index 2025</h2>
   <div class="ctable-wrap">
@@ -186,8 +196,8 @@
     <thead>
       <tr>
         <th scope="col" data-i18n="cmpThIndicator">ตัวชี้วัด</th>
-        <th scope="col" data-i18n-html="cmpThInner">สจส. ชั้นใน<br><small>28 ถนน</small></th>
-        <th scope="col" data-i18n-html="cmpThMiddle">สจส. ชั้นกลาง<br><small>20 ถนน</small></th>
+        <th scope="col" data-i18n-html="cmpThInner">สจส. ชั้นใน<br><small>27 ถนน</small></th>
+        <th scope="col" data-i18n-html="cmpThMiddle">สจส. ชั้นกลาง<br><small>17 ถนน</small></th>
         <th scope="col" data-i18n-html="cmpThOuter">สจส. ชั้นนอก<br><small>7 ถนน</small></th>
         <th scope="col" data-i18n-html="cmpThTomTom">TomTom 2025<br><small>City area</small></th>
       </tr>
@@ -199,12 +209,12 @@
         <td><span class="chip cr">GPS Big Data (Probe)</span></td>
       </tr>
       <tr>
-        <th scope="row"><div class="row-label" data-i18n="rSpeedIn">อัตราเร็วเฉลี่ย (กม./ชม.)</div><div class="row-sub" data-i18n="rSpeedInSub">เร่งด่วน · ขาเข้า (เฉลี่ยเช้า–เย็น)</div></th>
+        <th scope="row"><div class="row-label" data-i18n="rSpeedIn">ความเร็วเฉลี่ย (กม./ชม.)</div><div class="row-sub" data-i18n="rSpeedInSub">เร่งด่วน · ขาเข้า (เฉลี่ยเช้า–เย็น)</div></th>
         <td><span class="chip cr">15.27</span></td><td><span class="chip cb">20.90</span></td>
         <td><span class="chip cg">25.99</span></td><td><span class="chip cr">23.3*</span></td>
       </tr>
       <tr>
-        <th scope="row"><div class="row-label" data-i18n="rSpeedOut">อัตราเร็วเฉลี่ย (กม./ชม.)</div><div class="row-sub" data-i18n="rSpeedOutSub">เร่งด่วน · ขาออก (เฉลี่ยเช้า–เย็น)</div></th>
+        <th scope="row"><div class="row-label" data-i18n="rSpeedOut">ความเร็วเฉลี่ย (กม./ชม.)</div><div class="row-sub" data-i18n="rSpeedOutSub">เร่งด่วน · ขาออก (เฉลี่ยเช้า–เย็น)</div></th>
         <td><span class="chip cr">17.16</span></td><td><span class="chip cb">27.14</span></td>
         <td><span class="chip cg">35.37</span></td><td><span class="chip cr">19.1**</span></td>
       </tr>
@@ -229,8 +239,8 @@
       </tr>
       <tr>
         <th scope="row"><div class="row-label" data-i18n="rScope">ขอบเขตการสำรวจ</div></th>
-        <td><span class="cn" data-i18n="rScope1">28 ถนน เร่งด่วนเช้า–เย็น</span></td>
-        <td><span class="cn" data-i18n="rScope2">20 ถนน เร่งด่วนเช้า–เย็น</span></td>
+        <td><span class="cn" data-i18n="rScope1">27 ถนน เร่งด่วนเช้า–เย็น</span></td>
+        <td><span class="cn" data-i18n="rScope2">17 ถนน เร่งด่วนเช้า–เย็น</span></td>
         <td><span class="cn" data-i18n="rScope3">7 ถนน เร่งด่วนเช้า–เย็น</span></td>
         <td><span class="cn" data-i18n="rScope4">ทุกสาย + ทางด่วน 24 ชม.</span></td>
       </tr>
@@ -241,9 +251,10 @@
 
 <aside class="source-note reveal" aria-labelledby="srcHead">
   <h2 id="srcHead" class="sr-only">Source Notes</h2>
-  <p data-i18n-html="sourceNote"><strong>* หมายเหตุ:</strong> ข้อมูล <strong>สจส.</strong> สำรวจเฉพาะ 51 ถนนสายหลักด้วย <strong>Floating Car Method</strong> ในช่วงเร่งด่วนเช้า–เย็น แยกขาเข้า–ขาออก · ตัวเลขในตารางเป็นค่าเฉลี่ยเร่งด่วน (เฉลี่ยเช้า+เย็น) ตามที่ปรากฏใน Report sheet ของรายงานต้นฉบับ · เวลาเดินทาง คำนวณจาก 10÷อัตราเร็วเฉลี่ย×60 นาที<br><strong>** ข้อมูล TomTom</strong> มาจาก GPS Big Data ครอบคลุมถนนทุกสายตลอด 24 ชั่วโมง · (*) อัตราเร็ว TomTom เช้า คำนวณจากเวลาเดินทาง 10 กม. (25:45 นาที) · (**) อัตราเร็ว TomTom เย็น 19.1 กม./ชม. เป็นค่า average speed ช่วง Evening rush hour โดยตรง</p>
+  <p data-i18n-html="sourceNote"><strong>* หมายเหตุ:</strong> ข้อมูล <strong>สจส.</strong> สำรวจเฉพาะ 51 ถนนสายหลักด้วย <strong>Floating Car Method</strong> ในช่วงเร่งด่วนเช้า–เย็น แยกขาเข้า–ขาออก · ตัวเลขในตารางเป็นค่าเฉลี่ยเร่งด่วน (เฉลี่ยเช้า+เย็น) ตามที่ปรากฏใน Report sheet ของรายงานต้นฉบับ · เวลาเดินทาง คำนวณจาก 10÷ความเร็วเฉลี่ย×60 นาที<br><strong>** ข้อมูล TomTom</strong> มาจาก GPS Big Data ครอบคลุมถนนทุกสายตลอด 24 ชั่วโมง · (*) ความเร็ว TomTom เช้า คำนวณจากเวลาเดินทาง 10 กม. (25:45 นาที) · (**) ความเร็ว TomTom เย็น 19.1 กม./ชม. เป็นค่า Average speed ช่วง Evening rush hour โดยตรง</p>
 </aside>
 
+<!-- ════════════════ Zone-district details ════════════════ -->
 <section id="zone-details-card" class="zone-district-card reveal" aria-labelledby="zdHead">
   <div class="zone-district-header">
     <h2 id="zdHead" data-i18n="zdHeader">🗺️ รายละเอียดพื้นที่ชั้นใน · ชั้นกลาง · ชั้นนอก</h2>
@@ -268,6 +279,7 @@
   </div>
 </section>
 
+<!-- ════════════════ Control Panel ════════════════ -->
 <section aria-labelledby="ctrlHead" class="reveal">
   <h2 id="ctrlHead" class="sr-only" data-i18n="ctrlHead">Interactive controls</h2>
   <div class="control-panel">
@@ -297,6 +309,7 @@
   <div id="filterStatus" class="filter-status" aria-live="polite" data-i18n="filterStatus">กำลังแสดงข้อมูลทั้งหมด</div>
 </section>
 
+<!-- ════════════════ KPI Cards ════════════════ -->
 <section class="cards-grid" aria-label="Zone speed summary 2025">
   <article class="data-card card-inner reveal" data-zone="inner">
     <h3 class="card-title" data-i18n="cardTitleInner">พื้นที่ชั้นใน</h3>
@@ -371,11 +384,12 @@
   </article>
 </section>
 
+<!-- ════════════════ Trend Line Chart ════════════════ -->
 <section id="trend-line" class="line-card reveal" aria-labelledby="trendHead">
   <div class="line-toolbar">
     <div>
-      <h2 class="line-title" id="trendHead" data-i18n="trendTitle">กราฟเส้นเปรียบเทียบอัตราเร็วเฉลี่ย ปี 2560–2568</h2>
-      <p class="line-sub" data-i18n="trendSub">หน่วย: กม./ชม. · ขาเข้า · เลื่อนเพื่อดูค่า · เปรียบเทียบ 3 โซน</p>
+      <h2 class="line-title" id="trendHead" data-i18n="trendTitle">กราฟเส้นเปรียบเทียบความเร็วเฉลี่ย ปี 2560–2568</h2>
+      <p class="line-sub" data-i18n="trendSub">หน่วย: กม./ชม. · ขาเข้า · ขยับเคอร์เซอร์ที่ปีเพื่อดูค่า · เปรียบเทียบ 3 โซน</p>
     </div>
     <div class="dir-toggle" role="group" aria-label="Direction toggle">
       <button class="dir-btn active" data-dir="in" type="button" aria-pressed="true" data-i18n="dirInShort">ขาเข้า</button>
@@ -383,7 +397,7 @@
     </div>
   </div>
   <div class="line-wrap">
-    <svg id="trend-chart" width="100%" viewBox="0 0 860 360" role="img" aria-label="Annual average speed trend 2017–2025"></svg>
+    <svg id="trend-chart" width="100%" viewBox="0 0 860 290" role="img" aria-label="Annual average speed trend 2017–2025"></svg>
   </div>
   <div class="line-legend">
     <span class="legend-item"><span class="legend-dot" style="background:#00b894"></span><span data-i18n="legOuter">พื้นที่ชั้นนอก</span></span>
@@ -392,9 +406,10 @@
   </div>
 </section>
 
+<!-- ════════════════ Road table — DROPDOWN BY ZONE ════════════════ -->
 <section id="road-table-section" class="reveal" aria-labelledby="roadTableHead">
-  <h2 class="section-title" id="roadTableHead" data-i18n="roadTableTitle">ตารางข้อมูลอัตราเร็วรายถนน 51 สาย ปี 2568</h2>
-  <p class="rt-intro" data-i18n-html="rtIntro">คลิก <span class="rt-icon-hint">▼</span> เพื่อขยายดูรายละเอียดรายถนน · มี mini-chart 4 ทิศ และ heatmap แสดงระดับอัตราเร็ว</p>
+  <h2 class="section-title" id="roadTableHead" data-i18n="roadTableTitle">ตารางข้อมูลความเร็วรายถนน 51 สาย ปี 2568</h2>
+  <p class="rt-intro" data-i18n-html="rtIntro">คลิกที่หัวโซน <span class="rt-icon-hint">▼</span> เพื่อขยายดูรายละเอียดรายถนน · มี mini-chart 4 ทิศ และ heatmap แสดงระดับความเร็ว</p>
 
   <div class="rt-toolbar">
     <input id="rtSearch" class="control-input" type="search" data-i18n-attr="placeholder:rtSearchPh" placeholder="🔍 ค้นหาชื่อถนน หรือช่วงถนน..." aria-label="Search roads">
@@ -403,7 +418,9 @@
   </div>
 
   <div class="zone-accordion" id="zoneAccordion">
-    <details class="zone-acc inner" data-zone="inner">
+
+    <!-- ZONE: INNER -->
+    <details class="zone-acc inner" data-zone="inner" open>
       <summary class="zone-summary">
         <div class="zone-summary-left">
           <span class="zone-icon" aria-hidden="true">🏙️</span>
@@ -447,6 +464,7 @@
       </div>
     </details>
 
+    <!-- ZONE: MIDDLE -->
     <details class="zone-acc middle" data-zone="middle">
       <summary class="zone-summary">
         <div class="zone-summary-left">
@@ -491,6 +509,7 @@
       </div>
     </details>
 
+    <!-- ZONE: OUTER -->
     <details class="zone-acc outer" data-zone="outer">
       <summary class="zone-summary">
         <div class="zone-summary-left">
@@ -538,7 +557,7 @@
   </div>
 
   <div class="rt-legend-bottom">
-    <span class="lg-section" data-i18n="legSpeedLevel">ระดับอัตราเร็ว:</span>
+    <span class="lg-section" data-i18n="legSpeedLevel">ระดับความเร็ว:</span>
     <span class="lg-item"><em class="lg lg-fast"></em> <span data-i18n="legFast">🟢 ≥ 30 กม./ชม.</span></span>
     <span class="lg-item"><em class="lg lg-mid"></em> <span data-i18n="legMid">🔵 20–30</span></span>
     <span class="lg-item"><em class="lg lg-slow"></em> <span data-i18n="legSlow">🟡 10–20</span></span>
@@ -551,9 +570,10 @@
   </div>
 </section>
 
+<!-- ════════════════ BAU Scenario ════════════════ -->
 <section id="scenario-bau" class="scenario-card reveal" aria-labelledby="bauHead">
   <h2 class="scenario-title" id="bauHead" data-i18n="bauTitle">📉 วิเคราะห์แนวโน้มกรณีไม่มีมาตรการ (Business as Usual)</h2>
-  <p class="scenario-sub" data-i18n="bauSub">คาดการณ์ปีถัดไปจากแนวโน้ม 3 ปีล่าสุดของอัตราเร็วเฉลี่ยช่วงเร่งด่วน · ขาเข้า</p>
+  <p class="scenario-sub" data-i18n="bauSub">คาดการณ์ปีถัดไปจากแนวโน้ม 3 ปีล่าสุดของความเร็วเฉลี่ยช่วงเร่งด่วน · ขาเข้า</p>
   <div id="scenarioGrid" class="scenario-grid">
     <div class="scenario-item" data-zone="inner">
       <h3 class="scenario-zone" data-i18n="bauInner">พื้นที่ชั้นใน</h3>
@@ -577,8 +597,9 @@
   <p id="scenarioNote" class="scenario-note" data-i18n="bauNote">หมายเหตุ: เป็นการคาดการณ์เชิงแนวโน้ม (trend projection) เพื่อใช้เตือนความเสี่ยง ไม่ใช่แบบจำลองจราจรเชิงโครงข่ายเต็มรูปแบบ</p>
 </section>
 
+<!-- ════════════════ 2560 vs 2568 ════════════════ -->
 <section class="reveal" aria-labelledby="cmpYearsHead">
-  <h2 class="section-title" id="cmpYearsHead" data-i18n="cmpYearsTitle">ตารางเปรียบเทียบอัตราเร็วเฉลี่ย ปี 2560 และ 2568 (ขาเข้า)</h2>
+  <h2 class="section-title" id="cmpYearsHead" data-i18n="cmpYearsTitle">ตารางเปรียบเทียบความเร็วเฉลี่ย ปี 2560 และ 2568 (ขาเข้า)</h2>
   <table class="modern-table">
     <thead>
       <tr>
@@ -615,6 +636,7 @@
   </table>
 </section>
 
+<!-- ════════════════ Insights & Policy ════════════════ -->
 <section class="bottom-grid reveal" aria-label="Findings and recommendations">
   <div>
     <h2 class="section-title" data-i18n="findingsTitle">ข้อค้นพบเชิงสถิติที่สำคัญ</h2>
@@ -622,7 +644,7 @@
       <li data-i18n-html="finding1"><strong>พื้นที่ชั้นใน:</strong> เผชิญภาวะจราจรหนาแน่นต่อเนื่อง — ขาเข้าเช้า 15.27 กม./ชม. ใช้เวลา 39.3 นาที/10 กม.</li>
       <li data-i18n-html="finding2"><strong>พื้นที่ชั้นกลาง:</strong> ลดลง 1.92% จากปี 2560 — ถนนเพชรเกษมช่วงราชพฤกษ์–วงเวียนใหญ่ ลดลงรุนแรง</li>
       <li data-i18n-html="finding3"><strong>พื้นที่ชั้นนอก:</strong> ลดลงมากที่สุด <strong>11.08%</strong> สะท้อนการขยายตัวของชุมชนรอบนอก</li>
-      <li data-i18n-html="finding4"><strong>ปี 2564 (โควิด-19):</strong> อัตราเร็วสูงสุดในรอบ 9 ปีทุกโซน เพราะปริมาณรถลด</li>
+      <li data-i18n-html="finding4"><strong>ปี 2564 (โควิด-19):</strong> ความเร็วสูงสุดในรอบ 9 ปีทุกโซน เพราะปริมาณรถลด</li>
       <li data-i18n-html="finding5"><strong>ขาออกเร็วกว่าขาเข้าทุกโซน:</strong> เช้า +5.8 กม./ชม. · เย็น +2.6 กม./ชม.</li>
     </ul>
   </div>
@@ -640,6 +662,7 @@
 
 </main>
 
+<!-- ════════════════ Footer ════════════════ -->
 <footer class="footer" role="contentinfo">
   <div>
     <strong data-i18n="footerOrgL1">สำนักการจราจรและขนส่ง กรุงเทพมหานคร</strong><br>
@@ -653,7 +676,7 @@
   </div>
 </footer>
 
-</div>
+</div><!-- /.a4-canvas -->
 
 <button id="to-top" class="to-top" aria-label="Back to top" type="button">↑</button>
 
