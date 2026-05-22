@@ -193,7 +193,7 @@
     const cw = xR - xL, ch = yB - yT;
     const xStep = cw / (years.length - 1);
     const x = i => xL + i * xStep;
-    const yMin = 5, yMax = 65;
+    const yMin = 0, yMax = 50;
     const y = v => yB - ((v - yMin) / (yMax - yMin)) * ch;
 
     const bg = document.createElementNS(NS, 'rect');
@@ -202,7 +202,7 @@
     bg.setAttribute('fill', '#f8fafc'); bg.setAttribute('rx', 8);
     svg.appendChild(bg);
 
-    [10, 20, 30, 40, 50, 60].forEach(v => {
+    [0, 10, 20, 30, 40, 50].forEach(v => {
       const ln = document.createElementNS(NS, 'line');
       ln.setAttribute('x1', xL); ln.setAttribute('x2', xR);
       ln.setAttribute('y1', y(v)); ln.setAttribute('y2', y(v));
