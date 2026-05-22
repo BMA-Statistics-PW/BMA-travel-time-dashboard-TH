@@ -136,6 +136,8 @@
       // road table
       roadTableTitle: 'ตารางข้อมูลความเร็วรายถนน 51 สาย ปี 2568',
       rtIntro: 'คลิกที่หัวโซน <span class="rt-icon-hint">▼</span> เพื่อขยายดูรายละเอียดรายถนน · มี mini-chart 4 ทิศ และ heatmap แสดงระดับความเร็ว',
+  rtToggleShow: '📋 แสดงตาราง',
+  rtToggleHide: '🔼 ซ่อนตาราง',
       rtSearchPh: '🔍 ค้นหาชื่อถนน หรือช่วงถนน...',
       rtExpandAll: '📂 เปิดทั้งหมด',
       rtCollapseAll: '📁 ปิดทั้งหมด',
@@ -324,6 +326,8 @@
 
       roadTableTitle: 'Speed by road · 51 roads · 2025',
       rtIntro: 'Click a zone header <span class="rt-icon-hint">▼</span> to expand · Each row shows a 4-direction mini-chart and color-coded speed heatmap',
+  rtToggleShow: '📋 Show Table',
+  rtToggleHide: '🔼 Hide Table',
       rtSearchPh: '🔍 Search road name or segment...',
       rtExpandAll: '📂 Expand all',
       rtCollapseAll: '📁 Collapse all',

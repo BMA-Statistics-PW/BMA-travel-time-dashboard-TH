@@ -592,8 +592,31 @@
   // ────────────────────────────────────────────────────────────────
   // Init
   // ────────────────────────────────────────────────────────────────
+  function initRoadTableToggle() {
+    const btn  = document.getElementById('rtToggle');
+    const body = document.getElementById('rtBody');
+    if (!btn || !body) return;
+
+    function syncLabel() {
+      const open  = btn.getAttribute('aria-expanded') === 'true';
+      const label = btn.querySelector('.rt-toggle-label');
+      if (label) label.textContent = open ? t('rtToggleHide') : t('rtToggleShow');
+    }
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      body.hidden = open;
+      syncLabel();
+    });
+
+    document.addEventListener('i18n:change', syncLabel);
+    syncLabel();
+  }
+
   function init() {
     setupReveal();
+    initRoadTableToggle();
     fetch('data/dashboard-data.json', { cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
       .then(json => {

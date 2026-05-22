@@ -408,7 +408,14 @@
 
 <!-- ════════════════ Road table — DROPDOWN BY ZONE ════════════════ -->
 <section id="road-table-section" class="reveal" aria-labelledby="roadTableHead">
-  <h2 class="section-title" id="roadTableHead" data-i18n="roadTableTitle">ตารางข้อมูลความเร็วรายถนน 51 สาย ปี 2568</h2>
+  <div class="rt-header-row">
+    <h2 class="section-title" id="roadTableHead" data-i18n="roadTableTitle">ตารางข้อมูลความเร็วรายถนน 51 สาย ปี 2568</h2>
+    <button id="rtToggle" class="rt-toggle-btn" type="button" aria-expanded="false" aria-controls="rtBody">
+      <span class="rt-toggle-label">📋 แสดงตาราง</span>
+      <span class="rt-toggle-arrow" aria-hidden="true">▼</span>
+    </button>
+  </div>
+  <div id="rtBody" class="rt-body-collapsible" hidden>
   <p class="rt-intro" data-i18n-html="rtIntro">คลิกที่หัวโซน <span class="rt-icon-hint">▼</span> เพื่อขยายดูรายละเอียดรายถนน · มี mini-chart 4 ทิศ และ heatmap แสดงระดับความเร็ว</p>
 
   <div class="rt-toolbar">
@@ -568,6 +575,7 @@
     <span class="lg-item"><span class="zsm-dot pm-in"></span><span data-i18n="legPmIn">เย็นเข้า</span></span>
     <span class="lg-item"><span class="zsm-dot pm-out"></span><span data-i18n="legPmOut">เย็นออก</span></span>
   </div>
+  </div><!-- /#rtBody -->
 </section>
 
 <!-- ════════════════ BAU Scenario ════════════════ -->

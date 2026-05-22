@@ -672,6 +672,32 @@ table[data-zone-table] td:nth-child(3){
 :root[data-theme='dark'] .section-title{color:#f0c060}
 .section-title::before{content:'';display:inline-block;width:5px;height:20px;background:var(--accent-color);border-radius:2px}
 .rt-intro{font-family:var(--font-sans);font-size:13.5px;color:var(--text-muted);margin-bottom:16px;line-height:1.7}
+
+/* ════════════════ Road Table Toggle ════════════════ */
+.rt-header-row{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;margin-bottom:4px;
+}
+.rt-header-row .section-title{margin-bottom:0}
+.rt-toggle-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;
+  background:var(--primary-color);color:#fff;
+  border:none;border-radius:8px;
+  font-family:var(--font-sans);font-size:var(--fs-body);font-weight:600;
+  cursor:pointer;white-space:nowrap;
+  transition:background .2s,transform .2s;
+}
+.rt-toggle-btn:hover{background:#0d3a73;transform:translateY(-1px)}
+.rt-toggle-arrow{display:inline-block;transition:transform .3s ease;font-size:.85em}
+.rt-toggle-btn[aria-expanded="true"] .rt-toggle-arrow{transform:rotate(180deg)}
+.rt-body-collapsible:not([hidden]){
+  animation:rtSlideIn .3s ease;
+}
+@keyframes rtSlideIn{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
+}
 .rt-icon-hint{
   display:inline-block;background:#1e40af;color:#fff;
   padding:1px 7px;border-radius:4px;font-size:11px;margin:0 2px;
