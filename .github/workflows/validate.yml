@@ -1,0 +1,15 @@
+name: Validate dashboard data
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate dashboard-data.json syntax
+        run: python3 -m json.tool data/dashboard-data.json > /dev/null

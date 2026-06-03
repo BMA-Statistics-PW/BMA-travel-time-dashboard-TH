@@ -14,7 +14,8 @@ Dashboard เสนอผลการวิเคราะห์ **เวลา�
 ├── assets/
 │   ├── styles.css              # CSS ทั้งหมด (responsive PC / tablet / mobile)
 │   ├── app.js                  # JS — โหลดข้อมูล, สร้าง chart, ตาราง, filter
-│   └── data.js                 # (deprecated) — ใช้ data/dashboard-data.json แทน
+│   ├── favicon.svg             # ไอคอนเว็บไซต์
+│   └── og-preview.svg          # ภาพ preview สำหรับ social share
 ├── data/
 │   └── dashboard-data.json     # ข้อมูลทั้งหมด (สร้างจาก XLSX ต้นฉบับ)
 └── README.md
@@ -73,6 +74,8 @@ python3 -m http.server 8080
 - `rural_2560-2568` — 7 ถนนชั้นนอก × 9 ปี
 
 **Reference:** [TomTom Traffic Index 2025 — Bangkok](https://www.tomtom.com/traffic-index/bangkok-traffic/)
+
+**หมายเหตุข้อมูล:** ใน `dashboard-data.json` บางแถวจะมีค่า speed เป็น `null` สำหรับทิศทางที่ไม่สามารถสำรวจได้ (เช่น เดินรถทางเดียว/ทางรถมวลชน) โดยให้อ่านเหตุผลจาก `note_am_out` หรือ `note_pm_out`
 
 ---
 

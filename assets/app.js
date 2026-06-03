@@ -52,6 +52,21 @@
     }
     return `<span class="speed-cell na">${escapeHtml(note || '—')}</span>`;
   }
+  function setDataLoadError(msg) {
+    let el = $('#dataLoadError');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'dataLoadError';
+      el.className = 'data-load-error';
+      document.body.prepend(el);
+    }
+    el.textContent = msg;
+    el.hidden = false;
+  }
+  function clearDataLoadError() {
+    const el = $('#dataLoadError');
+    if (el) el.hidden = true;
+  }
 
   // Mini-chart (translated tooltips)
   function miniChart(r) {
@@ -171,6 +186,26 @@
         if (cdel) cdel.textContent = (z.delta_in < 0 ? '▼ ' : '▲ ') + fmt(z.delta_in);
         if (cpct) cpct.textContent = fmt(z.pct_in) + '%';
         row.dataset.trend = z.delta_in < 0 ? 'down' : 'up';
+      }
+      function getRoadCounts() {
+        if (!DATA || !Array.isArray(DATA.roads_2568)) return { inner: 0, middle: 0, outer: 0 };
+        return DATA.roads_2568.reduce((acc, row) => {
+          if (acc[row.zone] != null) acc[row.zone] += 1;
+          return acc;
+        }, { inner: 0, middle: 0, outer: 0 });
+      }
+      function bindRoadCountLabels() {
+        const c = getRoadCounts();
+        const isTh = lang() === 'th';
+        const word = isTh ? 'ถนน' : 'roads';
+        const setHtml = (sel, html) => { const el = $(sel); if (el) el.innerHTML = html; };
+        const setText = (sel, txt) => { const el = $(sel); if (el) el.textContent = txt; };
+        setHtml('#cmpThInnerDynamic', `${isTh ? 'สจส. ชั้นใน' : 'BMA Inner'}<br><small>${c.inner} ${word}</small>`);
+        setHtml('#cmpThMiddleDynamic', `${isTh ? 'สจส. ชั้นกลาง' : 'BMA Middle'}<br><small>${c.middle} ${word}</small>`);
+        setHtml('#cmpThOuterDynamic', `${isTh ? 'สจส. ชั้นนอก' : 'BMA Outer'}<br><small>${c.outer} ${word}</small>`);
+        setText('#rScope1Dynamic', isTh ? `${c.inner} ถนน เร่งด่วนเช้า–เย็น` : `${c.inner} roads · AM/PM rush`);
+        setText('#rScope2Dynamic', isTh ? `${c.middle} ถนน เร่งด่วนเช้า–เย็น` : `${c.middle} roads · AM/PM rush`);
+        setText('#rScope3Dynamic', isTh ? `${c.outer} ถนน เร่งด่วนเช้า–เย็น` : `${c.outer} roads · AM/PM rush`);
       }
     });
   }
@@ -581,6 +616,7 @@
   document.addEventListener('i18n:change', () => {
     if (!DATA) return;
     bindZones(DATA.zones);
+    bindRoadCountLabels();
     const stats = calcZoneStats();
     bindZoneAccordionStats(stats);
     buildTrendChart();
@@ -617,11 +653,13 @@
   function init() {
     setupReveal();
     initRoadTableToggle();
-    fetch('data/dashboard-data.json', { cache: 'no-store' })
+    fetch('data/dashboard-data.json?v=2568')
       .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
       .then(json => {
         DATA = json;
+        clearDataLoadError();
         if (DATA.zones) bindZones(DATA.zones);
+        bindRoadCountLabels();
         const stats = calcZoneStats();
         bindZoneAccordionStats(stats);
         buildTrendChart();
@@ -631,6 +669,7 @@
       })
       .catch(err => {
         console.error('[BMA] failed to load data:', err);
+        setDataLoadError(t('dataLoadError'));
         applyFilters();
       });
   }
