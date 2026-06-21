@@ -5,8 +5,8 @@
     "year_latest": 2568,
     "road_count_total": 51,
     "road_count_by_zone": {
-      "inner": 28,
-      "middle": 20,
+      "inner": 27,
+      "middle": 17,
       "outer": 7
     },
     "method": "Floating Car Method",
@@ -14,7 +14,10 @@
     "data_source": "การสำรวจอัตราเร็วเฉลี่ยบนถนนสายหลัก สำนักการจราจรและขนส่ง ปี 2560–2568",
     "as_of": "31 ธันวาคม 2568",
     "org": "กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน สำนักการจราจรและขนส่ง กรุงเทพมหานคร",
-    "author": "© Prapawadee_W."
+    "author": "© Prapawadee_W.",
+    "data_notes": {
+      "null_speed": "ค่าความเร็วเป็น null เมื่อทิศทางนั้นไม่สามารถสำรวจได้ โดยให้ใช้อธิบายเหตุผลจาก note_am_out หรือ note_pm_out เช่น เดินรถทางเดียว หรือทางรถมวลชน"
+    }
   },
   "tomtom_2025": {
     "city": "Bangkok",

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="BMA Travel Time Dashboard">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A2E5C"/>
+      <stop offset="100%" stop-color="#1F4E79"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="56" y="56" width="1088" height="518" rx="24" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+  <text x="96" y="160" fill="#D4AF37" font-family="Sarabun,Arial,sans-serif" font-size="40" font-weight="700">
+    BMA Travel Time Dashboard
+  </text>
+  <text x="96" y="222" fill="#ffffff" font-family="Sarabun,Arial,sans-serif" font-size="30" font-weight="600">
+    รายงานเวลาและความเร็วเฉลี่ยในการเดินทาง
+  </text>
+  <text x="96" y="278" fill="#dbeafe" font-family="Sarabun,Arial,sans-serif" font-size="24">
+    Bangkok Metropolitan Administration · 2017–2025 · 51 main roads
+  </text>
+  <circle cx="170" cy="430" r="18" fill="#00b894"/>
+  <text x="205" y="438" fill="#ffffff" font-family="Sarabun,Arial,sans-serif" font-size="24">Outer Zone</text>
+  <circle cx="470" cy="430" r="18" fill="#e17055"/>
+  <text x="505" y="438" fill="#ffffff" font-family="Sarabun,Arial,sans-serif" font-size="24">Middle Zone</text>
+  <circle cx="780" cy="430" r="18" fill="#d63031"/>
+  <text x="815" y="438" fill="#ffffff" font-family="Sarabun,Arial,sans-serif" font-size="24">Inner Zone</text>
+</svg>

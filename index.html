@@ -20,23 +20,23 @@
 <meta property="og:description" content="Annual average travel speed analysis on 51 main roads in Bangkok, surveyed by the Traffic and Transportation Department (BMA) using Floating Car Method, 2017–2025.">
 <meta property="og:url" content="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/">
 <meta property="og:site_name" content="BMA Traffic Statistics">
+<meta property="og:image" content="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/assets/og-preview.svg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bangkok Travel Time Dashboard 2017–2025">
 <meta name="twitter:description" content="51 main roads · Floating Car Method · Compared with TomTom Traffic Index 2025">
+<meta name="twitter:image" content="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/assets/og-preview.svg">
 
 <!-- Canonical & hreflang -->
 <link rel="canonical" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/">
 <link rel="alternate" hreflang="th" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/?lang=th">
 <link rel="alternate" hreflang="en" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <!-- ════════════════ Fonts ════════════════ -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Primary font: Sarabun (Thai + Latin) -->
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<!-- ใช้ local/system fonts เพื่อลด dependency ภายนอก -->
 <link rel="stylesheet" href="assets/styles.css">
 
 <!-- ════════════════ Schema.org JSON-LD ════════════════ -->
@@ -196,9 +196,9 @@
     <thead>
       <tr>
         <th scope="col" data-i18n="cmpThIndicator">ตัวชี้วัด</th>
-        <th scope="col" data-i18n-html="cmpThInner">สจส. ชั้นใน<br><small>27 ถนน</small></th>
-        <th scope="col" data-i18n-html="cmpThMiddle">สจส. ชั้นกลาง<br><small>17 ถนน</small></th>
-        <th scope="col" data-i18n-html="cmpThOuter">สจส. ชั้นนอก<br><small>7 ถนน</small></th>
+        <th id="cmpThInnerDynamic" scope="col" data-i18n-html="cmpThInner">สจส. ชั้นใน<br><small>27 ถนน</small></th>
+        <th id="cmpThMiddleDynamic" scope="col" data-i18n-html="cmpThMiddle">สจส. ชั้นกลาง<br><small>17 ถนน</small></th>
+        <th id="cmpThOuterDynamic" scope="col" data-i18n-html="cmpThOuter">สจส. ชั้นนอก<br><small>7 ถนน</small></th>
         <th scope="col" data-i18n-html="cmpThTomTom">TomTom 2025<br><small>City area</small></th>
       </tr>
     </thead>
@@ -239,9 +239,9 @@
       </tr>
       <tr>
         <th scope="row"><div class="row-label" data-i18n="rScope">ขอบเขตการสำรวจ</div></th>
-        <td><span class="cn" data-i18n="rScope1">27 ถนน เร่งด่วนเช้า–เย็น</span></td>
-        <td><span class="cn" data-i18n="rScope2">17 ถนน เร่งด่วนเช้า–เย็น</span></td>
-        <td><span class="cn" data-i18n="rScope3">7 ถนน เร่งด่วนเช้า–เย็น</span></td>
+        <td><span id="rScope1Dynamic" class="cn" data-i18n="rScope1">27 ถนน เร่งด่วนเช้า–เย็น</span></td>
+        <td><span id="rScope2Dynamic" class="cn" data-i18n="rScope2">17 ถนน เร่งด่วนเช้า–เย็น</span></td>
+        <td><span id="rScope3Dynamic" class="cn" data-i18n="rScope3">7 ถนน เร่งด่วนเช้า–เย็น</span></td>
         <td><span class="cn" data-i18n="rScope4">ทุกสาย + ทางด่วน 24 ชม.</span></td>
       </tr>
     </tbody>
@@ -670,19 +670,16 @@
 
 <!-- ════════════════ About the Analyst ════════════════ -->
 <section class="reveal" aria-labelledby="aboutHead">
-  <h2 class="section-title" id="aboutHead">👤 เกี่ยวกับผู้วิเคราะห์ข้อมูล</h2>
+  <h2 class="section-title" id="aboutHead" data-i18n="aboutHead">👤 เกี่ยวกับผู้วิเคราะห์ข้อมูล</h2>
   <div class="about-card">
     <div class="about-avatar" aria-hidden="true">PW</div>
     <div>
-      <h3 class="about-name">© Prapawadee Wachiraput</h3>
-      <div class="about-role">Professional-Level Statistician · นักวิชาการสถิติชำนาญการ</div>
-      <div class="about-org">
-        กลุ่มงานสถิติและวิจัย · กองนโยบายและแผนงาน<br>
-        สำนักการจราจรและขนส่ง · กรุงเทพมหานคร<br>
-        <em>Statistics &amp; Research Group, Policy &amp; Planning Division,<br>
-        Traffic and Transportation Department, Bangkok Metropolitan Administration</em>
+      <h3 class="about-name" data-i18n="aboutName">© Prapawadee Wachiraput</h3>
+      <div class="about-role" data-i18n="aboutRole">Professional-Level Statistician · นักวิชาการสถิติชำนาญการ</div>
+      <div class="about-org" data-i18n-html="aboutOrg">
+        กลุ่มงานสถิติและวิจัย · กองนโยบายและแผนงาน<br>สำนักการจราจรและขนส่ง · กรุงเทพมหานคร<br><em>Statistics &amp; Research Group, Policy &amp; Planning Division,<br>Traffic and Transportation Department, Bangkok Metropolitan Administration</em>
       </div>
-      <p class="about-bio">
+      <p class="about-bio" data-i18n="aboutBio">
         นักวิชาการสถิติ ระดับชำนาญการ ที่มุ่งเน้นการนำข้อมูลและวิทยาศาสตร์ข้อมูล (Data Science)
         มาประยุกต์ใช้กับงานนโยบายภาครัฐ โดยเฉพาะด้านการจราจรและขนส่ง
         สนใจการวิเคราะห์เชิงพื้นที่ (Spatial Analytics), การออกแบบโครงการวิจัย,
@@ -690,14 +687,14 @@
         เพื่อสนับสนุนการตัดสินใจเชิงนโยบายของกรุงเทพมหานครให้มีประสิทธิภาพและโปร่งใส
       </p>
       <div class="about-skills">
-        <span class="skill-chip">📊 Statistical Analysis</span>
-        <span class="skill-chip">🐍 Python (pandas / numpy)</span>
-        <span class="skill-chip">📈 Data Visualization</span>
-        <span class="skill-chip">🗺 Spatial Analytics</span>
-        <span class="skill-chip">📐 Survey &amp; Research Design</span>
-        <span class="skill-chip">📝 Official Reports (Thai)</span>
-        <span class="skill-chip">🎨 Graphic Design / Infographics</span>
-        <span class="skill-chip">🌐 HTML / CSS / JS</span>
+        <span class="skill-chip" data-i18n="aboutSkill1">📊 Statistical Analysis</span>
+        <span class="skill-chip" data-i18n="aboutSkill2">🐍 Python (pandas / numpy)</span>
+        <span class="skill-chip" data-i18n="aboutSkill3">📈 Data Visualization</span>
+        <span class="skill-chip" data-i18n="aboutSkill4">🗺 Spatial Analytics</span>
+        <span class="skill-chip" data-i18n="aboutSkill5">📐 Survey &amp; Research Design</span>
+        <span class="skill-chip" data-i18n="aboutSkill6">📝 Official Reports (Thai)</span>
+        <span class="skill-chip" data-i18n="aboutSkill7">🎨 Graphic Design / Infographics</span>
+        <span class="skill-chip" data-i18n="aboutSkill8">🌐 HTML / CSS / JS</span>
       </div>
     </div>
   </div>
