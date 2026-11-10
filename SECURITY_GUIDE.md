@@ -10,7 +10,7 @@
 | ไฟล์ | วัตถุประสงค์ | วิธีเพิ่ม |
 |---|---|---|
 | `.gitignore` | ป้องกันไฟล์ลับถูก commit | Copy ไปวางใน root ของทุก repo |
-| `LICENSE` | ป้องกันลิขสิทธิ์ CC BY-NC 4.0 | Copy ไปวางใน root ของทุก repo |
+| `LICENSE` | ป้องกันลิขสิทธิ์ CC BY 4.0 | Copy ไปวางใน root ของทุก repo |
 | `CITATION.md` | กำหนดวิธีอ้างอิงที่ถูกต้อง | Copy ไปวางใน root ของทุก repo |
 | `SECURITY.md` | นโยบายความปลอดภัย | Copy ไปวางใน root ของทุก repo |
 | `git_secret_scan.sh` | สแกน git history | รันใน terminal ของแต่ละ repo |

@@ -6,6 +6,7 @@
   'use strict';
 
   const STORAGE_KEY = 'bma-dashboard-lang';
+  let initialized = false;   // true หลัง applyLang ครั้งแรกตอน DOMContentLoaded
 
   const TRANSLATIONS = {
     th: {
@@ -83,6 +84,7 @@
       rScope4: 'ทุกสาย + ทางด่วน 24 ชม.',
       m393: '39.3 นาที', m287: '28.7 นาที', m231: '23.1 นาที',
       m350: '35.0 นาที', m221: '22.1 นาที', m170: '17.0 นาที',
+      m270: '27.0 นาที', m211: '21.1 นาที',
       sourceNote: '<strong>* หมายเหตุ:</strong> ข้อมูล <strong>สจส.</strong> สำรวจเฉพาะ 51 ถนนสายหลักด้วย <strong>Floating Car Method</strong> ในช่วงเร่งด่วนเช้า–เย็น แยกขาเข้า–ขาออก · ตัวเลขในตารางเป็นค่าเฉลี่ยเร่งด่วน (เฉลี่ยเช้า+เย็น) ตามที่ปรากฏใน Report sheet ของรายงานต้นฉบับ · เวลาเดินทาง คำนวณจาก 10÷ความเร็วเฉลี่ย×60 นาที<br><strong>** ข้อมูล TomTom</strong> มาจาก GPS Big Data ครอบคลุมถนนทุกสายตลอด 24 ชั่วโมง · (*) ความเร็ว TomTom เช้า คำนวณจากเวลาเดินทาง 10 กม. (25:45 นาที) · (**) ความเร็ว TomTom เย็น 19.1 กม./ชม. เป็นค่า Average speed ช่วง Evening rush hour โดยตรง',
 
       // zone-district
@@ -189,7 +191,9 @@
       // findings & policy
       findingsTitle: 'ข้อค้นพบเชิงสถิติที่สำคัญ',
       finding1: '<strong>พื้นที่ชั้นใน:</strong> เผชิญภาวะจราจรหนาแน่นต่อเนื่อง — ขาเข้าเช้า 15.27 กม./ชม. ใช้เวลา 39.3 นาที/10 กม.',
-      finding2: '<strong>พื้นที่ชั้นกลาง:</strong> ลดลง 1.92% จากปี 2560 — ถนนเพชรเกษมช่วงราชพฤกษ์–วงเวียนใหญ่ ลดลงรุนแรง',
+      finding2: '<strong>พื้นที่ชั้นกลาง:</strong> เพิ่มขึ้น 4.18% จากปี 2560 แต่ลดลงต่อเนื่องตั้งแต่ปี 2566 (24.12 → 22.20 กม./ชม.) — ถนนเพชรเกษมช่วงราชพฤกษ์–วงเวียนใหญ่ ความเร็วไม่ได้ลดลงรุนแรงตามที่เคยรายงาน',
+      cmpFixNote: 'หมายเหตุ: ค่าพื้นที่ชั้นกลาง ปี 2567–2568 ปรับปรุงแล้ว (2 พ.ย. 2569) หลังพบว่าสูตรคำนวณความเร็วช่วงเพชรเกษมชั้นกลาง (ราชพฤกษ์–วงเวียนใหญ่) ใช้เวลาของช่วงชั้นนอก ทำให้ค่าต่ำเกินจริง (ขาเข้า 2568: 20.90 → 22.20; ขาออก 27.14 → 28.45)',
+      rtLenNote: '* ถนนที่มีช่วง one-way หรือถูกตัดช่วงเฉพาะบางทิศ ความยาวขาเข้า/ขาออกไม่เท่ากัน (เลื่อนเมาส์ดูค่าแต่ละทิศ) — ความเร็วคำนวณจากระยะที่รถวิ่งจริงในแต่ละรอบ',
       finding3: '<strong>พื้นที่ชั้นนอก:</strong> ลดลงมากที่สุด <strong>11.08%</strong> สะท้อนการขยายตัวของชุมชนรอบนอก',
       finding4: '<strong>ปี 2564 (โควิด-19):</strong> ความเร็วสูงสุดในรอบ 9 ปีทุกโซน เพราะปริมาณรถลด',
       finding5: '<strong>ขาออกเร็วกว่าขาเข้าทุกโซน:</strong> เช้า +5.8 กม./ชม. · เย็น +2.6 กม./ชม.',
@@ -207,6 +211,8 @@
       footerAsOf: 'ข้อมูล ณ วันที่ 31 ธันวาคม 2568',
       footerAuthor: 'วิเคราะห์และจัดทำโดย <strong>© Prapawadee_W.</strong>',
       footerTomTom: 'TomTom Traffic Index 2025 ↗',
+      navTomtomPage: 'TomTom (หน้าเต็ม) →',
+      ttOpenPage: 'ดูรายงานสถานการณ์ TomTom ฉบับเต็ม →',
     },
 
     en: {
@@ -278,6 +284,7 @@
       rScope4: 'All roads + expressways · 24/7',
       m393: '39.3 min', m287: '28.7 min', m231: '23.1 min',
       m350: '35.0 min', m221: '22.1 min', m170: '17.0 min',
+      m270: '27.0 min', m211: '21.1 min',
       sourceNote: '<strong>* Notes:</strong> <strong>BMA</strong> data covers only 51 main roads, surveyed by <strong>Floating Car Method</strong> during AM/PM rush hours, separated by direction. Rush-hour figures shown are the AM+PM average from the original Report sheet. Travel time = 10 ÷ avg speed × 60 (min).<br><strong>** TomTom</strong> data is from GPS Big Data covering all roads 24/7 · (*) AM speed derived from 25:45 min per 10 km · (**) PM 19.1 km/h is the direct evening-rush average from TomTom 2025.',
 
       zdHeader: '🗺️ Inner / Middle / Outer Zone Districts',
@@ -376,7 +383,9 @@
 
       findingsTitle: 'Key statistical findings',
       finding1: '<strong>Inner Zone:</strong> Continues to face severe congestion — AM inbound 15.27 km/h, requiring 39.3 min per 10 km.',
-      finding2: '<strong>Middle Zone:</strong> Down 1.92% from 2017 — Phetkasem (Ratchaphruek to Wong Wian Yai) declined sharply.',
+      finding2: '<strong>Middle Zone:</strong> Up 4.18% from 2017, but declining since 2023 (24.12 → 22.20 km/h) — Phetkasem (Ratchaphruek to Wong Wian Yai) did not decline sharply as previously reported.',
+      cmpFixNote: 'Note: Middle-zone values for 2024–2025 were revised (2 Nov 2026) after a formula error was found in the Phetkasem middle-zone segment (Ratchaphruek–Wong Wian Yai), which used the outer-zone travel time (2025 inbound: 20.90 → 22.20; outbound: 27.14 → 28.45).',
+      rtLenNote: '* Roads with one-way sections or segments skipped in one direction have different inbound/outbound lengths (hover for each direction); speeds are computed from the distance actually driven in each run.',
       finding3: '<strong>Outer Zone:</strong> Largest decline of <strong>11.08%</strong>, reflecting urban sprawl into the outer city.',
       finding4: '<strong>2021 (COVID-19):</strong> Highest speeds in 9 years across all zones due to reduced traffic volume.',
       finding5: '<strong>Outbound is faster than inbound</strong> across all zones: AM +5.8 km/h · PM +2.6 km/h.',
@@ -393,6 +402,8 @@
       footerAsOf: 'Data as of 31 December 2025',
       footerAuthor: 'Analysed and prepared by <strong>© Prapawadee_W.</strong>',
       footerTomTom: 'TomTom Traffic Index 2025 ↗',
+      navTomtomPage: 'TomTom (full page) →',
+      ttOpenPage: 'Open the full TomTom situation report →',
     }
   };
 
@@ -457,6 +468,12 @@
       const d = window.BMA_I18N.dict();
       return d[key] != null ? d[key] : key;
     },
+    // เพิ่มคีย์แปลจากหน้าอื่น (เช่น tomtom-i18n.js): extend({ th:{...}, en:{...} })
+    extend: (more) => {
+      Object.keys(more || {}).forEach(l => { TRANSLATIONS[l] = Object.assign(TRANSLATIONS[l] || {}, more[l]); });
+      // ถ้ายังไม่ initialize (โหลดก่อน DOMContentLoaded) ไม่ต้อง apply — ห้ามเรียก applyLang ที่นี่ เพราะจะเขียนทับภาษาที่ผู้ใช้เลือกไว้
+      if (initialized) applyLang(window.BMA_I18N.current());
+    },
   };
 
   // Wire toggle buttons
@@ -477,5 +494,6 @@
       });
     }
     applyLang(detectInitialLang());
+    initialized = true;
   });
 })();

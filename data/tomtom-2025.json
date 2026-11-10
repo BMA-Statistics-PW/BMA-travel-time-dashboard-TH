@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "TomTom Traffic Index 2025 — กรุงเทพมหานคร",
+    "edition": "15th edition (ข้อมูลปี ค.ศ. 2025 / พ.ศ. 2568)",
+    "basis": "anonymised GPS trip data, >3.65 trillion km worldwide, whole road network of the metro area",
+    "retrieved": "2026-11-02",
+    "sources": [
+      { "id": "city", "name": "TomTom Traffic Index — Bangkok", "url": "https://www.tomtom.com/traffic-index/city/bangkok/" },
+      { "id": "country", "name": "TomTom Traffic Index — Thailand", "url": "https://www.tomtom.com/traffic-index/country/thailand/" },
+      { "id": "about", "name": "TomTom Traffic Index — About / methodology", "url": "https://www.tomtom.com/traffic-index/about/" },
+      { "id": "quake", "name": "Free Malaysia Today (Reuters) — Bangkok grinds to a halt amid fear and chaos after quake, 29 Mar 2025", "url": "https://www.freemalaysiatoday.com/category/highlight/2025/03/29/bangkok-grinds-to-a-halt-amid-fear-and-chaos-after-quake" }
+    ],
+    "copyright": "© TomTom International BV. ตัวเลขทั้งหมดเป็นของ TomTom — หน้านี้สรุปเฉพาะตัวเลขหลักพร้อมอ้างอิงแหล่งที่มา กรุณาตรวจเงื่อนไขการใช้งานของ TomTom ก่อนเผยแพร่ต่อ",
+    "not_included": ["ค่าความแออัดรายเดือน (กราฟ 2 ชุดปี 2024/2025 แยกชุดจากหน้าเว็บไม่ได้อย่างแม่นยำ)", "ตารางความเร็ว/เวลาเดินทางรายชั่วโมงแยกวัน (ดึงจากหน้าเว็บไม่ได้อย่างแม่นยำ)"]
+  },
+  "city": {
+    "world_rank": 10,
+    "congestion_pct": 67.9, "congestion_change_pp": 1.3,
+    "time_10km_s": 1379, "time_10km_change_s": 36,
+    "avg_speed_kmh": 26.1,
+    "rush_speed_kmh": 20.9, "rush_speed_change_kmh": -1.0,
+    "highway_speed_kmh": 51.7, "highway_speed_change_kmh": -1.2,
+    "dist_15min_km": 6.5, "dist_15min_change_km": -0.2,
+    "highway_trip_ratio_pct": 25.0, "highway_trip_ratio_change_pp": -1.8,
+    "rush_time_lost_h": 115, "rush_time_lost_change_h": 5.1
+  },
+  "rush": {
+    "am": { "time_10km_s": 1545, "congestion_pct": 88.4, "speed_kmh": 23.3 },
+    "pm": { "time_10km_s": 1885, "congestion_pct": 126.5, "speed_kmh": 19.1 }
+  },
+  "worst_day": { "date": "2025-03-28", "weekday": "Friday", "congestion_pct": 128, "congestion_3pm_pct": 337, "dist_15min_3pm_km": 2.5 },
+  "thailand": [
+    { "city": "Bangkok", "congestion_pct": 67.9, "change_pp": 1.3, "time_lost_h": 115 },
+    { "city": "Hat Yai", "congestion_pct": 55.2, "change_pp": -0.6, "time_lost_h": 94 },
+    { "city": "Chiang Mai", "congestion_pct": 48.7, "change_pp": -2.3, "time_lost_h": 89 },
+    { "city": "Khon Kaen", "congestion_pct": 44.8, "change_pp": 0.8, "time_lost_h": 81 },
+    { "city": "Nakhon Ratchasima", "congestion_pct": 41.4, "change_pp": -1.1, "time_lost_h": 80 }
+  ]
+}

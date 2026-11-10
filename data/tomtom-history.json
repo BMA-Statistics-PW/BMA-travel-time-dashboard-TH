@@ -1,0 +1,257 @@
+{
+ "meta": {
+  "title": "TomTom Traffic Index — กรุงเทพมหานคร ย้อนหลัง พ.ศ. 2562–2568 (ชุดข้อมูลมาตรฐาน)",
+  "built": "2026-11-02",
+  "units": {
+   "cl": "% เวลาเดินทางที่เพิ่มขึ้นเทียบรถไม่ติด",
+   "t10": "วินาที ต่อ 10 กม.",
+   "lost": "ชั่วโมง/ปี (ช่วงเร่งด่วน)",
+   "rush": "กม./ชม.",
+   "avg": "กม./ชม."
+  },
+  "series_break_th": "ตัวเลขปี 2567 มี 2 ค่าจากคนละฉบับ (ฉบับที่ 14 และฉบับที่ 15) จึงแยกเป็นสองชุด ห้ามต่อเป็นเส้นเดียว",
+  "grades": {
+   "official": "ทางการ (เว็บ TomTom)",
+   "news": "สื่อรายงานค่าของ TomTom",
+   "derived": "คำนวณย้อนกลับ",
+   "unverified": "ยังไม่ตรวจกับต้นทาง",
+   "none": "ไม่มีข้อมูล"
+  },
+  "sources": [
+   {
+    "id": "tt_city",
+    "name": "TomTom Traffic Index — Bangkok (ข้อมูลปี 2568, ฉบับที่ 15)",
+    "url": "https://www.tomtom.com/traffic-index/city/bangkok/",
+    "checked": "ตรวจเอง 2 พ.ย. 2569"
+   },
+   {
+    "id": "tt_about",
+    "name": "TomTom Traffic Index — About (นิยามระดับความแออัด)",
+    "url": "https://www.tomtom.com/traffic-index/about/",
+    "checked": "ตรวจเอง 2 พ.ย. 2569"
+   },
+   {
+    "id": "tt_pr2025",
+    "name": "TomTom Press Release — Traffic Index 2025 (ฉบับที่ 14, ข้อมูลปี 2567)",
+    "url": "https://www.globenewswire.com/news-release/2025/01/07/3005895/0/en/TomTom-Traffic-Index-2025.html",
+    "checked": "ตรวจเอง 2 พ.ย. 2569"
+   },
+   {
+    "id": "thainewsroom",
+    "name": "Thai Newsroom — ข้อมูลกรุงเทพฯ ปี 2567 (ความแออัด 50%, 21:51, 96 ชม., อันดับ 161)",
+    "url": "https://thainewsroom.com/2025/01/10/hat-yai-tops-5-thai-cities-with-terrible-traffic-congestion-in-2024/",
+    "checked": "ตรวจเอง 2 พ.ย. 2569"
+   },
+   {
+    "id": "bkkpost2019",
+    "name": "Bangkok Post — Jam-packed Bangkok (ข้อมูลปี 2562: 53.23%, อันดับ 11)",
+    "url": "https://bangkokpost.com/life/travel/1851724/jam-packed-bangkok",
+    "checked": "ตรวจเอง 2 พ.ย. 2569"
+   },
+   {
+    "id": "wiki46",
+    "name": "Wikipedia — Congestion pricing in Bangkok (อันดับ 46 ปี 2566; แหล่งรอง)",
+    "url": "https://en.wikipedia.org/wiki/Congestion_pricing_in_Bangkok",
+    "checked": "ตรวจเอง 2 พ.ย. 2569"
+   },
+   {
+    "id": "pw_files",
+    "name": "ไฟล์ของ PW: TomTom_Bangkok_2019-2025_PW.xlsx / Conclusion_TomTom_Index_Bangkok.xlsx",
+    "url": "",
+    "checked": "ยังไม่ตรวจกับต้นทางรายค่า (ยกเว้นที่ระบุว่าตรวจแล้ว)"
+   }
+  ],
+  "copyright": "© TomTom International BV. ตัวเลขเป็นของ TomTom — ไฟล์นี้สรุปและตรวจสอบค่าพร้อมอ้างอิงแหล่งที่มา"
+ },
+ "rows": [
+  {
+   "year_ce": 2019,
+   "year_be": 2562,
+   "edition": 9,
+   "basis": "published",
+   "world_rank": 11,
+   "rank_of": 416,
+   "rank_type": "ความแออัด",
+   "congestion_pct": 53.23,
+   "time_10km_s": null,
+   "time_lost_h": 207,
+   "rush_speed_kmh": null,
+   "avg_speed_kmh": null,
+   "grade": "news",
+   "approx": [],
+   "no_chart": [
+    "time_lost_h"
+   ],
+   "sources": [
+    "bkkpost2019"
+   ],
+   "note_th": "ก่อนโควิด-19 · เวลาสูญเสีย 8 วัน 15 ชม. (=207 ชม.) นับด้วยนิยามฉบับเก่า ไม่ควรเทียบกับปี 2566–2568 · ช่วงติดสุด: ศุกร์ 17–19 น. (เดินทางนานขึ้น 110–116%)",
+   "note_en": "Pre-COVID-19 · time lost 8 days 15 h (=207 h) uses the older definition — do not compare with 2023–2025 · peak: Friday 5–7 pm (trips take 110–116% longer)"
+  },
+  {
+   "year_ce": 2020,
+   "year_be": 2563,
+   "edition": 10,
+   "basis": "published",
+   "world_rank": 11,
+   "rank_of": 416,
+   "rank_type": "ความแออัด",
+   "congestion_pct": 44.0,
+   "time_10km_s": null,
+   "time_lost_h": null,
+   "rush_speed_kmh": null,
+   "avg_speed_kmh": null,
+   "grade": "unverified",
+   "approx": [],
+   "no_chart": [],
+   "sources": [
+    "pw_files"
+   ],
+   "note_th": "ปีโควิด-19 (ล็อกดาวน์ WFH) ลดลง 9 จุดจากปี 2562 · ค่ามาจากไฟล์ PW ยังไม่ตรวจกับต้นทาง",
+   "note_en": "COVID-19 year (lockdowns, work from home), down 9 points from 2019 · value from PW's file, not yet checked against the source"
+  },
+  {
+   "year_ce": 2021,
+   "year_be": 2564,
+   "edition": 11,
+   "basis": "published",
+   "world_rank": null,
+   "rank_of": 404,
+   "rank_type": "",
+   "congestion_pct": null,
+   "time_10km_s": null,
+   "time_lost_h": null,
+   "rush_speed_kmh": null,
+   "avg_speed_kmh": null,
+   "grade": "none",
+   "approx": [],
+   "no_chart": [],
+   "sources": [
+    "pw_files"
+   ],
+   "note_th": "ไม่มีตัวเลขเฉพาะกรุงเทพฯ ในไฟล์ · ผลกระทบโควิด-19 ยังคงอยู่",
+   "note_en": "No Bangkok-specific figures in the files · COVID-19 effects continued"
+  },
+  {
+   "year_ce": 2022,
+   "year_be": 2565,
+   "edition": 12,
+   "basis": "published",
+   "world_rank": 57,
+   "rank_of": 389,
+   "rank_type": "เวลาเดินทาง",
+   "congestion_pct": null,
+   "time_10km_s": 1140,
+   "time_lost_h": null,
+   "rush_speed_kmh": null,
+   "avg_speed_kmh": null,
+   "grade": "unverified",
+   "approx": [
+    "t10"
+   ],
+   "no_chart": [
+    "time_10km_s"
+   ],
+   "sources": [
+    "pw_files"
+   ],
+   "note_th": "TomTom เปลี่ยนวิธีคำนวณเป็นเวลาเดินทาง 10 กม. · ค่า ~19 นาทีเป็นประมาณ ยังไม่ตรวจกับต้นทาง ไม่นำไปเขียนกราฟ",
+   "note_en": "TomTom changed the method to travel time per 10 km · ~19 min is approximate and unverified; not charted"
+  },
+  {
+   "year_ce": 2023,
+   "year_be": 2566,
+   "edition": 13,
+   "basis": "published",
+   "world_rank": 46,
+   "rank_of": 387,
+   "rank_type": "ความแออัด",
+   "congestion_pct": 49.0,
+   "time_10km_s": 1291,
+   "time_lost_h": 93,
+   "rush_speed_kmh": null,
+   "avg_speed_kmh": null,
+   "grade": "unverified",
+   "approx": [
+    "cl",
+    "lost"
+   ],
+   "no_chart": [],
+   "sources": [
+    "pw_files",
+    "wiki46",
+    "thainewsroom"
+   ],
+   "note_th": "เวลา 10 กม. 21:31 สอดคล้องกับส่วนต่าง +20 วินาทีในรายงานปี 2567 · อันดับ 46 มาจากแหล่งรอง · ความแออัดและเวลาสูญเสียเป็นค่าประมาณ (~)",
+   "note_en": "10 km time 21:31 matches the +20 s change reported in the 2024 edition · rank 46 is from a secondary source · congestion and time lost are approximate (~)"
+  },
+  {
+   "year_ce": 2024,
+   "year_be": 2567,
+   "edition": 14,
+   "basis": "published",
+   "world_rank": 161,
+   "rank_of": 500,
+   "rank_type": "เวลาเดินทาง (ความแออัดอันดับ 2)",
+   "congestion_pct": 50.0,
+   "time_10km_s": 1311,
+   "time_lost_h": 96,
+   "rush_speed_kmh": null,
+   "avg_speed_kmh": null,
+   "grade": "news",
+   "approx": [],
+   "no_chart": [],
+   "sources": [
+    "thainewsroom",
+    "tt_pr2025"
+   ],
+   "note_th": "ค่าที่ TomTom เผยแพร่ ม.ค. 2568 (ฉบับที่ 14) · อันดับ 161 = ตามเวลาเดินทาง, อันดับ 2 ของโลก = ตามความแออัด",
+   "note_en": "As published by TomTom in Jan 2025 (Edition 14) · rank 161 = by travel time; world #2 = by congestion"
+  },
+  {
+   "year_ce": 2024,
+   "year_be": 2567,
+   "edition": 15,
+   "basis": "ed15",
+   "world_rank": null,
+   "rank_of": null,
+   "rank_type": "",
+   "congestion_pct": 66.6,
+   "time_10km_s": 1343,
+   "time_lost_h": 109.9,
+   "rush_speed_kmh": 21.9,
+   "avg_speed_kmh": null,
+   "grade": "derived",
+   "approx": [],
+   "no_chart": [],
+   "sources": [
+    "tt_city"
+   ],
+   "note_th": "คำนวณย้อนกลับจากรายงานฉบับที่ 15: 2568 ลบส่วนต่างที่ TomTom ระบุ (−1.3 จุด, −36 วินาที, −5 ชม. 6 นาที, +1 กม./ชม.) · ปีเดียวกับแถวบน แต่ได้ค่าต่างกันมาก",
+   "note_en": "Back-calculated from Edition 15: 2025 minus TomTom's stated changes (−1.3 pp, −36 s, −5 h 6 min, +1 km/h) · same year as the row above, but a very different value"
+  },
+  {
+   "year_ce": 2025,
+   "year_be": 2568,
+   "edition": 15,
+   "basis": "ed15",
+   "world_rank": 10,
+   "rank_of": 500,
+   "rank_type": "ความแออัด",
+   "congestion_pct": 67.9,
+   "time_10km_s": 1379,
+   "time_lost_h": 115,
+   "rush_speed_kmh": 20.9,
+   "avg_speed_kmh": 26.1,
+   "grade": "official",
+   "approx": [],
+   "no_chart": [],
+   "sources": [
+    "tt_city",
+    "tt_about"
+   ],
+   "note_th": "ช่วงเช้า 25:45 (88.4%, 23.3 กม./ชม.) · ช่วงเย็น 31:25 (126.5%, 19.1 กม./ชม.) · วันติดสุด 28 มี.ค. (128%)",
+   "note_en": "Morning 25:45 (88.4%, 23.3 km/h) · evening 31:25 (126.5%, 19.1 km/h) · worst day 28 Mar (128%)"
+  }
+ ]
+}

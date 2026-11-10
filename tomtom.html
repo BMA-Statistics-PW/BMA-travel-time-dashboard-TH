@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="th" data-lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0A2E5C">
+
+<title>สถานการณ์การจราจรกรุงเทพฯ จาก TomTom (ข้อมูลปี 2568 และย้อนหลัง) · BMA Travel Time Dashboard</title>
+<meta name="description" content="สรุปสถานการณ์การจราจรกรุงเทพมหานครจาก TomTom (ข้อมูลปี 2568): ระดับความแออัด เวลาเดินทาง 10 กม. ช่วงเร่งด่วนเช้า–เย็น วันที่ติดขัดที่สุด เปรียบเทียบกับเมืองในไทยและผลสำรวจของ สจส.">
+<meta name="keywords" content="TomTom Traffic Index 2025, Bangkok traffic, congestion level, สถานการณ์การจราจร, กรุงเทพมหานคร, สจส.">
+<meta name="author" content="Prapawadee W., Statistics and Research Group, Traffic and Transportation Department, BMA">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="th_TH"><meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Bangkok traffic situation — TomTom (2025 data, with 2019–2025 history)">
+<meta property="og:description" content="Congestion level, travel time per 10 km, rush hours, worst day, Thai cities, and comparison with the BMA floating-car survey.">
+<meta property="og:url" content="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html">
+<meta property="og:site_name" content="BMA Traffic Statistics">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html">
+<link rel="alternate" hreflang="th" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html?lang=th">
+<link rel="alternate" hreflang="en" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/tomtom.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Bangkok traffic situation — TomTom (2025 data, with 2019–2025 history)",
+  "inLanguage": ["th-TH", "en-US"],
+  "url": "https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html",
+  "isPartOf": { "@type": "WebSite", "name": "BMA Travel Time Dashboard", "url": "https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/" },
+  "citation": "https://www.tomtom.com/traffic-index/city/bangkok/",
+  "creator": { "@type": "GovernmentOrganization", "name": "Traffic and Transportation Department, Bangkok Metropolitan Administration" }
+}
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-i18n="skip">ข้ามไปยังเนื้อหาหลัก</a>
+
+<div class="utility-bar" role="region" aria-label="เครื่องมือเว็บไซต์ / Site tools">
+  <div class="utility-inner">
+    <div class="utility-left">
+      <span class="util-org" data-i18n="utilOrg">Bangkok Metropolitan Administration</span>
+      <span class="util-sep">·</span>
+      <span class="util-dept" data-i18n="utilDept">Traffic and Transportation Department</span>
+    </div>
+    <div class="utility-right">
+      <a class="tt-back" href="index.html" data-i18n="ttBack">← รายงานผลสำรวจ สจส.</a>
+      <button id="themeToggle" class="util-btn" type="button" aria-label="Toggle dark mode" title="สลับโหมด"><span class="theme-icon">◐</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="th" type="button" aria-pressed="true">ไทย</button>
+        <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="a4-canvas">
+
+<header class="report-hero">
+  <div class="hero-eyebrow" data-i18n="ttEyebrow">📋 รายงานสถานการณ์การจราจร · กรุงเทพมหานคร</div>
+  <h1 class="hero-title">
+    <span class="hero-line-1" data-i18n="ttHero1">สถานการณ์การจราจรกรุงเทพมหานคร</span>
+    <span class="hero-line-2 hl" data-i18n="ttHero2">จากข้อมูล TomTom ปี 2568 (ค.ศ. 2025)</span>
+    <span class="hero-line-3" data-i18n="ttHero3">เทียบกับผลสำรวจของ สจส.</span>
+  </h1>
+  <p class="hero-meta" data-i18n="ttHeroMeta">ข้อมูล GPS ทั่วเครือข่ายถนน · ปี ค.ศ. 2025 (พ.ศ. 2568) · TomTom ฉบับที่ 15</p>
+  <p class="hero-method" data-i18n-html="ttHeroMethod">แหล่งข้อมูล: <strong>TomTom Traffic Index</strong> (floating car data จาก GPS ผู้ขับขี่)</p>
+  <p class="hero-org" data-i18n="heroOrg">กลุ่มงานสถิติและวิจัย · กองนโยบายและแผนงาน · สำนักการจราจรและขนส่ง กรุงเทพมหานคร</p>
+</header>
+
+<nav class="std-nav" aria-label="Section quick links">
+  <a href="#tt-summary" data-i18n="ttNavSummary">สรุปสถานการณ์</a>
+  <a href="#tt-guide" data-i18n="ttNavGuide">อ่านตัวเลข</a>
+  <a href="#tt-yoy" data-i18n="ttNavYoy">เทียบปีก่อน</a>
+  <a href="#tt-history" data-i18n="ttNavHist">ย้อนหลัง</a>
+  <a href="#tt-rush" data-i18n="ttNavRush">ช่วงเร่งด่วน</a>
+  <a href="#tt-day" data-i18n="ttNavDay">วันที่ติดขัดสุด</a>
+  <a href="#tt-th" data-i18n="ttNavTh">เมืองในไทย</a>
+  <a href="#tt-vs" data-i18n="ttNavVs">เทียบ สจส.</a>
+  <a href="#tt-copy" data-i18n="ttNavCopy">ข้อความรายงาน</a>
+  <a href="#tt-src" data-i18n="ttNavSrc">แหล่งที่มา</a>
+</nav>
+
+<main id="main" class="a4-body" tabindex="-1">
+
+<p id="ttError" class="tt-error" role="alert" hidden></p>
+<noscript><p class="tt-error" data-i18n="ttNoJs">หน้านี้ใช้ JavaScript แสดงตัวเลขและกราฟ — ดูข้อมูลต้นฉบับที่ <a href="https://www.tomtom.com/traffic-index/city/bangkok/">TomTom Traffic Index</a></p></noscript>
+
+<!-- ───────── สรุปสถานการณ์ ───────── -->
+<section id="tt-summary" class="reveal" aria-labelledby="ttSumHead">
+  <div class="section-eyebrow" data-i18n="ttSumEyebrow">สรุปสถานการณ์</div>
+  <h2 class="section-heading" id="ttSumHead" data-i18n="ttSumHead">กรุงเทพฯ ปี 2568: ตัวชี้วัดความแออัดทุกตัวแย่ลงจากปีก่อน</h2>
+  <p class="section-sub" id="ttSumSub"></p>
+  <div class="tt-kpis" id="ttKpis"></div>
+</section>
+
+<!-- ───────── อ่านตัวเลขอย่างไร ───────── -->
+<section id="tt-guide" class="reveal" aria-labelledby="ttGuideHead">
+  <div class="section-eyebrow" data-i18n="ttGuideEyebrow">อ่านตัวเลขอย่างไร</div>
+  <h2 class="section-heading" id="ttGuideHead" data-i18n="ttGuideHead">ตัวเลขเหล่านี้แปลว่าอะไร (อธิบายแบบเข้าใจง่าย)</h2>
+  <div class="tt-guide" id="ttGuide"></div>
+</section>
+
+<!-- ───────── เทียบปีก่อน ───────── -->
+<section id="tt-yoy" class="reveal">
+  <div class="section-eyebrow" data-i18n="ttYoyEyebrow">เทียบปีก่อน</div>
+  <h2 class="section-heading" id="ttYoyHead" data-i18n="ttYoyHead">เปรียบเทียบ ปี 2568 และ ปี 2567</h2>
+  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttYoyHead"><table class="tt-table" id="ttYoy"></table></div>
+  <p class="tt-note" data-i18n="ttYoyNote">* คำนวณจาก (ค่าปี 2568 − ส่วนต่างที่ TomTom รายงาน)</p>
+</section>
+
+<!-- ───────── ย้อนหลัง 2562–2568 ───────── -->
+<section id="tt-history" class="reveal" aria-labelledby="ttHistHead">
+  <div class="section-eyebrow" data-i18n="ttHistEyebrow">ย้อนหลัง</div>
+  <h2 class="section-heading" id="ttHistHead" data-i18n="ttHistHead">ภาพย้อนหลัง พ.ศ. 2562–2568: เทียบได้เฉพาะในชุดเดียวกัน</h2>
+  <p class="section-sub" data-i18n="ttHistSub">วิธีคำนวณของ TomTom เปลี่ยนไปตามฉบับ จึงแสดง 2 ชุดแยกกัน ไม่ต่อเป็นเส้นเดียว</p>
+  <div class="tt-seg" id="ttHistSeg" role="group"></div>
+  <div class="tt-legend tt-hlegend" id="ttHistLegend"></div>
+  <div class="tt-chartbox" id="ttHistBox"></div>
+  <p class="tt-callout is-warn" id="ttHistTake" style="margin-top:14px"></p>
+  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttHistHead" style="margin-top:14px"><table class="tt-table tt-htable" id="ttHistTable"></table></div>
+  <p class="tt-note"><span data-i18n="ttHistNote"></span> <a class="tt-dl" href="data/tomtom-bangkok-2019-2025-standardized.xlsx" download data-i18n="ttHistDl">⬇ ดาวน์โหลดข้อมูลมาตรฐาน (Excel)</a></p>
+</section>
+
+<!-- ───────── ช่วงเร่งด่วน ───────── -->
+<section id="tt-rush" class="reveal">
+  <div class="section-eyebrow" data-i18n="ttRushEyebrow">ช่วงเร่งด่วน</div>
+  <h2 class="section-heading" id="ttRushHead"></h2>
+  <p class="section-sub" data-i18n="ttRushSub">เวลาเดินทาง 10 กม. แบ่งเป็นเวลาเมื่อรถไม่ติด และเวลาที่เสียเพิ่มจากการจราจร</p>
+  <div class="tt-legend" aria-hidden="true"><span><i class="is-free"></i><span data-i18n="ttLegFree">เวลาเมื่อรถไม่ติด (free-flow)</span></span><span><i class="is-extra"></i><span data-i18n="ttLegExtra">เวลาที่เสียเพิ่มจากการจราจร</span></span></div>
+  <ul class="tt-bars" id="ttBars"></ul>
+  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttRushHead" style="margin-top:14px"><table class="tt-table" id="ttRushTable"></table></div>
+  <p class="tt-note" id="ttRushIns"></p>
+</section>
+
+<!-- ───────── วันที่ติดขัดที่สุด ───────── -->
+<section id="tt-day" class="reveal" aria-labelledby="ttDayHead">
+  <div class="section-eyebrow" data-i18n="ttDayEyebrow">วันที่ติดขัดที่สุด</div>
+  <h2 class="section-heading" id="ttDayHead"></h2>
+  <div class="tt-kpis" id="ttDayCards"></div>
+  <p class="tt-callout is-warn" style="margin-top:14px" data-i18n-html="ttDayNote"></p>
+</section>
+
+<!-- ───────── เมืองในไทย ───────── -->
+<section id="tt-th" class="reveal">
+  <div class="section-eyebrow" data-i18n="ttThEyebrow">เมืองในไทย</div>
+  <h2 class="section-heading" id="ttThHead" data-i18n="ttThHead">เปรียบเทียบเมืองในประเทศไทย: กรุงเทพฯ แออัดที่สุด</h2>
+  <p class="section-sub" data-i18n="ttThSub">ระดับความแออัดเฉลี่ยปี 2568 และเวลาสูญเสียช่วงเร่งด่วน</p>
+  <ul class="tt-bars" id="ttThBars"></ul>
+  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttThHead" style="margin-top:14px"><table class="tt-table" id="ttThTable"></table></div>
+</section>
+
+<!-- ───────── เทียบ สจส. ───────── -->
+<section id="tt-vs" class="reveal">
+  <div class="section-eyebrow" data-i18n="ttVsEyebrow">เทียบกับ สจส.</div>
+  <h2 class="section-heading" id="ttVsHead" data-i18n="ttVsHead">TomTom เทียบกับผลสำรวจของ สจส. (ปี 2568)</h2>
+  <p class="section-sub" data-i18n="ttVsSub">ความเร็วเฉลี่ยช่วงเร่งด่วน (กม./ชม.)</p>
+  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttVsHead"><table class="tt-table" id="ttVs"></table></div>
+  <div class="tt-callout" style="margin-top:14px">
+    <h3 data-i18n="ttVsReadTitle">อ่านเปรียบเทียบอย่างไรให้เหมาะสม</h3>
+    <ul><li data-i18n-html="ttVsR1"></li><li data-i18n-html="ttVsR2"></li><li data-i18n-html="ttVsR3"></li><li data-i18n-html="ttVsR4"></li></ul>
+  </div>
+</section>
+
+<!-- ───────── ข้อความรายงาน ───────── -->
+<section id="tt-copy" class="reveal">
+  <div class="section-eyebrow" data-i18n="ttCopyEyebrow">ข้อความรายงาน</div>
+  <h2 class="section-heading" id="ttCopyHead" data-i18n="ttCopyHead">ข้อความสรุปพร้อมใช้ในรายงานสถานการณ์</h2>
+  <p class="section-sub" data-i18n="ttCopySub">สร้างจากข้อมูลในหน้านี้</p>
+  <div class="tt-copybox"><div class="tt-copytext" id="ttCopyText" tabindex="0" role="region" aria-labelledby="ttCopyHead"></div>
+    <button class="tt-btn" id="ttCopyBtn" type="button" data-i18n="ttCopyBtn">📋 คัดลอกข้อความ</button></div>
+</section>
+
+<!-- ───────── แหล่งที่มา ───────── -->
+<section id="tt-src" class="reveal" aria-labelledby="ttSrcHead">
+  <div class="section-eyebrow" data-i18n="ttSrcEyebrow">แหล่งที่มา</div>
+  <h2 class="section-heading" id="ttSrcHead" data-i18n="ttSrcHead">แหล่งที่มา นิยาม และข้อจำกัด</h2>
+  <div class="tt-split">
+    <div class="tt-callout"><h3 data-i18n="ttDefTitle">ระดับความแออัด (Congestion level)</h3><p data-i18n="ttDef"></p></div>
+    <div class="tt-callout is-warn"><h3 data-i18n="ttLimTitle">ข้อจำกัดของหน้านี้</h3><ul><li data-i18n="ttLim1"></li><li data-i18n="ttLim2"></li><li data-i18n="ttLim3"></li></ul></div>
+    <div class="tt-block"><ul class="tt-sources" id="ttSources"></ul><p class="tt-note" id="ttRetrieved"></p><p class="tt-note" data-i18n="ttCopyright"></p></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div>
+    <strong data-i18n="footerOrgL1">สำนักการจราจรและขนส่ง กรุงเทพมหานคร</strong><br>
+    <span data-i18n="footerOrgL2">กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน</span><br>
+    <a href="index.html" data-i18n="ttBack">← รายงานผลสำรวจ สจส.</a>
+  </div>
+  <div class="footer-right">
+    <span data-i18n-html="footerAuthor">วิเคราะห์และจัดทำโดย <strong>© Prapawadee_W.</strong></span><br>
+    <a href="https://www.tomtom.com/traffic-index/city/bangkok/" target="_blank" rel="noopener noreferrer" data-i18n="footerTomTom">TomTom Traffic Index — กรุงเทพฯ ↗</a>
+  </div>
+</footer>
+
+</div><!-- /.a4-canvas -->
+
+<script src="assets/i18n.js"></script>
+<script src="assets/tomtom-i18n.js"></script>
+<script src="assets/tomtom.js"></script>
+</body>
+</html>

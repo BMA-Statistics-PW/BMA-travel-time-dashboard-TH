@@ -20,6 +20,16 @@
   let DATA = null;
   let TC_DIR = 'in';
 
+  // ชื่อถนนที่แสดงผล: รวม "(ส่วนต้น)/(ส่วนปลาย)" เป็นชื่อถนนเดียว และเขียน "บางนา-ตราด" ไม่เว้นวรรค
+  // (คีย์ข้อมูลภายในยังคงเดิมเพื่อจับคู่กับแผนที่และตาราง)
+  function displayName(name) {
+    return String(name == null ? '' : name)
+      .replace(/\s*\((?:ส่วนต้น|ส่วนปลาย)\)\s*/g, '')
+      .replace(/\s*-\s*/g, '-')
+      .trim();
+  }
+  window.BMA_displayName = displayName;
+
   function fmt(n, d = 2) {
     if (n == null || isNaN(n)) return '—';
     return Number(n).toFixed(d);
@@ -140,7 +150,7 @@
     const prefix = lang() === 'th'
       ? (label === 'min' ? 'ต่ำสุด' : 'สูงสุด')
       : (label === 'min' ? 'Min' : 'Max');
-    return `${prefix} (${name})`;
+    return `${prefix} (${displayName(name)})`;
   }
 
   function bindZones(zones) {
@@ -170,6 +180,11 @@
         if (c2568) c2568.textContent = fmt(z.speed_2568_in);
         if (cdel) cdel.textContent = (z.delta_in < 0 ? '▼ ' : '▲ ') + fmt(z.delta_in);
         if (cpct) cpct.textContent = fmt(z.pct_in) + '%';
+        [cdel, cpct].forEach(el => {
+          if (!el) return;
+          el.classList.toggle('text-trend-down', z.delta_in < 0);
+          el.classList.toggle('text-trend-up', z.delta_in >= 0);
+        });
         row.dataset.trend = z.delta_in < 0 ? 'down' : 'up';
       }
     });
@@ -457,6 +472,15 @@
     });
   }
 
+  // ความยาวต่างกันรายทิศ (one-way / ตัดช่วง) -> แสดง * และ tooltip
+  function lenTip(r) {
+    if (r.length_in_km == null || r.length_out_km == null || r.length_km == null) return '';
+    const d = (a, b) => Math.abs(a - b) > 0.005;
+    if (!(d(r.length_in_km, r.length_out_km) || d(r.length_in_km, r.length_km) || d(r.length_out_km, r.length_km))) return '';
+    const th = lang() === 'th';
+    return ` title="${th ? 'ขาเข้า' : 'Inbound'} ${r.length_in_km.toFixed(2)} / ${th ? 'ขาออก' : 'Outbound'} ${r.length_out_km.toFixed(2)} ${th ? 'กม.' : 'km'}"`;
+  }
+
   function renderZoneTable(zoneKey) {
     const tbody = $(`tbody[data-tbody="${zoneKey}"]`);
     if (!tbody || !DATA) return;
@@ -464,6 +488,7 @@
     const q = RT.q.toLowerCase();
     if (q) rows = rows.filter(r =>
       (r.name || '').toLowerCase().includes(q) ||
+      displayName(r.name).toLowerCase().includes(q) ||
       (r.segment || '').toLowerCase().includes(q));
 
     const sortCfg = RT.sortByZone[zoneKey];
@@ -484,10 +509,10 @@
         <tr>
           <td>${r.seq}</td>
           <td class="td-left">
-            <span class="rd-name">${escapeHtml(r.name)}</span>
+            <span class="rd-name">${escapeHtml(displayName(r.name))}</span>
             <span class="rd-seg">${escapeHtml(r.segment)}</span>
           </td>
-          <td class="td-num">${r.length_km != null ? r.length_km.toFixed(2) : '—'}</td>
+          <td class="td-num"${lenTip(r)}>${r.length_km != null ? r.length_km.toFixed(2) : '—'}${lenTip(r) ? '*' : ''}</td>
           <td>${speedCell(r.speed_am_in)}</td>
           <td>${speedCell(r.speed_am_out, r.note_am_out)}</td>
           <td>${speedCell(r.speed_pm_in)}</td>

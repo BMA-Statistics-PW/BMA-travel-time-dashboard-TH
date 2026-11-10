@@ -14,7 +14,14 @@
     "data_source": "การสำรวจอัตราเร็วเฉลี่ยบนถนนสายหลัก สำนักการจราจรและขนส่ง ปี 2560–2568",
     "as_of": "31 ธันวาคม 2568",
     "org": "กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน สำนักการจราจรและขนส่ง กรุงเทพมหานคร",
-    "author": "© Prapawadee_W."
+    "author": "© Prapawadee_W.",
+    "revisions": [
+      {
+        "date": "2026-11-02",
+        "note_th": "ปรับค่าพื้นที่ชั้นกลาง ปี 2567–2568 หลังแก้สูตรเพชรเกษมช่วงชั้นกลาง (ราชพฤกษ์–วงเวียนใหญ่) และเพิ่มความยาวรายทิศ length_in_km/length_out_km พร้อมคำนวณเวลาเดินทางจากระยะที่วิ่งจริงรายทิศ",
+        "note_en": "Middle-zone values for 2024-2025 revised after correcting the Phetkasem middle-zone segment formula; added direction-specific lengths (length_in_km/length_out_km) and travel times based on distance actually driven per direction"
+      }
+    ]
   },
   "tomtom_2025": {
     "city": "Bangkok",
@@ -54,18 +61,18 @@
       "label": "พื้นที่ชั้นกลาง",
       "speed_2560_in": 21.31,
       "speed_2560_out": 26.13,
-      "speed_2568_in": 20.9,
-      "speed_2568_out": 27.14,
-      "delta_in": -0.41,
-      "pct_in": -1.92,
-      "delta_out": 1.01,
-      "pct_out": 3.87,
-      "min_road_2568_in": "เพชรเกษม",
-      "min_speed_2568_in": 5.58,
+      "speed_2568_in": 22.2,
+      "speed_2568_out": 28.45,
+      "delta_in": 0.89,
+      "pct_in": 4.18,
+      "delta_out": 2.32,
+      "pct_out": 8.88,
+      "min_road_2568_in": "เพชรบุรี",
+      "min_speed_2568_in": 10.58,
       "max_road_2568_in": "พระรามที่ 3",
       "max_speed_2568_in": 42.9,
-      "min_road_2568_out": "เพชรเกษม",
-      "min_speed_2568_out": 7.68,
+      "min_road_2568_out": "ศรีบูรพา",
+      "min_speed_2568_out": 12.45,
       "max_road_2568_out": "วิภาวดีรังสิต",
       "max_speed_2568_out": 47.31
     },
@@ -135,13 +142,13 @@
     {
       "year": 2567,
       "inner": 15.88,
-      "middle": 21.62,
+      "middle": 22.83,
       "outer": 24.55
     },
     {
       "year": 2568,
       "inner": 15.27,
-      "middle": 20.9,
+      "middle": 22.2,
       "outer": 25.99
     }
   ],
@@ -231,13 +238,13 @@
       },
       {
         "year": 2567,
-        "in": 21.62,
-        "out": 27.25
+        "in": 22.83,
+        "out": 28.6
       },
       {
         "year": 2568,
-        "in": 20.9,
-        "out": 27.14
+        "in": 22.2,
+        "out": 28.45
       }
     ],
     "outer": [
@@ -304,7 +311,9 @@
       "tt_pm_in": 10.8,
       "tt_pm_out": 6.85,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.77,
+      "length_out_km": 3.77
     },
     {
       "seq": 2,
@@ -321,7 +330,9 @@
       "tt_pm_in": 29.91,
       "tt_pm_out": 27.54,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 14.04,
+      "length_out_km": 14.04
     },
     {
       "seq": 3,
@@ -333,12 +344,14 @@
       "speed_am_out": 14.69,
       "speed_pm_in": 10.38,
       "speed_pm_out": 13.58,
-      "tt_am_in": 11.07,
+      "tt_am_in": 3.98,
       "tt_am_out": 11.01,
-      "tt_pm_in": 15.6,
+      "tt_pm_in": 5.61,
       "tt_pm_out": 11.92,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 0.97,
+      "length_out_km": 2.7
     },
     {
       "seq": 4,
@@ -351,11 +364,13 @@
       "speed_pm_in": 15.57,
       "speed_pm_out": 13.09,
       "tt_am_in": 24.48,
-      "tt_am_out": 22.05,
+      "tt_am_out": 17.29,
       "tt_pm_in": 22.45,
-      "tt_pm_out": 26.71,
+      "tt_pm_out": 20.95,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 5.83,
+      "length_out_km": 4.57
     },
     {
       "seq": 5,
@@ -372,7 +387,9 @@
       "tt_pm_in": 20.67,
       "tt_pm_out": 17.14,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 7.65,
+      "length_out_km": 7.65
     },
     {
       "seq": 6,
@@ -389,7 +406,9 @@
       "tt_pm_in": 11.53,
       "tt_pm_out": 11.69,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 5.01,
+      "length_out_km": 5.01
     },
     {
       "seq": 7,
@@ -406,7 +425,9 @@
       "tt_pm_in": 11.01,
       "tt_pm_out": 10.9,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 2.13,
+      "length_out_km": 2.13
     },
     {
       "seq": 8,
@@ -423,7 +444,9 @@
       "tt_pm_in": 16.88,
       "tt_pm_out": 18.81,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 4.36,
+      "length_out_km": 4.36
     },
     {
       "seq": 9,
@@ -440,7 +463,9 @@
       "tt_pm_in": 22.0,
       "tt_pm_out": 19.69,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 8.84,
+      "length_out_km": 8.84
     },
     {
       "seq": 10,
@@ -457,7 +482,9 @@
       "tt_pm_in": 16.29,
       "tt_pm_out": 12.09,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 10.96,
+      "length_out_km": 10.96
     },
     {
       "seq": 11,
@@ -474,7 +501,9 @@
       "tt_pm_in": 14.24,
       "tt_pm_out": 12.33,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 5.85,
+      "length_out_km": 5.85
     },
     {
       "seq": 12,
@@ -491,7 +520,9 @@
       "tt_pm_in": 37.77,
       "tt_pm_out": 37.07,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 7.97,
+      "length_out_km": 7.97
     },
     {
       "seq": 13,
@@ -508,7 +539,9 @@
       "tt_pm_in": 17.52,
       "tt_pm_out": 12.33,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.5,
+      "length_out_km": 3.5
     },
     {
       "seq": 14,
@@ -525,7 +558,9 @@
       "tt_pm_in": 24.99,
       "tt_pm_out": 26.59,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 12.29,
+      "length_out_km": 12.29
     },
     {
       "seq": 15,
@@ -542,7 +577,9 @@
       "tt_pm_in": 28.53,
       "tt_pm_out": 23.11,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.69,
+      "length_out_km": 3.69
     },
     {
       "seq": 16,
@@ -559,7 +596,9 @@
       "tt_pm_in": 16.76,
       "tt_pm_out": 13.89,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 8.39,
+      "length_out_km": 8.39
     },
     {
       "seq": 17,
@@ -576,7 +615,9 @@
       "tt_pm_in": 24.69,
       "tt_pm_out": 33.95,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.4,
+      "length_out_km": 3.4
     },
     {
       "seq": 18,
@@ -593,7 +634,9 @@
       "tt_pm_in": 16.4,
       "tt_pm_out": 13.41,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 9.69,
+      "length_out_km": 9.69
     },
     {
       "seq": 19,
@@ -610,7 +653,9 @@
       "tt_pm_in": 16.78,
       "tt_pm_out": 23.16,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 11.39,
+      "length_out_km": 11.39
     },
     {
       "seq": 20,
@@ -623,11 +668,13 @@
       "speed_pm_in": 15.0,
       "speed_pm_out": 14.58,
       "tt_am_in": 34.52,
-      "tt_am_out": 32.85,
+      "tt_am_out": 31.01,
       "tt_pm_in": 37.79,
-      "tt_pm_out": 38.88,
+      "tt_pm_out": 36.71,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 9.45,
+      "length_out_km": 8.92
     },
     {
       "seq": 21,
@@ -644,7 +691,9 @@
       "tt_pm_in": 15.01,
       "tt_pm_out": 16.69,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.8,
+      "length_out_km": 3.8
     },
     {
       "seq": 22,
@@ -661,7 +710,9 @@
       "tt_pm_in": 22.83,
       "tt_pm_out": 22.86,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 4.87,
+      "length_out_km": 4.87
     },
     {
       "seq": 23,
@@ -678,7 +729,9 @@
       "tt_pm_in": 39.66,
       "tt_pm_out": 42.12,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 13.73,
+      "length_out_km": 13.73
     },
     {
       "seq": 24,
@@ -695,7 +748,9 @@
       "tt_pm_in": 18.4,
       "tt_pm_out": 20.3,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 6.2,
+      "length_out_km": 6.2
     },
     {
       "seq": 25,
@@ -712,7 +767,9 @@
       "tt_pm_in": 26.7,
       "tt_pm_out": 19.22,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 10.27,
+      "length_out_km": 10.27
     },
     {
       "seq": 26,
@@ -729,7 +786,9 @@
       "tt_pm_in": 6.0,
       "tt_pm_out": 10.25,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 2.27,
+      "length_out_km": 2.27
     },
     {
       "seq": 27,
@@ -746,7 +805,9 @@
       "tt_pm_in": 46.22,
       "tt_pm_out": 38.7,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 17.79,
+      "length_out_km": 17.79
     },
     {
       "seq": 28,
@@ -763,7 +824,9 @@
       "tt_pm_in": 56.92,
       "tt_pm_out": 49.37,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 8.95,
+      "length_out_km": 8.95
     },
     {
       "seq": 29,
@@ -780,7 +843,9 @@
       "tt_pm_in": 7.9,
       "tt_pm_out": null,
       "note_am_out": "เดินรถทางเดียว",
-      "note_pm_out": "เดินรถทางเดียว"
+      "note_pm_out": "เดินรถทางเดียว",
+      "length_in_km": 1.44,
+      "length_out_km": 1.44
     },
     {
       "seq": 30,
@@ -797,7 +862,9 @@
       "tt_pm_in": 28.79,
       "tt_pm_out": 24.08,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 12.95,
+      "length_out_km": 12.95
     },
     {
       "seq": 31,
@@ -814,7 +881,9 @@
       "tt_pm_in": 14.85,
       "tt_pm_out": 15.24,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.24,
+      "length_out_km": 3.24
     },
     {
       "seq": 32,
@@ -831,7 +900,9 @@
       "tt_pm_in": 13.13,
       "tt_pm_out": 16.69,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 2.33,
+      "length_out_km": 2.33
     },
     {
       "seq": 33,
@@ -848,7 +919,9 @@
       "tt_pm_in": 26.31,
       "tt_pm_out": 43.07,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 5.18,
+      "length_out_km": 5.18
     },
     {
       "seq": 34,
@@ -865,7 +938,9 @@
       "tt_pm_in": 17.99,
       "tt_pm_out": 11.55,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 6.18,
+      "length_out_km": 6.18
     },
     {
       "seq": 35,
@@ -882,7 +957,9 @@
       "tt_pm_in": 26.01,
       "tt_pm_out": 22.18,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 11.97,
+      "length_out_km": 11.97
     },
     {
       "seq": 36,
@@ -899,7 +976,9 @@
       "tt_pm_in": 29.27,
       "tt_pm_out": 28.83,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 15.28,
+      "length_out_km": 15.28
     },
     {
       "seq": 37,
@@ -916,7 +995,9 @@
       "tt_pm_in": 31.42,
       "tt_pm_out": 25.3,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 10.88,
+      "length_out_km": 10.88
     },
     {
       "seq": 38,
@@ -933,7 +1014,9 @@
       "tt_pm_in": 21.36,
       "tt_pm_out": 21.2,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 14.36,
+      "length_out_km": 14.36
     },
     {
       "seq": 39,
@@ -950,7 +1033,9 @@
       "tt_pm_in": 26.12,
       "tt_pm_out": 21.86,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 11.22,
+      "length_out_km": 11.22
     },
     {
       "seq": 40,
@@ -967,7 +1052,9 @@
       "tt_pm_in": 9.14,
       "tt_pm_out": 9.47,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 2.16,
+      "length_out_km": 2.16
     },
     {
       "seq": 41,
@@ -984,7 +1071,9 @@
       "tt_pm_in": 18.48,
       "tt_pm_out": 21.44,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 4.41,
+      "length_out_km": 4.41
     },
     {
       "seq": 42,
@@ -1001,7 +1090,9 @@
       "tt_pm_in": 10.97,
       "tt_pm_out": 12.16,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 2.26,
+      "length_out_km": 2.26
     },
     {
       "seq": 43,
@@ -1018,7 +1109,9 @@
       "tt_pm_in": 20.77,
       "tt_pm_out": 22.92,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.32,
+      "length_out_km": 3.32
     },
     {
       "seq": 44,
@@ -1035,7 +1128,9 @@
       "tt_pm_in": 28.3,
       "tt_pm_out": null,
       "note_am_out": "เดินรถทางเดียว",
-      "note_pm_out": "เดินรถทางเดียว"
+      "note_pm_out": "เดินรถทางเดียว",
+      "length_in_km": 4.65,
+      "length_out_km": 4.65
     },
     {
       "seq": 45,
@@ -1052,7 +1147,9 @@
       "tt_pm_in": 15.06,
       "tt_pm_out": 19.02,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 2.32,
+      "length_out_km": 2.32
     },
     {
       "seq": 46,
@@ -1065,11 +1162,13 @@
       "speed_pm_in": 11.93,
       "speed_pm_out": 13.85,
       "tt_am_in": 60.62,
-      "tt_am_out": 46.33,
+      "tt_am_out": 43.81,
       "tt_pm_in": 56.01,
-      "tt_pm_out": 48.24,
+      "tt_pm_out": 45.62,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 11.14,
+      "length_out_km": 10.53
     },
     {
       "seq": 47,
@@ -1081,12 +1180,14 @@
       "speed_am_out": 8.7,
       "speed_pm_in": 8.9,
       "speed_pm_out": 7.56,
-      "tt_am_in": 10.08,
+      "tt_am_in": 6.13,
       "tt_am_out": 14.08,
-      "tt_pm_in": 13.75,
+      "tt_pm_in": 8.36,
       "tt_pm_out": 16.2,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 1.24,
+      "length_out_km": 2.04
     },
     {
       "seq": 48,
@@ -1103,7 +1204,9 @@
       "tt_pm_in": 24.57,
       "tt_pm_out": 23.62,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 9.35,
+      "length_out_km": 9.35
     },
     {
       "seq": 49,
@@ -1120,7 +1223,9 @@
       "tt_pm_in": 7.06,
       "tt_pm_out": null,
       "note_am_out": "ทางรถมวลชน",
-      "note_pm_out": "ทางรถมวลชน"
+      "note_pm_out": "ทางรถมวลชน",
+      "length_in_km": 1.59,
+      "length_out_km": 1.59
     },
     {
       "seq": 50,
@@ -1137,7 +1242,9 @@
       "tt_pm_in": 12.35,
       "tt_pm_out": 10.1,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 4.43,
+      "length_out_km": 4.43
     },
     {
       "seq": 51,
@@ -1154,7 +1261,9 @@
       "tt_pm_in": 11.28,
       "tt_pm_out": 6.49,
       "note_am_out": null,
-      "note_pm_out": null
+      "note_pm_out": null,
+      "length_in_km": 3.2,
+      "length_out_km": 3.2
     }
   ]
 }
