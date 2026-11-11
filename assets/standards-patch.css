@@ -1,0 +1,128 @@
+/* ════════════════════════════════════════════════════════════════
+   standards-patch.css — ชั้นเสริมต่อจาก styles.css (ไม่แก้ไฟล์เดิม)
+   A11y + UX/UI refinements · © Prapawadee_W.
+   ════════════════════════════════════════════════════════════════ */
+
+:root{
+  color-scheme:light;
+  --font-serif:'Anuphan','Sarabun',sans-serif;
+  --text-muted:#566677;
+  --inner-text:#c0282a;
+  --middle-text:#b3401f;
+  --outer-text:#007a63;
+  --focus-color:#0A2E5C;
+  --fs-eyebrow:12px;
+  --fs-caption:12.5px;
+}
+:root[data-theme='dark']{
+  color-scheme:dark;
+  --text-muted:#a9b6c7;
+  --inner-text:#ff8a8b;
+  --middle-text:#ffa58c;
+  --outer-text:#3ddbb6;
+  --focus-color:#f0c060;
+}
+
+html[lang='th'] *{letter-spacing:normal}
+h1,h2,h3,h4{line-height:1.4}
+.hero-title{line-height:1.35}
+.hero-title .hl,.about-org em{font-style:normal}
+.rt-table thead th{font-size:12.5px;text-transform:none}
+.tomtom-label{font-size:12.5px}
+.tomtom-sub-label{font-size:12px;color:var(--text-muted)}
+.card-year-badge{font-size:12.5px}
+.zsm-row{font-size:12px}
+.about-role{color:#8a6d00}
+:root[data-theme='dark'] .about-role{color:#f0c060}
+
+.card-inner .card-value .kpi-speed,.zone-acc.inner .zone-summary-title,.scenario-item[data-zone='inner'] .scenario-zone{color:var(--inner-text)}
+.card-middle .card-value .kpi-speed,.zone-acc.middle .zone-summary-title,.scenario-item[data-zone='middle'] .scenario-zone{color:var(--middle-text)}
+.card-outer .card-value .kpi-speed,.zone-acc.outer .zone-summary-title,.scenario-item[data-zone='outer'] .scenario-zone{color:var(--outer-text)}
+
+:focus-visible{outline:3px solid var(--focus-color);outline-offset:2px;box-shadow:none}
+.control-input:focus-visible,.control-select:focus-visible{outline:3px solid var(--focus-color);outline-offset:2px}
+th.sortable:focus-visible{outline-offset:-3px}
+@media (forced-colors:active){:focus-visible{outline:3px solid CanvasText}}
+
+:root[data-theme='dark'] .dir-btn.active,
+:root[data-theme='dark'] .dir-btn:hover:not(.active),
+:root[data-theme='dark'] .rt-table thead th.sortable:hover,
+:root[data-theme='dark'] .zone-acc[open] .zone-chevron{color:#f0c060}
+:root[data-theme='dark'] .control-btn.primary,
+:root[data-theme='dark'] .rt-toggle-btn{border:1px solid #3b5680}
+
+.hero-eyebrow,.method-icon{animation:none}
+.report-hero::after{display:none}
+.rt-table .speed-cell.jam{animation:none;box-shadow:inset 0 0 0 1.5px #dc2626}
+.chip:hover,.method-pill:hover,.method-card:hover,.tomtom-stat:hover,.zd-item:hover,
+.data-card:hover,.scenario-item:hover,.skill-chip:hover,.policy-list li:hover,
+.rt-table .speed-cell:hover,.zone-acc:hover .zone-icon{transform:none}
+
+.a4-canvas{overflow:clip}
+html{scroll-padding-top:64px}
+[id]{scroll-margin-top:64px}
+.std-nav{position:sticky;top:0;z-index:60;background:var(--bg-canvas);padding:8px 0;
+  border-bottom:1px solid var(--border);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+.std-nav a{white-space:nowrap}
+.cards-grid,.scenario-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.zone-district-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+
+@media (max-width:1199px){
+  .rt-table thead th.th-left,.rt-table tbody td.td-left{position:sticky;left:0;z-index:2;box-shadow:2px 0 0 var(--border)}
+  .rt-table thead th.th-left{background:var(--surface-3)}
+  .rt-table tbody td.td-left{background:var(--surface)}
+  .rt-table tbody tr:nth-child(even) td.td-left{background:var(--surface-2)}
+  .rt-table tbody tr:hover td.td-left{background:#eff6ff}
+  :root[data-theme='dark'] .rt-table tbody tr:hover td.td-left{background:#1e3a5f}
+}
+@media (max-width:767px){
+  .compare-table,.modern-table{display:table;white-space:normal}
+  .modern-table th,.modern-table td{padding:8px 6px}
+}
+
+.zsm-dot.am-in,.zsm-dot.am-out,.zsm-dot.pm-in,.zsm-dot.pm-out{
+  width:auto;height:auto;border-radius:0;background:transparent;
+  display:inline-flex;align-items:center;gap:4px;color:var(--text-mid);font-size:11px;font-weight:700}
+.zsm-dot.am-in{--dot:#d63031}.zsm-dot.am-out{--dot:#e17055}
+.zsm-dot.pm-in{--dot:#6c5ce7}.zsm-dot.pm-out{--dot:#0984e3}
+.zsm-dot::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--dot);flex-shrink:0}
+.zsm-dot.am-in::after{content:'AM▲'}.zsm-dot.am-out::after{content:'AM▼'}
+.zsm-dot.pm-in::after{content:'PM▲'}.zsm-dot.pm-out::after{content:'PM▼'}
+
+@media (pointer:coarse){
+  .util-btn{width:44px;height:44px}
+  .lang-btn,.dir-btn{min-height:40px;padding-inline:14px}
+  .std-nav a{padding:11px 14px}
+  .control-btn,.rt-toggle-btn{min-height:44px}
+}
+
+@media (scripting:none){.reveal{opacity:1;transform:none}}
+
+@page{size:A4;margin:12mm}
+@media print{
+  .reveal{opacity:1!important;transform:none!important}
+  .rt-body-collapsible[hidden]{display:block!important}
+  details:not([open]) summary{display:block}
+  .rt-toolbar,.rt-toggle-btn{display:none!important}
+  .line-wrap{overflow:visible}.line-wrap svg{min-width:0}
+  .rt-wrap{overflow:visible}.rt-table{min-width:0;font-size:11px}
+  .rt-table thead{display:table-header-group}.rt-table tr{break-inside:avoid}
+  .footer a[href]::after{content:' (' attr(href) ')';font-size:.85em;word-break:break-all}
+}
+
+.route-fieldset-reset{border:0;margin:0;padding:0}
+.sw-inner{background:#d63031}.sw-middle{background:#e17055}.sw-outer{background:#00b894}
+.tt-brand-sub{letter-spacing:.04em}
+.tt-cta-wrap{margin-top:12px}
+.tt-cta{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.noscript-msg{padding:16px;text-align:center;background:#fff3cd;color:#664d03}
+:where(.zone-summary-left,.zone-summary-text,.zone-summary-title,.zone-summary-meta,.zone-summary-right,.zone-stat-mini,.zsm-row){display:block}
+.modern-table tbody th[scope="row"]{font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+
+.text-trend-up{color:#1b7a43}
+.text-trend-down{color:#b42318}
+:root[data-theme='dark'] .text-trend-up{color:#6ee7a0}
+:root[data-theme='dark'] .text-trend-down{color:#ff9b93}
+:root[data-theme='dark'] .zd-item.outer .zd-desc{color:#dbe7f3}
+.about-org em{font-style:normal;opacity:1;color:#4a5866}
+:root[data-theme='dark'] .about-org em{color:#c3cedb}
