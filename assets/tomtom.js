@@ -17,8 +17,9 @@
   const sign = (n, d = 1) => (n > 0 ? '+' : n < 0 ? '−' : '') + f(Math.abs(n), d);
   const fill = (str, o) => str.replace(/\{(\w+)\}/g, (_, k) => (o[k] != null ? o[k] : '{' + k + '}'));
   const MONTH_TH = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
-  const MONTH_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const fdate = iso => { const [y, m, d] = iso.split('-').map(Number); return lang() === 'th' ? `${d} ${MONTH_TH[m - 1]} ${y + 543}` : `${d} ${MONTH_EN[m - 1]} ${y}`; };
+  const MONTH_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const MONTH_TH_FULL = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+  const fdate = iso => { const [y, m, d] = iso.split('-').map(Number); return lang() === 'th' ? `${d} ${MONTH_TH_FULL[m - 1]} พ.ศ. ${y + 543}` : `${d} ${MONTH_EN[m - 1]} ${y}`; };
 
   let T = null, S = null;
   // free-flow จากระดับความแออัด: เวลาจริง = free × (1 + CL/100)
@@ -37,6 +38,49 @@
       [t('ttK6'), f2(c.avg_speed_kmh), t('ttUnitKmh'), '']
     ];
     $('#ttKpis').innerHTML = cards.map(([l, v, u, d]) => `<article class="tt-kpi"><div class="tt-kpi__label">${l}</div><div class="tt-kpi__value">${v}<small>${u}</small></div><div class="tt-kpi__foot">${d}</div></article>`).join('');
+  }
+
+  /* ───────── Infographic สรุปภาพรวม (สร้างจากข้อมูลจริงทุกค่า) ───────── */
+  function infographic() {
+    const el = $('#ttInfo'); if (!el) return;
+    const c = T.city, am = T.rush.am, pm = T.rush.pm;
+    const sp = split(c.time_10km_s, c.congestion_pct), tmax = c.time_10km_s;
+    const lostD = Math.floor(c.rush_time_lost_h / 24), lostH = Math.round(c.rush_time_lost_h - lostD * 24);
+    const days = Array.from({ length: Math.ceil(c.rush_time_lost_h / 24) }, (_, i) => {
+      const hrs = Math.min(24, c.rush_time_lost_h - i * 24);
+      return `<span class="tt-day"><i style="height:${(hrs / 24 * 100).toFixed(1)}%"></i></span>`;
+    }).join('');
+    const top = Math.max(140, Math.ceil(Math.max(am.congestion_pct, pm.congestion_pct) / 20) * 20), refPct = 100 / top * 100;
+    const col = (lab, d, hi) => `<li class="tt-vcol${hi ? ' is-hi' : ''}"><b class="tt-vcol__v">${f(d.congestion_pct)}%</b>
+        <span class="tt-vcol__trk" role="img" aria-label="${esc(lab)}: ${f(d.congestion_pct)}%"><i style="height:${(d.congestion_pct / top * 100).toFixed(1)}%"></i></span>
+        <span class="tt-vcol__l">${lab}</span><small>${fill(t('ttIg4Sp'), { v: f2(d.speed_kmh) })}</small></li>`;
+    el.innerHTML = `
+    <div class="tt-ig-grid" role="group" aria-label="${esc(t('ttIgLabel'))}">
+      <article class="tt-ig">
+        <h3 class="tt-ig__t"><span class="tt-ig__n" aria-hidden="true">1</span>${t('ttIg1T')}</h3>
+        <div class="tt-ig__rank"><span class="tt-ig__big">#${c.world_rank}</span><span class="tt-ig__unit">${t('ttIg1S')}</span></div>
+        <p class="tt-ig__cap">${fill(t('ttIg1C'), { cong: f(c.congestion_pct) })}</p>
+      </article>
+      <article class="tt-ig">
+        <h3 class="tt-ig__t"><span class="tt-ig__n" aria-hidden="true">2</span>${t('ttIg2T')}</h3>
+        <ul class="tt-ig__bars">
+          <li><span class="tt-ig__bl">${t('ttIg2a')}</span><span class="tt-bar__track" role="img" aria-label="${esc(t('ttIg2a'))}: ${mmss(sp.free)}"><span class="tt-bar__seg is-free" style="width:${(sp.free / tmax * 100).toFixed(1)}%"></span></span><b>${mmss(sp.free)}</b></li>
+          <li><span class="tt-ig__bl">${t('ttIg2b')}</span><span class="tt-bar__track" role="img" aria-label="${esc(t('ttIg2b'))}: ${mmss(tmax)}"><span class="tt-bar__seg is-free" style="width:${(sp.free / tmax * 100).toFixed(1)}%"></span><span class="tt-bar__seg is-extra" style="width:${(sp.extra / tmax * 100).toFixed(1)}%"></span></span><b>${mmss(tmax)}</b></li>
+        </ul>
+        <p class="tt-ig__cap">${fill(t('ttIg2C'), { x: mmss(sp.extra), p: f(c.congestion_pct) })}</p>
+      </article>
+      <article class="tt-ig">
+        <h3 class="tt-ig__t"><span class="tt-ig__n" aria-hidden="true">3</span>${t('ttIg3T')}</h3>
+        <div class="tt-days" role="img" aria-label="${esc(f(c.rush_time_lost_h, 0))} ${esc(t('ttUnitH'))}">${days}</div>
+        <p class="tt-ig__cap">${fill(t('ttIg3C'), { lost: f(c.rush_time_lost_h, 0), d: lostD, h: lostH })}</p>
+      </article>
+      <article class="tt-ig">
+        <h3 class="tt-ig__t"><span class="tt-ig__n" aria-hidden="true">4</span>${t('ttIg4T')}</h3>
+        <div class="tt-vchart" style="--ref:${refPct.toFixed(1)}%"><span class="tt-vchart__ref"><small>${t('ttIg4Ref')}</small></span>
+          <ul class="tt-vcols">${col(t('ttBarAm'), am, false)}${col(t('ttBarPm'), pm, true)}</ul></div>
+      </article>
+    </div>
+    <p class="tt-ig__src">${t('ttIgSrc')}</p>`;
   }
 
   function yoy() {
@@ -210,7 +254,7 @@
     $('#ttHistSeg').setAttribute('aria-label', t(m.full));
   }
 
-  function render() { if (!T) return; summary(); guide(); yoy(); history(); rush(); worst(); thailand(); vs(); copyText(); sources(); document.title = t('ttTitle'); }
+  function render() { if (!T) return; summary(); infographic(); guide(); yoy(); history(); rush(); worst(); thailand(); vs(); copyText(); sources(); document.title = t('ttTitle'); }
 
   async function load() {
     try {

@@ -345,7 +345,7 @@ html{scroll-padding-top:calc(var(--tb-h) + 16px)}
 
 /* ───────────── 8) Motion ───────────── */
 @media (prefers-reduced-motion:reduce){
-  .app-shell,.sidebar,.fill,.qa{transition:none}
+  .app-shell,.sidebar,.fill,.vbar-fill,.qa{transition:none}
 }
 
 /* ───────────── 9) Print (รายงานทางการ A4 คงเดิม · ซ่อนเปลือกแดชบอร์ด) ───────────── */
@@ -402,3 +402,16 @@ html{scroll-padding-top:calc(var(--tb-h) + 16px)}
 
 /* ตารางว่าง (ไม่พบข้อมูล) — แทน inline style เดิม */
 .rt-empty { padding: 24px; text-align: center; color: var(--d-muted, #64748b); }
+
+/* กราฟแท่งแนวตั้ง: แนวโน้มอัตราเร็วเฉลี่ยรายปี */
+.bars.vbars{flex-direction:row;align-items:flex-end;gap:6px;overflow-x:auto;padding:4px 2px 8px}
+.vbar-col{flex:1 1 0;min-width:44px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.vbar-v{font-size:13px;font-variant-numeric:tabular-nums}
+.vbar-track{position:relative;width:100%;max-width:56px;height:220px;display:flex;align-items:flex-end;border-radius:10px 10px 4px 4px;background:var(--d-line);overflow:hidden}
+.vbar-fill{width:100%;height:var(--h,0);border-radius:10px 10px 0 0;background:var(--d-brand);transition:height .6s cubic-bezier(.4,0,.2,1)}
+.vbar-fill.z-inner{background:var(--zc-inner)}
+.vbar-fill.z-middle{background:var(--zc-middle)}
+.vbar-fill.z-outer{background:var(--zc-outer)}
+.vbar-y{font-weight:700;font-size:13px}
+.vbar-d{font-size:11px;min-height:20px}
+@media (max-width:560px){.vbar-track{height:170px}.vbar-col{min-width:40px}}

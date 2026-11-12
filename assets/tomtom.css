@@ -123,3 +123,60 @@
 .tt-htable td{vertical-align:top}
 .tt-dl{font-weight:700;color:#0A2E5C;text-decoration:underline;margin-left:6px;white-space:nowrap}
 @media (max-width:767px){.tt-guide{grid-template-columns:1fr}.tt-seg{display:flex;width:100%}.tt-seg button{flex:1;padding:0 6px}.tt-hnote{max-width:none}}
+
+/* ════════ Infographic สรุปภาพรวม + ตัวเลขลำดับหัวข้อ (เพิ่ม 12 พ.ย. 2569) ════════ */
+.tt-mt{margin-top:14px}
+.a4-body{counter-reset:ttsec}
+.a4-body>section{counter-increment:ttsec}
+.a4-body>section>.section-eyebrow::before{content:counter(ttsec,decimal-leading-zero);display:inline-grid;place-items:center;min-width:30px;height:30px;margin-right:10px;border-radius:999px;background:#0A2E5C;color:#fff;font:700 13px/1 var(--font-mono,monospace);vertical-align:middle}
+:root[data-theme='dark'] .a4-body>section>.section-eyebrow::before{background:#f0c060;color:#08203f}
+
+.tt-info{margin:6px 0 18px}
+.tt-ig-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tt-ig{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;gap:12px;min-width:0;break-inside:avoid}
+.tt-ig__t{display:flex;align-items:center;gap:10px;margin:0;font-family:'Anuphan','Sarabun',sans-serif;font-size:16px;line-height:1.4;color:var(--text-dark)}
+.tt-ig__n{flex:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#0A2E5C;color:#fff;font-size:14px;font-weight:700}
+:root[data-theme='dark'] .tt-ig__n{background:#f0c060;color:#08203f}
+.tt-ig__cap{margin:auto 0 0;font-size:14px;line-height:1.7;color:var(--text-mid)}
+.tt-ig__src{margin:10px 2px 0;font-size:12.5px;line-height:1.7;color:var(--text-muted)}
+
+/* 1) อันดับโลก */
+.tt-ig__rank{display:flex;align-items:center;gap:16px}
+.tt-ig__big{display:inline-grid;place-items:center;min-width:112px;height:112px;padding:0 10px;border-radius:50%;background:#df1b12;color:#fff;font-family:'Anuphan','Sarabun',sans-serif;font-size:44px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.tt-ig__unit{font-family:'Anuphan','Sarabun',sans-serif;font-size:22px;font-weight:600;color:var(--text-dark)}
+
+/* 2) เวลาเดินทาง 10 กม. */
+.tt-ig__bars{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.tt-ig__bars li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.tt-ig__bl{grid-column:1 / -1;font-size:13.5px;font-weight:600;color:var(--text-mid)}
+.tt-ig__bars .tt-bar__track{height:28px}
+.tt-ig__bars b{font-family:'Anuphan','Sarabun',sans-serif;font-size:20px;font-variant-numeric:tabular-nums;color:var(--text-dark);min-width:64px;text-align:right}
+
+/* 3) เวลาที่สูญเสีย: 1 ช่อง = 1 วัน */
+.tt-days{display:flex;gap:8px;align-items:flex-end}
+.tt-day{position:relative;display:flex;align-items:flex-end;flex:1 1 0;max-width:72px;height:72px;border-radius:8px;background:var(--surface-3);border:1px solid var(--border);overflow:hidden}
+.tt-day i{display:block;width:100%;background:#d55e00;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 5px,transparent 5px 10px)}
+
+/* 4) ช่วงเช้า–เย็น */
+.tt-vchart{display:flex;flex-direction:column;gap:10px}
+.tt-vchart__ref{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted)}
+.tt-vchart__ref::before{content:'';width:22px;border-top:2px dashed var(--text-mid)}
+.tt-vcols{list-style:none;margin:0;padding:0;display:flex;justify-content:space-around;gap:16px}
+.tt-vcol{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.tt-vcol__v{font-family:'Anuphan','Sarabun',sans-serif;font-size:20px;font-variant-numeric:tabular-nums;color:var(--text-dark)}
+.tt-vcol__trk{position:relative;display:flex;align-items:flex-end;width:72px;height:160px;border-radius:8px 8px 4px 4px;background:var(--surface-3);overflow:hidden}
+.tt-vcol__trk i{display:block;width:100%;background:#0A2E5C}
+.tt-vcol.is-hi .tt-vcol__trk i{background:#df1b12}
+:root[data-theme='dark'] .tt-vcol__trk i{background:#5b8bd6}
+:root[data-theme='dark'] .tt-vcol.is-hi .tt-vcol__trk i{background:#f87171}
+.tt-vcol__trk::after{content:'';position:absolute;left:0;right:0;bottom:var(--ref,0);border-top:2px dashed #fff;mix-blend-mode:difference}
+.tt-vcol__l{font-weight:700;font-size:14px;color:var(--text-mid);text-align:center}
+.tt-vcol small{font-size:12.5px;color:var(--text-muted);text-align:center}
+
+@media (max-width:767px){
+  .tt-ig-grid{grid-template-columns:1fr}
+  .tt-ig{padding:16px}
+  .tt-ig__big{min-width:96px;height:96px;font-size:38px}
+  .tt-vcol__trk{width:60px;height:140px}
+}
+@media print{ .tt-ig{box-shadow:none} .tt-ig-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }

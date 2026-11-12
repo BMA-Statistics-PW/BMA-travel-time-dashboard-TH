@@ -233,10 +233,12 @@
     const bars = rows.map((r, i) => {
       const prev = i ? rows[i - 1][key] : null, d = pct(r[key], prev);
       const covid = r.year === 2564;
-      return `<li class="bar-row">
-        <div class="bar-meta"><span class="bar-y">${yr(r.year)}${covid ? `<span class="tag">${t('covid')}</span>` : ''}</span>
-          <span class="bar-r">${d == null ? '<span class="badge neutral">—</span>' : badge(d)}<b class="bar-v">${fmt(r[key])}</b></span></div>
-        <div class="track tall" role="img" aria-label="${yr(r.year)}: ${fmt(r[key])} ${t('unitKmh')}"><div class="fill z-${S.zone}" data-w="${(r[key] / mx * 100).toFixed(1)}"></div></div>
+      return `<li class="vbar-col">
+        <b class="vbar-v">${fmt(r[key])}</b>
+        <div class="vbar-track" role="img" aria-label="${yr(r.year)}: ${fmt(r[key])} ${t('unitKmh')}"><div class="vbar-fill z-${S.zone}" data-h="${(r[key] / mx * 100).toFixed(1)}"></div></div>
+        <span class="vbar-y">${yr(r.year)}</span>
+        <span class="vbar-d">${d == null ? '<span class="badge neutral">—</span>' : badge(d)}</span>
+        ${covid ? `<span class="tag">${t('covid')}</span>` : ''}
       </li>`;
     }).join('');
     const seg = (arr, cur, attr) => arr.map(([v, l]) => `<button type="button" class="seg-btn" data-${attr}="${v}" aria-pressed="${v === cur}">${l}</button>`).join('');
@@ -247,7 +249,7 @@
         <div class="seg" role="group" aria-label="${t('dirLabel')}">${seg([['in', t('dirIn')], ['out', t('dirOut')]], S.dir, 'dir')}</div>
       </div>
       <div class="seg seg-wide" role="group" aria-label="${t('zoneLabel')}">${seg(ZONES.map(z => [z, t(ZKEY[z][0])]), S.zone, 'zone')}</div>
-      <ol class="bars">${bars}</ol>
+      <ol class="bars vbars">${bars}</ol>
       <div class="mini-tiles">
         <div class="mt mt-blue"><span class="mt-ico">${ico('cal', 18)}</span><b>${fmt(first)}</b><small>${t('mt1', { y: yr(rows[0].year) })}</small></div>
         <div class="mt mt-green"><span class="mt-ico">${ico('check', 18)}</span><b>${fmt(last)}</b><small>${t('mt2', { y: yr(rows[rows.length - 1].year) })}</small></div>
@@ -323,6 +325,7 @@
   /* ───────── render ───────── */
   function paintBars(root) {
     $$('[data-w]', root).forEach(el => el.style.setProperty('--w', el.getAttribute('data-w') + '%'));
+    $$('[data-h]', root).forEach(el => el.style.setProperty('--h', el.getAttribute('data-h') + '%'));
   }
   function render() {
     const host = $('#dash-home');

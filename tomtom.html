@@ -6,15 +6,15 @@
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#0A2E5C">
 
-<title>สถานการณ์การจราจรกรุงเทพมหานคร จาก TomTom (ข้อมูลปี 2568 และย้อนหลัง) · BMA Travel Time Dashboard</title>
-<meta name="description" content="สรุปสถานการณ์การจราจรกรุงเทพมหานครจาก TomTom (ข้อมูลปี 2568): ระดับความแออัด (Congestion Level) เวลาเดินทาง 10 กม. ช่วงเร่งด่วนเช้า–เย็น วันที่ติดขัดที่สุด เปรียบเทียบกับเมืองในไทยและผลสำรวจของ สจส.">
+<title>สถานการณ์การจราจรกรุงเทพมหานคร จากข้อมูล TomTom (พ.ศ. 2568 และข้อมูลย้อนหลัง) · BMA Travel Time Dashboard</title>
+<meta name="description" content="สรุปสถานการณ์การจราจรกรุงเทพมหานครจากข้อมูล TomTom Traffic Index (พ.ศ. 2568): ระดับความแออัด (Congestion Level) เวลาเดินทางต่อ 10 กม. ช่วงเร่งด่วนเช้าและเย็น วันที่การจราจรติดขัดสูงสุด เปรียบเทียบกับเมืองในประเทศไทยและผลการสำรวจของ สจส.">
 <meta name="keywords" content="TomTom Traffic Index 2025, Bangkok traffic, congestion level, สถานการณ์การจราจร, กรุงเทพมหานคร, สจส.">
 <meta name="author" content="Prapawadee W., Statistics and Research Group, Traffic and Transportation Department, BMA">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="th_TH"><meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="Bangkok traffic situation — TomTom (2025 data, with 2019–2025 history)">
-<meta property="og:description" content="Congestion level, travel time per 10 km, rush hours, worst day, Thai cities, and comparison with the BMA floating-car survey.">
+<meta property="og:title" content="สถานการณ์การจราจรกรุงเทพมหานคร จากข้อมูล TomTom (พ.ศ. 2568 และข้อมูลย้อนหลัง พ.ศ. 2562–2568)">
+<meta property="og:description" content="ระดับความแออัด เวลาเดินทางต่อ 10 กม. ช่วงเร่งด่วน วันที่ติดขัดสูงสุด เมืองในประเทศไทย และการเปรียบเทียบกับผลสำรวจรถสำรวจตามกระแสจราจรของ สจส.">
 <meta property="og:url" content="https://bma-statistics-pw.github.io/BMA-travel-time-dashboard-TH/tomtom.html">
 <meta property="og:site_name" content="BMA Traffic Statistics">
 <meta name="twitter:card" content="summary">
@@ -81,7 +81,7 @@
   <p class="hero-org" data-i18n="heroOrg">กลุ่มงานสถิติและวิจัย · กองนโยบายและแผนงาน · สำนักการจราจรและขนส่ง กรุงเทพมหานคร</p>
 </header>
 
-<nav class="std-nav" aria-label="Section quick links">
+<nav class="std-nav" aria-label="ทางลัดไปยังหัวข้อ / Section quick links">
   <a href="#tt-summary" data-i18n="ttNavSummary">สรุปสถานการณ์</a>
   <a href="#tt-guide" data-i18n="ttNavGuide">อ่านตัวเลข</a>
   <a href="#tt-yoy" data-i18n="ttNavYoy">เทียบปีก่อน</a>
@@ -104,6 +104,7 @@
   <div class="section-eyebrow" data-i18n="ttSumEyebrow">สรุปสถานการณ์</div>
   <h2 class="section-heading" id="ttSumHead" data-i18n="ttSumHead">กรุงเทพมหานคร ปี พ.ศ. 2568: ความแออัดและเวลาเดินทางเพิ่มขึ้นจากปีก่อน</h2>
   <p class="section-sub" id="ttSumSub"></p>
+  <div class="tt-info" id="ttInfo"></div>
   <div class="tt-kpis" id="ttKpis"></div>
 </section>
 
@@ -130,8 +131,8 @@
   <div class="tt-seg" id="ttHistSeg" role="group"></div>
   <div class="tt-legend tt-hlegend" id="ttHistLegend"></div>
   <div class="tt-chartbox" id="ttHistBox"></div>
-  <p class="tt-callout is-warn" id="ttHistTake" style="margin-top:14px"></p>
-  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttHistHead" style="margin-top:14px"><table class="tt-table tt-htable" id="ttHistTable"></table></div>
+  <p class="tt-callout is-warn tt-mt" id="ttHistTake"></p>
+  <div class="tt-table-wrap tt-mt" tabindex="0" role="region" aria-labelledby="ttHistHead"><table class="tt-table tt-htable" id="ttHistTable"></table></div>
   <p class="tt-note"><span data-i18n="ttHistNote"></span> <a class="tt-dl" href="data/tomtom-bangkok-2019-2025-standardized.xlsx" download data-i18n="ttHistDl">ดาวน์โหลดข้อมูลมาตรฐาน (ไฟล์ Excel)</a></p>
 </section>
 
@@ -142,7 +143,7 @@
   <p class="section-sub" data-i18n="ttRushSub">เวลาเดินทาง 10 กม. แบ่งเป็นเวลาเมื่อรถไม่ติด และเวลาที่เสียเพิ่มจากการจราจร</p>
   <div class="tt-legend" aria-hidden="true"><span><i class="is-free"></i><span data-i18n="ttLegFree">เวลาเดินทางเมื่อการจราจรคล่องตัว (Free-flow)</span></span><span><i class="is-extra"></i><span data-i18n="ttLegExtra">เวลาที่เสียเพิ่มจากการจราจร</span></span></div>
   <ul class="tt-bars" id="ttBars"></ul>
-  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttRushHead" style="margin-top:14px"><table class="tt-table" id="ttRushTable"></table></div>
+  <div class="tt-table-wrap tt-mt" tabindex="0" role="region" aria-labelledby="ttRushHead"><table class="tt-table" id="ttRushTable"></table></div>
   <p class="tt-note" id="ttRushIns"></p>
 </section>
 
@@ -151,7 +152,7 @@
   <div class="section-eyebrow" data-i18n="ttDayEyebrow">วันที่ติดขัดที่สุด</div>
   <h2 class="section-heading" id="ttDayHead"></h2>
   <div class="tt-kpis" id="ttDayCards"></div>
-  <p class="tt-callout is-warn" style="margin-top:14px" data-i18n-html="ttDayNote"></p>
+  <p class="tt-callout is-warn tt-mt" data-i18n-html="ttDayNote"></p>
 </section>
 
 <!-- ───────── เมืองในไทย ───────── -->
@@ -160,7 +161,7 @@
   <h2 class="section-heading" id="ttThHead" data-i18n="ttThHead">เปรียบเทียบเมืองในประเทศไทย: กรุงเทพมหานครมีความแออัดสูงสุด</h2>
   <p class="section-sub" data-i18n="ttThSub">ระดับความแออัดเฉลี่ยปี 2568 และเวลาสูญเสียช่วงเร่งด่วน</p>
   <ul class="tt-bars" id="ttThBars"></ul>
-  <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttThHead" style="margin-top:14px"><table class="tt-table" id="ttThTable"></table></div>
+  <div class="tt-table-wrap tt-mt" tabindex="0" role="region" aria-labelledby="ttThHead"><table class="tt-table" id="ttThTable"></table></div>
 </section>
 
 <!-- ───────── เทียบ สจส. ───────── -->
@@ -169,7 +170,7 @@
   <h2 class="section-heading" id="ttVsHead" data-i18n="ttVsHead">TomTom เปรียบเทียบกับผลการสำรวจของ สจส. (ปี 2568)</h2>
   <p class="section-sub" data-i18n="ttVsSub">อัตราเร็วเฉลี่ยช่วงเร่งด่วน (กม./ชม.)</p>
   <div class="tt-table-wrap" tabindex="0" role="region" aria-labelledby="ttVsHead"><table class="tt-table" id="ttVs"></table></div>
-  <div class="tt-callout" style="margin-top:14px">
+  <div class="tt-callout tt-mt">
     <h3 data-i18n="ttVsReadTitle">แนวทางการเปรียบเทียบที่เหมาะสม</h3>
     <ul><li data-i18n-html="ttVsR1"></li><li data-i18n-html="ttVsR2"></li><li data-i18n-html="ttVsR3"></li><li data-i18n-html="ttVsR4"></li></ul>
   </div>
