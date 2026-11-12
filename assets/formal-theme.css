@@ -59,8 +59,8 @@ body{background:#eceff4;font-variant-numeric:lining-nums}
 .section-heading,.section-title{border-bottom:2px solid var(--f-navy);padding-bottom:6px;margin-bottom:12px}
 :root[data-theme='dark'] .section-heading,:root[data-theme='dark'] .section-title{border-bottom-color:var(--f-rule)}
 .a4-body{counter-reset:sec}
-:is(.method-title,.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title){counter-increment:sec}
-:is(.method-title,.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{
+:is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title){counter-increment:sec}
+:is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{
   content:counter(sec) '.';display:inline-block;width:auto;height:auto;background:none;border-radius:0;
   color:var(--f-gold-text);font-weight:700;margin-right:.4em}
 .compare-title{background:var(--f-head-bg);color:var(--f-head-text)}
@@ -113,5 +113,5 @@ a{text-underline-offset:2px}
   .data-card,.zd-item,.scenario-item,.tomtom-stat,.source-note,.about-card{break-inside:avoid}
   .footer{padding:4mm 0 0;font-size:12pt}
   a{color:#000;text-decoration:none}
-  :is(.method-title,.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{content:counter(sec,decimal) '.'}
+  :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{content:counter(sec,decimal) '.'}
 }
