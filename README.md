@@ -13,7 +13,9 @@ Dashboard เสนอผลการวิเคราะห์ **เวลา�
 ├── index.html                  # หน้าหลัก dashboard
 ├── tomtom.html                 # หน้ารายงานสถานการณ์ TomTom Traffic Index 2025 (ดึงข้อมูลจาก data/tomtom-2025.json)
 ├── assets/
-│   ├── styles.css              # CSS ทั้งหมด (responsive PC / tablet / mobile)
+│   ├── styles.css              # CSS พื้นฐาน (responsive PC / tablet / mobile)
+│   ├── dashboard-shell.css     # เปลือกแดชบอร์ด: sidebar · top bar · banner · KPI cards · dark mode (โหลดหลังสุด)
+│   ├── dashboard-shell.js      # สร้างหน้า "ภาพรวม" จาก data/dashboard-data.json + พฤติกรรม sidebar/ค้นหา
 │   ├── app.js                  # JS — โหลดข้อมูล, สร้าง chart, ตาราง, filter
 │   ├── tomtom.js / tomtom.css      # วาดหน้า TomTom (ตาราง แถบกราฟ ข้อความพร้อมคัดลอก) และสไตล์เฉพาะหน้า
 │   ├── tomtom-i18n.js              # คำแปล TH/EN ของหน้า TomTom (เพิ่มเข้า BMA_I18N.extend)
@@ -42,7 +44,10 @@ python3 -m http.server 8080
 
 | ส่วน | คำอธิบาย |
 |---|---|
-| **Hero** | หัวข้อหลัก + ระบุวิธีสำรวจ (Floating Car Method) |
+| **Layout แบบ Admin Dashboard** | Sidebar นำทาง 7 หน้าต่าง (ย่อ/ขยายได้ · drawer บนมือถือ) + Top bar (ชื่อหน้า · ค้นหาถนน · โหมดมืด · TH/EN) |
+| **Banner ภาพรวม** | 4 ตัวชี้วัดหลัก: 51 สายถนน · 9 ปี · TomTom อันดับ 10 · เวลา/10 กม. ชั้นใน |
+| **KPI Cards** | ความเร็วขาเข้า 3 โซน (พร้อม % เปลี่ยนแปลงเทียบ 2560) + จำนวนจุดสำรวจที่ < 10 กม./ชม. |
+| **Hero (ฉบับพิมพ์)** | หัวรายงานทางการ A4 — แสดงเฉพาะเมื่อพิมพ์ |
 | **Method Card** | อธิบาย Floating Car Method พร้อม metadata |
 | **TomTom Index** | สถิติระดับโลก (อันดับ 10, Congestion 67.9%) |
 | **หน้า TomTom (tomtom.html)** | รายงานสถานการณ์: KPI · เทียบปีก่อน · เช้า–เย็น (เวลาปกติ vs เวลาที่เสียเพิ่ม) · วันที่ติดขัดสุด · เมืองในไทย · เทียบผลสำรวจ สจส. · ข้อความสรุปพร้อมคัดลอก (TH/EN) |
@@ -56,12 +61,17 @@ python3 -m http.server 8080
 
 ---
 
-## Responsive
+## การแสดงผลแยกตามอุปกรณ์ (Responsive)
 
-- **PC ≥ 1200px** — A4 layout 1320px max width, 3 columns
-- **Tablet 768–1199px** — 2 columns, padding ลดลง
-- **Mobile ≤ 767px** — 1 column, ปุ่มและ font ปรับขนาด, ตารางสามารถ scroll แนวนอน
-- **Print** — สำหรับพิมพ์รายงาน (ซ่อนปุ่ม interactive)
+เกณฑ์เดียวกันทั้งระบบ (`dashboard-shell.css` ข้อ 7 · `styles.css` · `standards-patch.css` · `tomtom.css` · `route-map.css`) และสคริปต์ตั้งค่า `<html data-device="pc|tablet|mobile">` เพื่อใช้ตรวจสอบ
+
+| อุปกรณ์ | ความกว้างหน้าจอ | เมนูหลัก | KPI | การ์ด/กราฟ | หมายเหตุ |
+|---|---|---|---|---|---|
+| **PC** (Desktop) | ≥ 1200 px | แถบด้านข้างเต็ม 248 px ย่อเป็น 76 px ได้ (จำสถานะไว้) | 4 คอลัมน์ | 2 คอลัมน์ | ช่องค้นหาถนนที่แถบบน |
+| **Tablet** | 768–1199 px | แถบไอคอน 76 px คงที่ (แสดงชื่อเมื่อชี้/โฟกัส) | 2 คอลัมน์ | 1 คอลัมน์ | พื้นที่แตะ ≥ 44 px |
+| **Mobile Phone** | ≤ 767 px | Drawer เปิดจากปุ่มเมนู (ปิดด้วย Esc/แตะฉากหลัง) | 2 คอลัมน์ (≤ 520 px = 1 คอลัมน์) | 1 คอลัมน์ | ซ่อนช่องค้นหา, ตารางเลื่อนแนวนอน |
+
+- **Print** — สำหรับพิมพ์รายงาน (ซ่อนเมนูและปุ่ม interactive, ใช้ฟอนต์ TH Sarabun New)
 
 ---
 

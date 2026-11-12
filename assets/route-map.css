@@ -32,7 +32,7 @@ body.has-tabs .std-nav.is-secondary{display:none}
 .route-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px;font-size:var(--fs-caption)}
 .route-actions a{color:#1e3a8a;font-weight:600}
 :root[data-theme='dark'] .route-actions a{color:#93c5fd}
-@media (max-width:900px){.route-layout{grid-template-columns:1fr}.route-map{height:380px}}
+@media (max-width:1199px){.route-layout{grid-template-columns:1fr}.route-map{height:380px}}
 @media print{.tab-bar{display:none !important}.tab-panel[hidden]{display:flex !important}.route-map{height:360px}}
 
 .route-note{margin:12px 0 0;font-size:var(--fs-caption);color:var(--text-muted);line-height:1.6}

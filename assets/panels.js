@@ -12,10 +12,10 @@
         tabListLabel: 'เลือกหน้าต่างเนื้อหาตามงาน',
         tabOverview: 'ภาพรวม',
         tabRoute: 'เส้นทางสำรวจ',
-        tabTomtom: 'TomTom & เปรียบเทียบ',
-        tabZones: 'โซน & แนวโน้ม',
-        tabRoads: 'ตาราง 51 สาย',
-        tabForecast: 'คาดการณ์ & ข้อเสนอแนะ',
+        tabTomtom: 'ดัชนี TomTom และการเปรียบเทียบ',
+        tabZones: 'โซนพื้นที่และแนวโน้ม',
+        tabRoads: 'ตารางรายถนน 51 สาย',
+        tabForecast: 'คาดการณ์และข้อเสนอแนะ',
         tabAbout: 'ผู้จัดทำ'
       },
       en: {
@@ -31,9 +31,23 @@
     });
   }
 
+  // ไอคอนเส้น (stroke) แบบเดียวกันทั้งชุด · ใช้ currentColor เพื่อรองรับ dark/active state
+  const ICON = {
+    overview: '<path d="M4 4h7v7H4zM13 4h7v4h-7zM13 11h7v9h-7zM4 14h7v6H4z"/>',
+    route:    '<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',
+    tomtom:   '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',
+    zones:    '<path d="M3 17l5-6 4 4 4-8 5 6"/><path d="M3 21h18"/>',
+    roads:    '<path d="M8 3L4 21M16 3l4 18M12 4v3M12 11v3M12 18v3"/>',
+    forecast: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/><path d="M16 7h4v4"/>',
+    about:    '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>'
+  };
+  function svgIcon(id) {
+    return '<svg class="sb-ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICON[id] || ICON.overview) + '</svg>';
+  }
+
   // กลุ่มเนื้อหา: ตัวเลือก CSS ของ section เดิม (เรียงตามลำดับใน DOM)
   const PANELS = [
-    { id: 'overview', key: 'tabOverview', icon: '🏠', sel: ['.intro-box', '.method-card'] },
+    { id: 'overview', key: 'tabOverview', icon: '🏠', sel: ['#dash-home', '.intro-box', '.method-card'] },
     { id: 'route',    key: 'tabRoute',    icon: '🗺️', sel: ['#survey-route-section'] },
     { id: 'tomtom',   key: 'tabTomtom',   icon: '🌐', sel: ['#tomtom-index', '#compare-sjs-tomtom'] },
     { id: 'zones',    key: 'tabZones',    icon: '📈', sel: ['#zone-details-card', 'section[aria-labelledby="ctrlHead"]', '.cards-grid', '#trend-line'] },
@@ -50,7 +64,9 @@
     const tablist = document.createElement('div');
     tablist.className = 'tab-bar';
     tablist.setAttribute('role', 'tablist');
-    tablist.setAttribute('aria-orientation', 'horizontal');
+    const sideHost = document.getElementById('sideTabs');   // เมนูด้านข้าง (ถ้ามี) — ใช้แทนแถบแท็บแนวนอน
+    const vertical = !!sideHost;
+    tablist.setAttribute('aria-orientation', vertical ? 'vertical' : 'horizontal');
     tablist.setAttribute('data-i18n-attr', 'aria-label:tabListLabel');
 
     const tabs = [];
@@ -78,7 +94,7 @@
       tab.setAttribute('aria-selected', 'false');
       tab.tabIndex = -1;
       tab.dataset.panel = p.id;
-      tab.innerHTML = '<span aria-hidden="true">' + p.icon + '</span> <span data-i18n="' + p.key + '">' + p.id + '</span>';
+      tab.innerHTML = svgIcon(p.id) + '<span class="sb-label" data-i18n="' + p.key + '">' + p.id + '</span>';
 
       tablist.appendChild(tab);
       tabs.push(tab);
@@ -88,9 +104,11 @@
     if (!tabs.length) return;
 
     // วาง tab bar แทนตำแหน่ง quick-nav เดิม แล้วเรียง panel ต่อท้าย
-    if (nav) { nav.parentNode.insertBefore(tablist, nav); nav.classList.add('is-secondary'); }
+    if (vertical) { tablist.classList.add('is-side'); sideHost.appendChild(tablist); if (nav) nav.classList.add('is-secondary'); }
+    else if (nav) { nav.parentNode.insertBefore(tablist, nav); nav.classList.add('is-secondary'); }
     else main.insertBefore(tablist, main.firstChild);
-    let anchor = nav || tablist;
+    let anchor = nav || main.firstChild;
+    if (!nav) { anchor = document.createComment('panels'); main.insertBefore(anchor, main.firstChild); }
     panels.forEach((pn) => { anchor.after(pn); anchor = pn; });
     document.body.classList.add('has-tabs');
 
@@ -118,8 +136,9 @@
       tab.addEventListener('click', () => activate(tab.dataset.panel));
       tab.addEventListener('keydown', (e) => {
         let n = null;
-        if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
-        else if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+        const next = vertical ? 'ArrowDown' : 'ArrowRight', prev = vertical ? 'ArrowUp' : 'ArrowLeft';
+        if (e.key === next) n = (i + 1) % tabs.length;
+        else if (e.key === prev) n = (i - 1 + tabs.length) % tabs.length;
         else if (e.key === 'Home') n = 0;
         else if (e.key === 'End') n = tabs.length - 1;
         if (n != null) { e.preventDefault(); activate(tabs[n].dataset.panel, { focus: true }); }

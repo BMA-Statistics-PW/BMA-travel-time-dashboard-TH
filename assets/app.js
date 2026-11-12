@@ -67,7 +67,7 @@
   function miniChart(r) {
     const vals = [r.speed_am_in, r.speed_am_out, r.speed_pm_in, r.speed_pm_out];
     const colors = ['#d63031', '#e17055', '#6c5ce7', '#0984e3'];
-    const titlesTh = ['เช้าเข้า','เช้าออก','เย็นเข้า','เย็นออก'];
+    const titlesTh = ['เช้า · ขาเข้า','เช้า · ขาออก','เย็น · ขาเข้า','เย็น · ขาออก'];
     const titlesEn = ['AM-In','AM-Out','PM-In','PM-Out'];
     const titles = lang() === 'th' ? titlesTh : titlesEn;
     const unit = lang() === 'th' ? 'กม./ชม.' : 'km/h';
@@ -419,7 +419,7 @@
         : { inner: 'Inner Zone', middle: 'Middle Zone', outer: 'Outer Zone' };
       const unit = lang() === 'th' ? 'กม./ชม.' : 'km/h';
       const txt = lang() === 'th'
-        ? `หมายเหตุ: แนวโน้ม BAU (Business as Usual) ชี้ว่าพื้นที่เสี่ยงทรุดตัวเร็วสุดคือ ${labelMap[weakest.zone]} (${fmt(weakest.delta)} ${unit} ต่อปี) หากไม่มีมาตรการเพิ่มเติม — เป็นการคาดการณ์เชิงแนวโน้ม ไม่ใช่แบบจำลองจราจรเต็มรูปแบบ`
+        ? `หมายเหตุ: แนวโน้มกรณีไม่มีมาตรการ (Business as Usual: BAU) ชี้ว่าพื้นที่ที่มีอัตราเร็วลดลงเร็วที่สุดคือ ${labelMap[weakest.zone]} (${fmt(weakest.delta)} ${unit} ต่อปี) หากไม่มีมาตรการเพิ่มเติม ทั้งนี้เป็นการคาดการณ์เชิงแนวโน้ม (Trend Projection) มิใช่แบบจำลองการจราจรระดับโครงข่าย`
         : `Note: BAU trend indicates the fastest-deteriorating zone is ${labelMap[weakest.zone]} (${fmt(weakest.delta)} ${unit}/year) without intervention — this is a trend projection, not a full network simulation.`;
       note.textContent = txt;
     }
@@ -462,12 +462,12 @@
       const wordRoads = lang() === 'th' ? 'ถนน' : 'roads';
       set(`[data-count="${z}"]`, `${s.count} ${wordRoads}`);
       set(`[data-avg="${z}-am-in"]`, fmt(s.am_in, 2));
-      set(`[data-stat="${z}-am-in"]`, fmt(s.am_in, 1));
-      set(`[data-stat="${z}-am-out"]`, fmt(s.am_out, 1));
-      set(`[data-stat="${z}-pm-in"]`, fmt(s.pm_in, 1));
-      set(`[data-stat="${z}-pm-out"]`, fmt(s.pm_out, 1));
+      set(`[data-stat="${z}-am-in"]`, fmt(s.am_in, 2));
+      set(`[data-stat="${z}-am-out"]`, fmt(s.am_out, 2));
+      set(`[data-stat="${z}-pm-in"]`, fmt(s.pm_in, 2));
+      set(`[data-stat="${z}-pm-out"]`, fmt(s.pm_out, 2));
       if (s.range_in_min != null) {
-        set(`[data-range="${z}"]`, `${s.range_in_min.toFixed(1)}–${s.range_in_max.toFixed(1)}`);
+        set(`[data-range="${z}"]`, `${s.range_in_min.toFixed(2)}–${s.range_in_max.toFixed(2)}`);
       }
     });
   }
@@ -520,7 +520,7 @@
           <td>${miniChart(r)}</td>
         </tr>`;
     });
-    tbody.innerHTML = html || `<tr><td colspan="8" style="padding:24px;text-align:center;color:#94a3b8">${lang() === 'th' ? 'ไม่พบข้อมูลที่ค้นหา' : 'No matching results'}</td></tr>`;
+    tbody.innerHTML = html || `<tr><td colspan="8" class="rt-empty">${lang() === 'th' ? 'ไม่พบข้อมูลที่ค้นหา' : 'No matching results'}</td></tr>`;
 
     const tableEl = $(`table[data-zone-table="${zoneKey}"]`);
     if (tableEl) {

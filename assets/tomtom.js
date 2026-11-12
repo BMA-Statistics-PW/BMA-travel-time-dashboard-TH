@@ -13,6 +13,7 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const f = (n, d = 1) => Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
   const mmss = s => { s = Math.round(s); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+  const f2 = n => f(n, 2);   // อัตราเร็ว (กม./ชม.) แสดงทศนิยม 2 ตำแหน่ง
   const sign = (n, d = 1) => (n > 0 ? '+' : n < 0 ? '−' : '') + f(Math.abs(n), d);
   const fill = (str, o) => str.replace(/\{(\w+)\}/g, (_, k) => (o[k] != null ? o[k] : '{' + k + '}'));
   const MONTH_TH = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
@@ -31,9 +32,9 @@
       [t('ttK1'), `#${rank}`, '', ''],
       [t('ttK2'), `${f(c.congestion_pct)}%`, '', chip(`▲ ${f(c.congestion_change_pp)} ${t('ttUnitPp')} · ${t('ttVsPrev')}`, true)],
       [t('ttK3'), mmss(c.time_10km_s), t('ttUnitMin'), chip(`▲ ${c.time_10km_change_s} ${t('ttUnitSec')} · ${t('ttVsPrev')}`, true)],
-      [t('ttK4'), f(c.rush_speed_kmh), t('ttUnitKmh'), chip(`▼ ${f(Math.abs(c.rush_speed_change_kmh))} · ${t('ttVsPrev')}`, true)],
+      [t('ttK4'), f2(c.rush_speed_kmh), t('ttUnitKmh'), chip(`▼ ${f2(Math.abs(c.rush_speed_change_kmh))} · ${t('ttVsPrev')}`, true)],
       [t('ttK5'), f(c.rush_time_lost_h, 0), t('ttUnitH'), chip(`▲ ${f(c.rush_time_lost_change_h)} ${t('ttUnitHShort')} · ${t('ttVsPrev')}`, true)],
-      [t('ttK6'), f(c.avg_speed_kmh), t('ttUnitKmh'), '']
+      [t('ttK6'), f2(c.avg_speed_kmh), t('ttUnitKmh'), '']
     ];
     $('#ttKpis').innerHTML = cards.map(([l, v, u, d]) => `<article class="tt-kpi"><div class="tt-kpi__label">${l}</div><div class="tt-kpi__value">${v}<small>${u}</small></div><div class="tt-kpi__foot">${d}</div></article>`).join('');
   }
@@ -43,8 +44,8 @@
     const rows = [
       [t('ttM1'), f(c.congestion_pct - c.congestion_change_pp), f(c.congestion_pct), `${sign(c.congestion_change_pp)} ${t('ttUnitPp')}`, c.congestion_change_pp > 0],
       [t('ttM2'), mmss(c.time_10km_s - c.time_10km_change_s), mmss(c.time_10km_s), `${sign(c.time_10km_change_s, 0)} ${t('ttUnitSec')}`, c.time_10km_change_s > 0],
-      [t('ttM3'), f(c.rush_speed_kmh - c.rush_speed_change_kmh), f(c.rush_speed_kmh), sign(c.rush_speed_change_kmh), c.rush_speed_change_kmh < 0],
-      [t('ttM4'), f(c.highway_speed_kmh - c.highway_speed_change_kmh), f(c.highway_speed_kmh), sign(c.highway_speed_change_kmh), c.highway_speed_change_kmh < 0],
+      [t('ttM3'), f2(c.rush_speed_kmh - c.rush_speed_change_kmh), f2(c.rush_speed_kmh), sign(c.rush_speed_change_kmh, 2), c.rush_speed_change_kmh < 0],
+      [t('ttM4'), f2(c.highway_speed_kmh - c.highway_speed_change_kmh), f2(c.highway_speed_kmh), sign(c.highway_speed_change_kmh, 2), c.highway_speed_change_kmh < 0],
       [t('ttM5'), f(c.dist_15min_km - c.dist_15min_change_km), f(c.dist_15min_km), sign(c.dist_15min_change_km), c.dist_15min_change_km < 0],
       [t('ttM6'), f(c.highway_trip_ratio_pct - c.highway_trip_ratio_change_pp), f(c.highway_trip_ratio_pct), `${sign(c.highway_trip_ratio_change_pp)} ${t('ttUnitPp')}`, null],
       [t('ttM7'), f(c.rush_time_lost_h - c.rush_time_lost_change_h), f(c.rush_time_lost_h), `${sign(c.rush_time_lost_change_h)} ${t('ttUnitHShort')}`, c.rush_time_lost_change_h > 0]
@@ -65,7 +66,7 @@
         <span class="tt-bar__seg is-free" style="width:${(r.free / max * 100).toFixed(1)}%"></span><span class="tt-bar__seg is-extra" style="width:${(r.extra / max * 100).toFixed(1)}%"></span></span>
       <span class="tt-bar__val">${mmss(r.sec)}</span></li>`).join('');
     const head = `<tr><th scope="col" class="tt-left">${t('ttColPeriod')}</th><th scope="col">${t('ttColTime')}</th><th scope="col">${t('ttColCong')}</th><th scope="col">${t('ttColSpeed')}</th><th scope="col">${t('ttColExtra')}</th></tr>`;
-    $('#ttRushTable').innerHTML = `<thead>${head}</thead><tbody>` + sp.map(r => `<tr><td class="tt-left" data-label="${esc(t('ttColPeriod'))}">${r.label}</td><td data-label="${esc(t('ttColTime'))}">${mmss(r.sec)}</td><td data-label="${esc(t('ttColCong'))}">${f(r.cl)}%</td><td data-label="${esc(t('ttColSpeed'))}">${f(r.spd)}</td><td data-label="${esc(t('ttColExtra'))}">+${mmss(r.extra)}</td></tr>`).join('') + '</tbody>';
+    $('#ttRushTable').innerHTML = `<thead>${head}</thead><tbody>` + sp.map(r => `<tr><td class="tt-left" data-label="${esc(t('ttColPeriod'))}">${r.label}</td><td data-label="${esc(t('ttColTime'))}">${mmss(r.sec)}</td><td data-label="${esc(t('ttColCong'))}">${f(r.cl)}%</td><td data-label="${esc(t('ttColSpeed'))}">${f2(r.spd)}</td><td data-label="${esc(t('ttColExtra'))}">+${mmss(r.extra)}</td></tr>`).join('') + '</tbody>';
     $('#ttRushIns').textContent = fill(t('ttRushIns'), { pm: f(pm.congestion_pct), am: f(am.congestion_pct) });
   }
 
@@ -90,7 +91,7 @@
     let rows = '';
     if (S) rows += ['inner', 'middle', 'outer'].map(z => `<tr><td class="tt-left" data-label="${esc(t('ttColSrc'))}">${fill(t('ttVsSjs'), { zone: zn[z] })}</td><td data-label="${esc(t('ttColVal'))}">${fill(t('ttVsInOut'), { i: f(S.zones[z].speed_2568_in, 2), o: f(S.zones[z].speed_2568_out, 2) })}</td><td class="tt-left" data-label="${esc(t('ttColScope'))}">${t('ttVsScopeSjs')}</td></tr>`).join('');
     const tom = [[t('ttVsTomAm'), T.rush.am.speed_kmh], [t('ttVsTomPm'), T.rush.pm.speed_kmh], [t('ttVsTomAvg'), T.city.rush_speed_kmh]];
-    rows += tom.map(([l, v]) => `<tr class="is-tom"><td class="tt-left" data-label="${esc(t('ttColSrc'))}">${l}</td><td data-label="${esc(t('ttColVal'))}">${f(v)}</td><td class="tt-left" data-label="${esc(t('ttColScope'))}">${t('ttVsScopeTom')}</td></tr>`).join('');
+    rows += tom.map(([l, v]) => `<tr class="is-tom"><td class="tt-left" data-label="${esc(t('ttColSrc'))}">${l}</td><td data-label="${esc(t('ttColVal'))}">${f2(v)}</td><td class="tt-left" data-label="${esc(t('ttColScope'))}">${t('ttVsScopeTom')}</td></tr>`).join('');
     $('#ttVs').innerHTML = `<thead>${head}</thead><tbody>${rows}</tbody>`;
   }
 
