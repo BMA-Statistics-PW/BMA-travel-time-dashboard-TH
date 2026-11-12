@@ -53,6 +53,7 @@
     if (v >= 10) return '🟡';
     return '🔴';
   }
+  const NOTE_EN = { 'ไม่ได้สำรวจ': 'Not surveyed' };
   function speedCell(val, note) {
     if (typeof val === 'number') {
       const unit = lang() === 'th' ? 'กม./ชม.' : 'km/h';
@@ -60,7 +61,8 @@
         <span class="se">${speedEmoji(val)}</span>${val.toFixed(2)}
       </span>`;
     }
-    return `<span class="speed-cell na">${escapeHtml(note || '—')}</span>`;
+    const nt = note ? (lang() === 'th' ? note : (NOTE_EN[note] || note)) : '—';
+    return `<span class="speed-cell na">${escapeHtml(nt)}</span>`;
   }
 
   // Mini-chart (translated tooltips)
@@ -138,13 +140,13 @@
   if (filterEls.print)  filterEls.print.addEventListener('click', () => window.print());
 
   // ────────────────────────────────────────────────────────────────
-  // Bind zones → KPI + 2560 vs 2568 table
+  // Bind zones → KPI + 2560 vs 2569 table
   // ────────────────────────────────────────────────────────────────
   function getZoneRoadName(zk, dir, kind) {
     // kind = min/max ; dir = in/out
     if (!DATA || !DATA.zones || !DATA.zones[zk]) return '';
     const z = DATA.zones[zk];
-    return z[`${kind}_road_2568_${dir}`] || '';
+    return z[`${kind}_road_2569_${dir}`] || '';
   }
   function localizedExtreme(label, name) {
     const prefix = lang() === 'th'
@@ -158,26 +160,26 @@
       const z = zones[zk];
       $$(`.kpi-speed[data-zone="${zk}"]`).forEach(el => {
         const dir = el.dataset.direction;
-        el.textContent = fmt(dir === 'out' ? z.speed_2568_out : z.speed_2568_in);
+        el.textContent = fmt(dir === 'out' ? z.speed_2569_out : z.speed_2569_in);
       });
       const set = (sel, val) => { const el = $(sel); if (el) el.textContent = val; };
       ['in','out'].forEach(dir => {
         ['min','max'].forEach(kind => {
           set(`[data-extreme-label="${kind}"][data-zone="${zk}"][data-direction="${dir}"]`,
-              localizedExtreme(kind, z[`${kind}_road_2568_${dir}`]));
+              localizedExtreme(kind, z[`${kind}_road_2569_${dir}`]));
           set(`[data-extreme-speed="${kind}"][data-zone="${zk}"][data-direction="${dir}"]`,
-              fmt(z[`${kind}_speed_2568_${dir}`]));
+              fmt(z[`${kind}_speed_2569_${dir}`]));
         });
       });
 
       const row = $(`.modern-table tbody tr[data-zone="${zk}"]`);
       if (row) {
         const c2560 = row.querySelector('[data-field="speed_2560_in"]');
-        const c2568 = row.querySelector('[data-field="speed_2568_in"]');
+        const c2569 = row.querySelector('[data-field="speed_2569_in"]');
         const cdel = row.querySelector('[data-field="delta_in"]');
         const cpct = row.querySelector('[data-field="pct_in"]');
         if (c2560) c2560.textContent = fmt(z.speed_2560_in);
-        if (c2568) c2568.textContent = fmt(z.speed_2568_in);
+        if (c2569) c2569.textContent = fmt(z.speed_2569_in);
         if (cdel) cdel.textContent = (z.delta_in < 0 ? '▼ ' : '▲ ') + fmt(z.delta_in);
         if (cpct) cpct.textContent = fmt(z.pct_in) + '%';
         [cdel, cpct].forEach(el => {
@@ -439,7 +441,7 @@
     if (!DATA) return {};
     const out = {};
     ['inner', 'middle', 'outer'].forEach(z => {
-      const rs = DATA.roads_2568.filter(r => r.zone === z);
+      const rs = DATA.roads_2569.filter(r => r.zone === z);
       const num = (key) => rs.map(r => r[key]).filter(v => typeof v === 'number');
       const ai = num('speed_am_in');
       out[z] = {
@@ -484,7 +486,7 @@
   function renderZoneTable(zoneKey) {
     const tbody = $(`tbody[data-tbody="${zoneKey}"]`);
     if (!tbody || !DATA) return;
-    let rows = DATA.roads_2568.filter(r => r.zone === zoneKey);
+    let rows = DATA.roads_2569.filter(r => r.zone === zoneKey);
     const q = RT.q.toLowerCase();
     if (q) rows = rows.filter(r =>
       (r.name || '').toLowerCase().includes(q) ||
@@ -513,9 +515,9 @@
             <span class="rd-seg">${escapeHtml(r.segment)}</span>
           </td>
           <td class="td-num"${lenTip(r)}>${r.length_km != null ? r.length_km.toFixed(2) : '—'}${lenTip(r) ? '*' : ''}</td>
-          <td>${speedCell(r.speed_am_in)}</td>
+          <td>${speedCell(r.speed_am_in, r.note_am_in)}</td>
           <td>${speedCell(r.speed_am_out, r.note_am_out)}</td>
-          <td>${speedCell(r.speed_pm_in)}</td>
+          <td>${speedCell(r.speed_pm_in, r.note_pm_in)}</td>
           <td>${speedCell(r.speed_pm_out, r.note_pm_out)}</td>
           <td>${miniChart(r)}</td>
         </tr>`;

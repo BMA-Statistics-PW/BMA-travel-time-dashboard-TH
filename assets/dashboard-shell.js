@@ -16,10 +16,10 @@
     th: {
       sbLabel: 'เมนูหลัก', sbSub: 'แดชบอร์ดสถิติการจราจร', sbCollapse: 'ย่อเมนู', sbExpand: 'ขยายเมนู',
       sbOpen: 'เปิดเมนู', sbClose: 'ปิดเมนู', sbOrgShort: 'กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน',
-      dashSub: 'เวลาและอัตราเร็วเฉลี่ยในการเดินทาง กรุงเทพมหานคร พ.ศ. 2560–2568',
+      dashSub: 'เวลาและอัตราเร็วเฉลี่ยในการเดินทาง กรุงเทพมหานคร พ.ศ. 2560–2569',
       tbSearchPh: 'ค้นหาชื่อถนน...', tbSearchAria: 'ค้นหาชื่อถนนในตาราง 51 สาย',
       heroH: 'ภาพรวมอัตราเร็วเฉลี่ยในการเดินทาง (Travel Speed Overview) กรุงเทพมหานคร',
-      heroSub: 'ผลการสำรวจด้วยวิธีรถสำรวจตามกระแสจราจร (Floating Car Method) ช่วงเร่งด่วนเช้าและเย็น · พ.ศ. 2560–2568',
+      heroSub: 'ผลการสำรวจด้วยวิธีรถสำรวจตามกระแสจราจร (Floating Car Method) ช่วงเร่งด่วนเช้าและเย็น · พ.ศ. 2560–2569',
       btnPrint: 'พิมพ์รายงาน', btnRefresh: 'โหลดข้อมูลอีกครั้ง',
       ht1: 'ถนนที่สำรวจ', ht1s: 'ชั้นใน {a} · ชั้นกลาง {b} · ชั้นนอก {c}', ht1u: 'สาย',
       ht2: 'ช่วงเวลาที่มีข้อมูล', ht2s: 'สำรวจต่อเนื่องทุกปี', ht2u: 'ปี',
@@ -35,29 +35,29 @@
       covid: 'โควิด-19', yoy: 'เทียบปีก่อน',
       mt1: 'ปี {y}', mt2: 'ปี {y}', mt3: 'เปลี่ยนแปลง', mt4: 'สูงสุดในรอบ 9 ปี',
       unitKmh: 'กม./ชม.',
-      insTitle: 'ข้อค้นพบสำคัญ', insSub: 'สรุปจากข้อมูลการสำรวจ ปี พ.ศ. 2568', insAll: 'ดูข้อเสนอแนะเชิงนโยบาย',
+      insTitle: 'ข้อค้นพบสำคัญ', insSub: 'สรุปจากข้อมูลการสำรวจ ปี พ.ศ. 2569 (ม.ค.–ต.ค.)', insAll: 'ดูข้อเสนอแนะเชิงนโยบาย',
       qaTitle: 'เมนูลัด (Quick Actions)', qaSub: 'เข้าถึงส่วนที่ใช้งานบ่อย',
       qa1: 'เส้นทางสำรวจ', qa1s: 'แผนที่ 51 สายถนน',
       qa2: 'ดัชนี TomTom', qa2s: 'เปรียบเทียบกับ สจส.',
       qa3: 'ตาราง 51 สาย', qa3s: 'อัตราเร็วรายถนน',
       qa4: 'คาดการณ์ (BAU)', qa4s: 'แนวโน้มปี พ.ศ. 2569',
-      topTitle: 'การจัดอันดับถนน ปี พ.ศ. 2568', topSub: 'อัตราเร็วเฉลี่ยรายถนน (เฉลี่ย 4 ช่วงเวลา/ทิศทาง)',
+      topTitle: 'การจัดอันดับถนน ปี พ.ศ. 2569', topSub: 'อัตราเร็วเฉลี่ยรายถนน (เฉลี่ย 4 ช่วงเวลา/ทิศทาง)',
       topSlow: 'ช้าที่สุด', topFast: 'เร็วที่สุด', topAll: 'ดูทั้งหมด',
       topLen: 'ระยะทาง {l} กม.',
       pdTitle: 'ประเด็นที่ควรติดตาม', pdSub: 'จากผลการวิเคราะห์ชุดข้อมูลนี้', pdBadge: '{n} ประเด็น',
       pd1: 'ข้อเสนอแนะเชิงนโยบาย', pd1d: 'แนวทางลดความแออัดและส่งเสริมการใช้ระบบขนส่งสาธารณะ', pd1b: 'ดูข้อเสนอ',
       pd2: 'คาดการณ์กรณีไม่มีมาตรการ (BAU)', pd2d: 'แนวโน้มอัตราเร็วเฉลี่ยปี พ.ศ. 2569 ของ 3 โซนพื้นที่', pd2b: 'ดูคาดการณ์',
-      pd3: 'บันทึกการแก้ไขข้อมูล', pd3d: 'ปรับปรุงล่าสุด {d} (ค่าพื้นที่ชั้นกลาง ปี 2567–2568)', pd3b: 'ดูโซนและแนวโน้ม',
+      pd3: 'บันทึกการแก้ไขข้อมูล', pd3d: 'ปรับปรุงล่าสุด {d} (เพิ่มข้อมูลปี 2569)', pd3b: 'ดูโซนและแนวโน้ม',
       noData: 'ไม่สามารถโหลดข้อมูลได้ โปรดตรวจสอบไฟล์ data/dashboard-data.json',
       asOf: 'ข้อมูล ณ {d}'
     },
     en: {
       sbLabel: 'Main menu', sbSub: 'Traffic Statistics Panel', sbCollapse: 'Collapse menu', sbExpand: 'Expand menu',
       sbOpen: 'Open menu', sbClose: 'Close menu', sbOrgShort: 'Statistics & Research Group, TTD',
-      dashSub: 'Travel time and average speed in Bangkok, 2017–2025',
+      dashSub: 'Travel time and average speed in Bangkok, 2017–2026',
       tbSearchPh: 'Search road name...', tbSearchAria: 'Search road name in the 51-road table',
       heroH: 'Bangkok average travel speed overview',
-      heroSub: 'Floating Car Method survey · AM and PM peak · 2017–2025',
+      heroSub: 'Floating Car Method survey · AM and PM peak · 2017–2026',
       btnPrint: 'Print report', btnRefresh: 'Reload data',
       ht1: 'Roads surveyed', ht1s: 'Inner {a} · Middle {b} · Outer {c}', ht1u: 'roads',
       ht2: 'Data coverage', ht2s: 'Surveyed every year', ht2u: 'years',
@@ -73,19 +73,19 @@
       covid: 'COVID-19', yoy: 'vs previous year',
       mt1: '{y}', mt2: '{y}', mt3: 'Change', mt4: 'Peak in 9 years',
       unitKmh: 'km/h',
-      insTitle: 'Key findings', insSub: 'Summary of the 2025 survey', insAll: 'View policy recommendations',
+      insTitle: 'Key findings', insSub: 'Summary of the 2026 survey (Jan–Oct)', insAll: 'View policy recommendations',
       qaTitle: 'Shortcuts', qaSub: 'Open frequently used sections',
       qa1: 'Survey routes', qa1s: 'Map of 51 roads',
       qa2: 'TomTom Index', qa2s: 'Compared with TTD',
       qa3: '51-road table', qa3s: 'Speed by road',
       qa4: 'BAU forecast', qa4s: '2026 trend',
-      topTitle: 'Road ranking, 2025', topSub: 'Average speed per road (4 periods/directions)',
+      topTitle: 'Road ranking, 2026', topSub: 'Average speed per road (4 periods/directions)',
       topSlow: 'Slowest', topFast: 'Fastest', topAll: 'View all',
       topLen: '{l} km long',
       pdTitle: 'Items to watch', pdSub: 'From the analysis of this dataset', pdBadge: '{n} items',
       pd1: 'Policy recommendations', pd1d: 'Ways to reduce congestion and raise public-transport use', pd1b: 'View',
       pd2: 'Business-as-usual scenario', pd2d: '2026 speed trend for the 3 zones (BAU)', pd2b: 'View scenario',
-      pd3: 'Data revision log', pd3d: 'Latest update {d} (Middle zone, 2024–2025)', pd3b: 'View zones & trends',
+      pd3: 'Data revision log', pd3d: 'Latest update {d} (added 2026 data)', pd3b: 'View zones & trends',
       noData: 'Could not load data/dashboard-data.json',
       asOf: 'Data as of {d}'
     }
@@ -151,7 +151,7 @@
   }
   function jamStats() {
     let n = 0, tot = 0;
-    DATA.roads_2568.forEach(r => ['speed_am_in', 'speed_am_out', 'speed_pm_in', 'speed_pm_out'].forEach(k => {
+    DATA.roads_2569.forEach(r => ['speed_am_in', 'speed_am_out', 'speed_pm_in', 'speed_pm_out'].forEach(k => {
       if (typeof r[k] === 'number') { tot++; if (r[k] < 10) n++; }
     }));
     return { n, tot };
@@ -172,7 +172,7 @@
       { ic: 'road', k: 'ht1', v: m.road_count_total, u: t('ht1u'), s: t('ht1s', { a: rc.inner, b: rc.middle, c: rc.outer }) },
       { ic: 'cal', k: 'ht2', v: yrs, u: t('ht2u'), s: t('ht2s') },
       { ic: 'globe', k: 'ht3', v: '#' + tt.world_rank, u: '', s: t('ht3s', { a: fmt(tt.congestion_level_pct, 1), b: sign(tt.congestion_yoy_pp, 1) }) },
-      { ic: 'clock', k: 'ht4', v: fmt(600 / z.inner.speed_2568_in), u: t('ht4u'), s: t('ht4s', { a: fmt(z.inner.speed_2568_in) }) }
+      { ic: 'clock', k: 'ht4', v: fmt(600 / z.inner.speed_2569_in), u: t('ht4u'), s: t('ht4s', { a: fmt(z.inner.speed_2569_in) }) }
     ];
     return `
     <section class="hero-banner" aria-labelledby="heroH">
@@ -199,7 +199,7 @@
     const mx = scaleMax(), z = DATA.zones;
     const cards = ZONES.map(k => {
       const zz = z[k];
-      const v = zz.speed_2568_in, base = zz.speed_2560_in, p = zz.pct_in;
+      const v = zz.speed_2569_in, base = zz.speed_2560_in, p = zz.pct_in;
       return `<article class="kpi z-${k}">
         <div class="kpi-top"><span class="kpi-ico">${ico(k === 'inner' ? 'pin' : k === 'middle' ? 'road' : 'map', 22)}</span>${badge(p)}</div>
         <div class="kpi-v">${fmt(v)}<span class="kpi-u"> ${t('unitKmh')}</span></div>
@@ -280,7 +280,7 @@
   }
 
   function topList() {
-    const list = DATA.roads_2568.map(r => ({ r, v: roadAvg(r) })).filter(x => x.v != null);
+    const list = DATA.roads_2569.map(r => ({ r, v: roadAvg(r) })).filter(x => x.v != null);
     list.sort((a, b) => S.top === 'slow' ? a.v - b.v : b.v - a.v);
     return list.slice(0, 3).map((x, i) => `<li class="top-row">
         <span class="top-av z-${x.r.zone}"><span>${t(ZKEY[x.r.zone][0])}</span><i class="rank">${i + 1}</i></span>
