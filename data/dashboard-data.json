@@ -12,7 +12,7 @@
   "method": "Floating Car Method",
   "method_note": "การสำรวจบนถนน 51 สายหลัก ในช่วงเร่งด่วนเช้า (07:00–09:00) และเร่งด่วนเย็น (16:00–18:00) แยกขาเข้า–ขาออก",
   "data_source": "การสำรวจอัตราเร็วเฉลี่ยบนถนนสายหลัก สำนักการจราจรและขนส่ง ปี 2560–2569",
-  "as_of": "ตุลาคม 2569",
+  "as_of": "31 ตุลาคม 2569",
   "org": "กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน สำนักการจราจรและขนส่ง กรุงเทพมหานคร",
   "author": "© Prapawadee_W.",
   "revisions": [
@@ -27,8 +27,8 @@
     "note_en": "Middle-zone values for 2024-2025 revised after correcting the Phetkasem middle-zone segment formula; added direction-specific lengths (length_in_km/length_out_km) and travel times based on distance actually driven per direction"
    }
   ],
-  "update_note_th": "อัปเดตข้อมูล ตุลาคม 2569 (ข้อมูลปี 2569 ถึง 30 ตุลาคม) · ไม่ได้สำรวจเส้นทางที่มีการก่อสร้างรถไฟฟ้า (รถไฟฟ้าสายสีม่วงใต้และสายสีส้ม) จึงมีบางเส้นทางไม่มีข้อมูลในปี 2569",
-  "update_note_en": "Data updated October 2025 (B.E. 2569; survey data through 30 October). Routes affected by metro construction (Purple Line South and Orange Line) were not surveyed, so some routes have no 2026 data.",
+  "update_note_th": "ข้อมูลปี 2569 สำรวจถึงวันที่ 31 ตุลาคม 2569 · ยกเว้นการสำรวจเส้นทางที่มีการก่อสร้างรถไฟฟ้า (สายสีม่วงและสายสีส้ม)",
+  "update_note_en": "2026 survey data through 31 October 2026 · excluding routes with metro construction (Purple and Orange Lines)",
   "roads_surveyed_2569": 49
  },
  "tomtom_2025": {
