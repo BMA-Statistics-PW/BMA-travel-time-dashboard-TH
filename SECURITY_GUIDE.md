@@ -1,4 +1,4 @@
-# 🔐 คู่มือเพิ่มความปลอดภัย GitHub 100%
+# 🔐 คู่มือเพิ่มความปลอดภัย
 ## BMA-Statistics-PW | ขั้นตอนที่ต้องทำเองบน GitHub
 
 > © Prapawadee_W. | สร้างโดย Claude Sonnet 4.6
