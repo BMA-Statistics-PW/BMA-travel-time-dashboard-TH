@@ -1,0 +1,40 @@
+/* Survey route map + tab panels — BMA dashboard · © Prapawadee_W. */
+.tab-bar{display:flex;gap:6px;overflow-x:auto;padding:6px;border-radius:14px;background:var(--bg-light);border:1px solid #d6e0ea;position:sticky;top:0;z-index:30;scrollbar-width:thin}
+.tab-btn{flex:0 0 auto;font:600 14px/1.2 var(--font-sans);color:var(--text-mid);background:transparent;border:1px solid transparent;border-radius:10px;padding:10px 14px;min-height:44px;cursor:pointer;white-space:nowrap;transition:.2s}
+.tab-btn:hover{background:#e6eef7}
+.tab-btn[aria-selected="true"]{background:var(--primary-color);color:#fff;box-shadow:0 2px 6px rgba(10,46,92,.25)}
+.tab-btn:focus-visible,.route-item:focus-visible,.tab-panel:focus-visible{outline:3px solid var(--accent-color);outline-offset:2px}
+.tab-panel{display:flex;flex-direction:column;gap:28px}
+.tab-panel[hidden]{display:none}
+body.has-tabs .std-nav.is-secondary{display:none}
+:root[data-theme='dark'] .tab-bar{background:#14233a;border-color:#2c4263}
+:root[data-theme='dark'] .tab-btn{color:#cbd5e1}
+:root[data-theme='dark'] .tab-btn:hover{background:#1e3a5f}
+:root[data-theme='dark'] .tab-btn[aria-selected="true"]{background:#2563eb;color:#fff}
+
+.route-card{border:1px solid #d6e0ea;border-radius:16px;padding:20px;background:#fff}
+:root[data-theme='dark'] .route-card{background:#101c2e;border-color:#2c4263}
+.route-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:16px;margin-top:14px}
+.route-map{height:520px;border-radius:12px;border:1px solid #c9d6e3;background:#e8eef4;z-index:0}
+.route-map-fail{display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--status-red)}
+.route-side{display:flex;flex-direction:column;gap:10px;min-width:0}
+.route-legend{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:var(--fs-small)}
+.route-legend label{display:inline-flex;gap:6px;align-items:center;cursor:pointer;min-height:44px;padding:0 4px}
+.route-legend .sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.route-list{list-style:none;margin:0;padding:0;max-height:380px;overflow:auto;border:1px solid #d6e0ea;border-radius:10px}
+.route-item{min-height:44px;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #eef2f6;padding:8px 10px;font:inherit;cursor:pointer;color:inherit}
+.route-item:hover{background:#eff6ff}
+.route-item.no-geom{opacity:.55;cursor:default}
+.route-dot{width:10px;height:10px;border-radius:50%;margin-top:6px}
+.route-name{font-weight:600;font-size:var(--fs-small)}
+.route-seg{grid-column:2;font-size:var(--fs-caption);color:var(--text-muted)}
+.route-status{font-size:var(--fs-caption);color:var(--text-muted);margin:0}
+.route-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px;font-size:var(--fs-caption)}
+.route-actions a{color:#1e3a8a;font-weight:600}
+:root[data-theme='dark'] .route-actions a{color:#93c5fd}
+@media (max-width:1199px){.route-layout{grid-template-columns:1fr}.route-map{height:380px}}
+@media print{.tab-bar{display:none !important}.tab-panel[hidden]{display:flex !important}.route-map{height:360px}}
+
+.route-note{margin:12px 0 0;font-size:var(--fs-caption);color:var(--text-muted);line-height:1.6}
+.route-card,.route-list,.tab-bar{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.tab-btn{transition:none}}

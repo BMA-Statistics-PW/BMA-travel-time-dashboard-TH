@@ -1,0 +1,117 @@
+/* ════════════════════════════════════════════════════════════════
+   formal-theme.css — ชั้นรูปแบบทางการ (โหลดหลัง standards-patch.css)
+   Navy #1F3864 + Gold #B8860B · A4 · TH Sarabun New (พิมพ์) · © Prapawadee_W.
+   เขียนทับ styles.css ฉบับเต็ม (v4) โดยไม่แก้ไฟล์เดิม
+   ════════════════════════════════════════════════════════════════ */
+
+:root{
+  --f-navy:#1F3864; --f-navy-dark:#16294a;
+  --f-gold:#B8860B; --f-gold-text:#7a5a00;
+  --f-rule:#9aa5b8; --f-head-bg:#E7EBF3; --f-head-text:#1F3864;
+  --primary-color:#1F3864; --secondary-color:#2F4B7C; --accent-color:#B8860B;
+  --focus-color:#1F3864;
+  --radius-sm:2px; --radius-md:2px; --radius-lg:3px;
+  --shadow-soft:none; --shadow-md:none; --shadow-lg:0 0 0 1px var(--border-strong);
+}
+:root[data-theme='dark']{
+  --f-rule:#475569; --f-head-bg:#293548; --f-head-text:#e5ebf5; --f-gold-text:#f0c060;
+}
+body{background:#eceff4;font-variant-numeric:lining-nums}
+
+.utility-bar{background:var(--f-navy-dark);border-bottom:2px solid var(--f-gold)}
+.report-hero{background:var(--f-navy);border-bottom:4px solid var(--f-gold)}
+.report-hero::before,.report-hero::after{display:none}
+.hero-eyebrow{border:0;border-radius:0;padding:0;letter-spacing:0;text-transform:none;font-size:15px;color:#f2d98c;margin-bottom:12px}
+.hero-title .hl{color:#f2d98c}
+.hero-meta,.hero-method,.hero-org{opacity:1;color:#e5ebf5}
+.hero-method strong{color:#f2d98c}
+.a4-canvas{border-radius:0}
+.lang-toggle,.lang-btn,.util-btn{border-radius:2px}
+.lang-btn.active{background:#f2d98c}
+
+.intro-box{background:var(--surface-2);border-left:4px solid var(--f-gold);border-radius:0}
+.method-card{background:var(--surface-2);border:1px solid var(--f-rule);border-radius:2px;grid-template-columns:1fr}
+.method-icon,.zone-icon,.tomtom-brand{display:none}
+:root[data-theme='dark'] .method-card{background:var(--surface-2);border-color:var(--f-rule)}
+.method-title,.tomtom-city{color:var(--f-navy)}
+:root[data-theme='dark'] .method-title,:root[data-theme='dark'] .tomtom-city{color:#f0c060}
+.method-pill,.zd-badge,.zd-count{border-radius:2px;background:var(--surface);border:1px solid var(--f-rule);color:var(--text-mid)}
+.tomtom-card,:root[data-theme='dark'] .tomtom-card{background:var(--surface);border:1px solid var(--f-rule);border-radius:2px}
+.tomtom-stat,:root[data-theme='dark'] .tomtom-stat{background:var(--surface);border:1px solid var(--f-rule);border-radius:2px}
+.tomtom-value{color:var(--f-navy)}
+:root[data-theme='dark'] .tomtom-value{color:#f0c060}
+.tomtom-note,:root[data-theme='dark'] .tomtom-note{background:var(--surface-2);color:var(--text-mid);border-left:3px solid var(--f-gold);border-radius:0}
+.data-card,.compare-card,.zone-district-card,.line-card,.scenario-card,.scenario-item,.source-note,
+.control-panel,.rt-wrap,.rt-legend-bottom,.about-card,.zone-acc,.zd-item{border-radius:2px;box-shadow:none}
+.data-card,.compare-card,.zone-district-card,.line-card,.scenario-card,.source-note,.control-panel,.rt-wrap,.about-card{border:1px solid var(--f-rule)}
+.zone-district-card,:root[data-theme='dark'] .zone-district-card,
+.scenario-card,:root[data-theme='dark'] .scenario-card{background:var(--surface)}
+.data-card::before{height:4px;border-radius:0}
+.data-card::after{display:none}
+.card-inner::before{background:var(--inner-color)}
+.card-middle::before{background:var(--middle-color)}
+.card-outer::before{background:var(--outer-color)}
+.zone-acc[open].inner,.zone-acc[open].middle,.zone-acc[open].outer{background:var(--surface)}
+.about-avatar{background:var(--f-navy);border-radius:2px;box-shadow:none}
+
+.section-eyebrow{letter-spacing:0;color:var(--f-gold-text)}
+.section-eyebrow::before{display:none}
+.section-heading,.section-title{border-bottom:2px solid var(--f-navy);padding-bottom:6px;margin-bottom:12px}
+:root[data-theme='dark'] .section-heading,:root[data-theme='dark'] .section-title{border-bottom-color:var(--f-rule)}
+.a4-body{counter-reset:sec}
+:is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title){counter-increment:sec}
+:is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{
+  content:counter(sec) '.';display:inline-block;width:auto;height:auto;background:none;border-radius:0;
+  color:var(--f-gold-text);font-weight:700;margin-right:.4em}
+.compare-title{background:var(--f-head-bg);color:var(--f-head-text)}
+:root[data-theme='dark'] .compare-title{background:var(--f-head-bg);color:var(--f-head-text)}
+
+.compare-table th,.compare-table td,.rt-table thead th,.rt-table tbody td,.modern-table td{border:1px solid var(--f-rule)}
+.compare-table th{background:var(--f-head-bg);color:var(--f-head-text)}
+.rt-table thead th{background:var(--f-head-bg);color:var(--f-head-text);text-transform:none;letter-spacing:0}
+.modern-table th{background:var(--f-navy);color:#fff;border:1px solid var(--f-navy)}
+.rt-table thead th.th-group.am{background:var(--f-navy);color:#fff}
+.rt-table thead th.th-group.pm{background:#4a5d80;color:#fff}
+.rt-table tbody tr:nth-child(even){background:var(--surface-2)}
+.chip,.rt-table .speed-cell{border-radius:2px}
+.rt-table .speed-cell.fast{background:#d1fae5}.rt-table .speed-cell.mid{background:#dbeafe}
+.rt-table .speed-cell.slow{background:#fef3c7}.rt-table .speed-cell.jam{background:#fee2e2}
+.lg-fast{background:#d1fae5}.lg-mid{background:#dbeafe}.lg-slow{background:#fef3c7}.lg-jam{background:#fee2e2}
+.lg{border-radius:2px}
+
+.control-btn,.control-input,.control-select,.rt-toggle-btn,.dir-toggle,.dir-btn,.to-top{border-radius:2px}
+.to-top{border-radius:50%}
+.std-nav a{border-radius:2px;background:var(--surface);border:1px solid var(--f-rule);color:var(--f-navy);text-decoration:none}
+.std-nav a:hover{background:var(--f-navy);color:#fff;border-color:var(--f-navy);transform:none}
+a{text-underline-offset:2px}
+.control-btn,.rt-toggle-btn,.tt-cta{text-decoration:none}
+.footer{border-top:2px solid var(--f-gold)}
+.footer strong{color:var(--f-navy)}
+:root[data-theme='dark'] .footer strong{color:#f0c060}
+
+@page{size:A4;margin:25mm 20mm 20mm 30mm}
+@page{
+  @bottom-left{content:'© Prapawadee_W.';font:10pt 'TH Sarabun New','THSarabunNew','Sarabun',sans-serif}
+  @bottom-right{content:'หน้า ' counter(page,decimal) ' / ' counter(pages,decimal);font:10pt 'TH Sarabun New','THSarabunNew','Sarabun',sans-serif}
+}
+@media print{
+  :root{--font-sans:'TH Sarabun New','THSarabunNew','Sarabun',sans-serif;
+        --font-serif:'TH Sarabun New','THSarabunNew','Sarabun',sans-serif;
+        --font-mono:'TH Sarabun New','THSarabunNew','Sarabun',sans-serif}
+  body{background:#fff;color:#000;font-size:16pt;line-height:1.5}
+  .a4-canvas{border:0;box-shadow:none;padding:0;gap:6mm}
+  .a4-body{padding:0;gap:6mm}
+  .report-hero{padding:8mm 6mm;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .hero-title{font-size:24pt;line-height:1.3}
+  h2,.section-heading,.section-title{font-size:18pt;break-after:avoid}
+  h3{font-size:16pt;break-after:avoid}
+  p,li,.intro-box,.method-desc,.source-note{font-size:16pt}
+  .rt-table,.compare-table,.modern-table{font-size:13pt}
+  .rt-table tbody td,.compare-table td,.modern-table td{font-size:13pt}
+  .rt-table thead th,.compare-table th,.modern-table th{font-size:12.5pt;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .speed-cell,.chip,.data-card::before,.th-group,.lg{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .data-card,.zd-item,.scenario-item,.tomtom-stat,.source-note,.about-card{break-inside:avoid}
+  .footer{padding:4mm 0 0;font-size:12pt}
+  a{color:#000;text-decoration:none}
+  :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{content:counter(sec,decimal) '.'}
+}
