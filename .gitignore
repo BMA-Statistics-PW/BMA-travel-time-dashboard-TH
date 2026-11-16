@@ -1,0 +1,110 @@
+# ============================================================
+#  .gitignore — BMA-Statistics-PW
+#  ป้องกันไฟล์ลับและไฟล์ระบบไม่ให้ถูก commit ขึ้น GitHub
+#  © Prapawadee_W.
+# ============================================================
+
+# ---- SECRET & CREDENTIALS ----
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+*.env
+secrets.json
+secrets.yaml
+secrets.yml
+config/secrets.*
+*secret*
+*password*
+*credential*
+*apikey*
+*api_key*
+*.key
+*.pem
+*.p12
+*.pfx
+service-account*.json
+firebase*.json
+google-credentials.json
+gcp-credentials.json
+
+# ---- TOKEN & AUTH ----
+token.txt
+tokens.json
+auth.json
+.token
+.netrc
+
+# ---- GAS / GOOGLE APPS SCRIPT ----
+.clasp.json
+# ⚠️ .clasp.json มี scriptId — ไม่ควรเปิดเผยถ้าสคริปต์เป็น private
+
+# ---- PYTHON ----
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ---- NODE / JS ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+package-lock.json
+# (เก็บ package-lock.json ไว้ถ้าต้องการ reproducible build)
+
+# ---- OS FILES ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ---- EDITOR & IDE ----
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*~
+.project
+.classpath
+
+# ---- LOGS & TEMP ----
+*.log
+logs/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# ---- DATA FILES ที่อาจมีข้อมูลส่วนบุคคล ----
+# (uncomment ถ้าไม่ต้องการ push ข้อมูลดิบ)
+# data/raw/
+# data/personal/
+# *.csv
+# *.xlsx
+
+# ---- OUTPUT / BUILD ----
+dist/
+build/
+out/
+output/
+.cache/
