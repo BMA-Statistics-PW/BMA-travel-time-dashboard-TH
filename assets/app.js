@@ -461,7 +461,7 @@
     Object.keys(stats).forEach(z => {
       const s = stats[z];
       const set = (sel, val) => { const el = $(sel); if (el) el.textContent = val; };
-      const wordRoads = lang() === 'th' ? 'ถนน' : 'roads';
+      const wordRoads = lang() === 'th' ? 'เส้นทาง' : 'routes';
       set(`[data-count="${z}"]`, `${s.count} ${wordRoads}`);
       set(`[data-avg="${z}-am-in"]`, fmt(s.am_in, 2));
       set(`[data-stat="${z}-am-in"]`, fmt(s.am_in, 2));

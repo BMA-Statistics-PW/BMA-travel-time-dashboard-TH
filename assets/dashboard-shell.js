@@ -2,7 +2,7 @@
    BMA Travel Time Dashboard — Dashboard shell (หน้า "ภาพรวม" + แถบเมนู)
    - สร้างหน้าภาพรวมจาก data/dashboard-data.json (ชุดข้อมูลเดิม ไม่เพิ่มตัวเลขจากภายนอก)
    - เมนูด้านข้าง: ย่อ/ขยาย (desktop) · เปิด/ปิด drawer (mobile) · จำสถานะใน localStorage
-   - ช่องค้นหาด้านบน: ส่งคำค้นไปยังตาราง 51 สาย
+   - ช่องค้นหาด้านบน: ส่งคำค้นไปยังตารางข้อมูลรายถนน
    © Prapawadee_W.
    ════════════════════════════════════════════════════════════════════ */
 (function () {
@@ -17,7 +17,7 @@
       sbLabel: 'เมนูหลัก', sbSub: 'แดชบอร์ดสถิติการจราจร', sbCollapse: 'ย่อเมนู', sbExpand: 'ขยายเมนู',
       sbOpen: 'เปิดเมนู', sbClose: 'ปิดเมนู', sbOrgShort: 'กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน',
       dashSub: 'เวลาและอัตราเร็วเฉลี่ยในการเดินทาง กรุงเทพมหานคร พ.ศ. 2560–2569',
-      tbSearchPh: 'ค้นหาชื่อถนน...', tbSearchAria: 'ค้นหาชื่อถนนในตาราง 51 สาย',
+      tbSearchPh: 'ค้นหาชื่อถนน...', tbSearchAria: 'ค้นหาชื่อถนนในตารางแสดงข้อมูลรายถนน',
       heroH: 'ภาพรวมอัตราเร็วเฉลี่ยในการเดินทาง (Travel Speed Overview) กรุงเทพมหานคร',
       heroSub: 'ผลการสำรวจด้วยวิธีรถสำรวจตามกระแสจราจร (Floating Car Method) ช่วงเร่งด่วนเช้าและเย็น · พ.ศ. 2560–2569',
       btnPrint: 'พิมพ์รายงาน', btnRefresh: 'โหลดข้อมูลอีกครั้ง',
@@ -26,8 +26,8 @@
       ht3: 'อันดับโลก (TomTom)', ht3s: 'ความแออัด {a}% · {b} จุดร้อยละจากปีก่อน', ht3u: '',
       ht4: 'เวลาเดินทางต่อ 10 กม. (พื้นที่ชั้นใน)', ht4s: 'ขาเข้า · อัตราเร็วเฉลี่ย {a} กม./ชม.', ht4u: 'นาที',
       kpiYearIn: 'ขาเข้า · ปี {y}', kpiVs: 'เทียบปี {y}', kpiScale: 'มาตราส่วน 0–{m} กม./ชม.',
-      kpiJam: '{n} ลำดับที่การจราจรติดขัดมากที่สุด', kpiJamSub: 'อัตราเร็ว < 10 กม./ชม. (ถนน × ช่วงเวลา × ทิศทาง) · ดูตารางจัดอันดับด้านล่าง',
-      jamTitle: '{n} ลำดับที่การจราจรติดขัดมากที่สุด', jamSub: 'เรียงจากอัตราเร็วต่ำสุดไปสูงสุด · เฉพาะช่วงถนน-ช่วงเวลา-ทิศทางที่อัตราเร็วต่ำกว่า 10 กม./ชม. · ปี พ.ศ. 2569', jamAm: 'ช่วงเช้า', jamPm: 'ช่วงเย็น', jamUnit: 'ลำดับ',
+      kpiJam: '{n} ลำดับที่การจราจรติดขัดมากที่สุด', kpiJamSub: 'อัตราเร็ว < 10 กม./ชม. (ถนน × ช่วงเวลา × ทิศทาง)',
+      jamTitle: 'ถนนที่มีอัตราเร็วเฉลี่ยต่ำกว่า 10 กม./ชม.', jamSub: 'ช่วงถนน-ช่วงเวลา-ทิศทางที่อัตราเร็วเฉลี่ยต่ำกว่า 10 กม./ชม. เรียงจากช้าที่สุด · ปี พ.ศ. 2569 · {n} รายการ จากทั้งหมด {tot} รายการ', jamAxis: 'อัตราเร็วเฉลี่ย (กม./ชม.)', jamLimit: 'เกณฑ์ 10 กม./ชม.', jamChart: 'กราฟแท่งแนวนอนแสดงอัตราเร็วเฉลี่ยของแต่ละรายการ', jamLink: 'ดูกราฟและตาราง', jamAm: 'ช่วงเช้า', jamPm: 'ช่วงเย็น', jamUnit: 'ลำดับ', jamShow: 'แสดงตาราง', jamHide: 'ซ่อนตาราง', jamCRank: 'ลำดับ', jamCRoad: 'ถนน', jamCSeg: 'ช่วงถนน', jamCZone: 'โซน', jamCPeriod: 'ช่วงเวลา', jamCDir: 'ทิศทาง', jamCSpeed: 'อัตราเร็ว (กม./ชม.)',
       kpiJamOf: 'จากทั้งหมด {n} จุด', kpiJamF: 'อัตราเร็ว < 10 กม./ชม.', kpiJamPct: '{p}% ของจุดสำรวจ',
       anTitle: 'แนวโน้มอัตราเร็วเฉลี่ยรายปี', anSub: 'กม./ชม. · ช่วงเร่งด่วน (เฉลี่ยเช้าและเย็น) · มาตราส่วน 0–{m}',
       dirLabel: 'ทิศทาง', zoneLabel: 'โซนพื้นที่', dirIn: 'ขาเข้า', dirOut: 'ขาออก',
@@ -38,9 +38,9 @@
       unitKmh: 'กม./ชม.',
       insTitle: 'ข้อค้นพบสำคัญ', insSub: 'สรุปจากข้อมูลการสำรวจ ปี พ.ศ. 2569 (ม.ค.–ต.ค.)', insAll: 'ดูข้อเสนอแนะเชิงนโยบาย',
       qaTitle: 'เมนูลัด (Quick Actions)', qaSub: 'เข้าถึงส่วนที่ใช้งานบ่อย',
-      qa1: 'เส้นทางสำรวจ', qa1s: 'แผนที่ 51 สายถนน',
+      qa1: 'เส้นทางสำรวจ', qa1s: 'แผนที่แสดงเส้นทาง',
       qa2: 'ดัชนี TomTom', qa2s: 'เปรียบเทียบกับ สจส.',
-      qa3: 'ตาราง 51 สาย', qa3s: 'อัตราเร็วรายถนน',
+      qa3: 'ตารางแสดงข้อมูลรายถนน', qa3s: 'อัตราเร็วรายถนน',
       qa4: 'คาดการณ์ (BAU)', qa4s: 'แนวโน้มปี พ.ศ. 2569',
       topTitle: 'การจัดอันดับถนน ปี พ.ศ. 2569', topSub: 'อัตราเร็วเฉลี่ยรายถนน (เฉลี่ย 4 ช่วงเวลา/ทิศทาง)',
       topSlow: 'ช้าที่สุด', topFast: 'เร็วที่สุด', topAll: 'ดูทั้งหมด',
@@ -52,7 +52,7 @@
       sbLabel: 'Main menu', sbSub: 'Traffic Statistics Panel', sbCollapse: 'Collapse menu', sbExpand: 'Expand menu',
       sbOpen: 'Open menu', sbClose: 'Close menu', sbOrgShort: 'Statistics & Research Group, TTD',
       dashSub: 'Travel time and average speed in Bangkok, 2017–2026',
-      tbSearchPh: 'Search road name...', tbSearchAria: 'Search road name in the 51-road table',
+      tbSearchPh: 'Search road name...', tbSearchAria: 'Search road name in the road data table',
       heroH: 'Bangkok average travel speed overview',
       heroSub: 'Floating Car Method survey · AM and PM peak · 2017–2026',
       btnPrint: 'Print report', btnRefresh: 'Reload data',
@@ -61,8 +61,8 @@
       ht3: 'TomTom world rank', ht3s: 'Congestion {a}% · {b} pp vs last year', ht3u: '',
       ht4: 'Time per 10 km (Inner)', ht4s: 'Inbound · speed {a} km/h', ht4u: 'min',
       kpiYearIn: 'Inbound · {y}', kpiVs: 'vs {y}', kpiScale: 'Scale 0–{m} km/h',
-      kpiJam: 'Top {n} most congested', kpiJamSub: 'Speed < 10 km/h (road × period × direction) · see ranking below',
-      jamTitle: 'Top {n} most congested', jamSub: 'Sorted from lowest to highest speed · road segment × period × direction with speed below 10 km/h · 2026', jamAm: 'AM peak', jamPm: 'PM peak', jamUnit: 'ranks',
+      kpiJam: 'Top {n} most congested', kpiJamSub: 'Speed < 10 km/h (road × period × direction)',
+      jamTitle: 'Roads averaging below 10 km/h', jamSub: 'Road segment × period × direction with average speed below 10 km/h, slowest first · 2026 · {n} of {tot} entries', jamAxis: 'Average speed (km/h)', jamLimit: '10 km/h threshold', jamChart: 'Horizontal bar chart of average speed for each entry', jamLink: 'View chart and table', jamAm: 'AM peak', jamPm: 'PM peak', jamUnit: 'ranks', jamShow: 'Show table', jamHide: 'Hide table', jamCRank: 'Rank', jamCRoad: 'Road', jamCSeg: 'Segment', jamCZone: 'Zone', jamCPeriod: 'Period', jamCDir: 'Direction', jamCSpeed: 'Speed (km/h)',
       kpiJamOf: 'of {n} points', kpiJamF: 'Speed < 10 km/h', kpiJamPct: '{p}% of survey points',
       anTitle: 'Annual average speed trend', anSub: 'km/h · peak hours (AM+PM average) · scale 0–{m}',
       dirLabel: 'Direction', zoneLabel: 'Zone', dirIn: 'Inbound', dirOut: 'Outbound',
@@ -73,9 +73,9 @@
       unitKmh: 'km/h',
       insTitle: 'Key findings', insSub: 'Summary of the 2026 survey (Jan–Oct)', insAll: 'View policy recommendations',
       qaTitle: 'Shortcuts', qaSub: 'Open frequently used sections',
-      qa1: 'Survey routes', qa1s: 'Map of 51 roads',
+      qa1: 'Survey routes', qa1s: 'Map of survey routes',
       qa2: 'TomTom Index', qa2s: 'Compared with TTD',
-      qa3: '51-road table', qa3s: 'Speed by road',
+      qa3: 'Road data table', qa3s: 'Speed by road',
       qa4: 'BAU forecast', qa4s: '2026 trend',
       topTitle: 'Road ranking, 2026', topSub: 'Average speed per road (4 periods/directions)',
       topSlow: 'Slowest', topFast: 'Fastest', topAll: 'View all',
@@ -166,16 +166,27 @@
     return `<span class="badge ${up ? 'up' : 'down'}">${ico(up ? 'up' : 'down', 12)}${sign(p, 2)}%</span>`;
   }
 
-  function renderJamList() {
-    const rows = jamRows();
-    return `<section class="card jam" aria-labelledby="jamH">
-      <div class="card-head"><div><h3 id="jamH" class="card-title">${t('jamTitle', { n: rows.length })}</h3><p class="card-sub">${t('jamSub')}</p></div></div>
-      <ol class="jam-list">${rows.map((x, i) => `<li class="jam-row">
-        <i class="jam-rank">${i + 1}</i>
-        <div class="jam-info"><b class="jam-n">${esc(disp(x.r.name))}</b><small>${esc(x.r.segment || '')}</small>
-          <small class="jam-m"><span class="zdot z-${x.r.zone}" aria-hidden="true"></span>${t(ZKEY[x.r.zone][1])} · ${t(x.p)} · ${t(x.d)}</small></div>
-        <div class="jam-v"><b>${fmt(x.v)}</b><small>${t('unitKmh')}</small></div></li>`).join('')}</ol>
-    </section>`;
+  function renderJamPage() {
+    const rows = jamRows(), tot = jamStats().tot;
+    const ticks = [0, 2, 4, 6, 8, 10];
+    return `
+    <h2 class="section-title" id="jamPageH">${t('jamTitle')}</h2>
+    <p class="jam-sub">${t('jamSub', { n: rows.length, tot })}</p>
+    <ul class="jam-legend" aria-hidden="true"><li><i class="jb-sw p-am"></i>${t('jamAm')}</li><li><i class="jb-sw p-pm"></i>${t('jamPm')}</li><li><i class="jb-sw jb-sw-lim"></i>${t('jamLimit')}</li></ul>
+    <div class="jb-chart" role="img" aria-label="${t('jamChart')}">
+      <div class="jb-axis"><span class="jb-axis-t">${t('jamAxis')}</span><span class="jb-ticks">${ticks.map(v => `<i>${v}</i>`).join('')}</span></div>
+      <ol class="jb-list">${rows.map((x, i) => `<li class="jb-row">
+        <span class="jb-lab"><i class="jb-rk">${i + 1}</i><span class="jb-name"><b>${esc(disp(x.r.name))}</b><small>${t(x.p)} · ${t(x.d)}</small></span></span>
+        <span class="jb-track"><span class="jb-fill ${x.p === 'jamAm' ? 'p-am' : 'p-pm'}" data-w="${(x.v / 10 * 100).toFixed(1)}"></span><b class="jb-val">${fmt(x.v)}</b></span></li>`).join('')}</ol>
+    </div>
+    <details class="jam-det">
+      <summary class="jam-sum"><span class="jam-btn"><span class="jam-btn-show">${t('jamShow')}</span><span class="jam-btn-hide">${t('jamHide')}</span><i aria-hidden="true">▼</i></span></summary>
+      <div class="jam-wrap"><table class="jam-table">
+        <thead><tr><th scope="col">${t('jamCRank')}</th><th scope="col">${t('jamCRoad')}</th><th scope="col">${t('jamCSeg')}</th><th scope="col">${t('jamCZone')}</th><th scope="col">${t('jamCPeriod')}</th><th scope="col">${t('jamCDir')}</th><th scope="col" class="num">${t('jamCSpeed')}</th></tr></thead>
+        <tbody>${rows.map((x, i) => `<tr><td class="num">${i + 1}</td><th scope="row">${esc(disp(x.r.name))}</th><td>${esc(x.r.segment || '')}</td>
+          <td><span class="zdot z-${x.r.zone}" aria-hidden="true"></span> ${t(ZKEY[x.r.zone][1])}</td><td>${t(x.p)}</td><td>${t(x.d)}</td><td class="num"><b>${fmt(x.v)}</b></td></tr>`).join('')}</tbody>
+      </table></div>
+    </details>`;
   }
 
   function renderHero() {
@@ -232,6 +243,7 @@
         <div class="kpi-bar"><div class="kpi-bar-h"><span>${t('kpiJamOf', { n: j.tot })}</span><span>${fmt(jp, 0)}%</span></div>
           <div class="track" role="img" aria-label="${j.n} / ${j.tot}"><div class="fill" data-w="${jp.toFixed(1)}"></div></div></div>
         <div class="kpi-f"><span>${t('kpiJamF')}</span><b>${j.n}</b></div>
+        <a class="card-link" href="#panel-congested">${t('jamLink')} ${ico('arrow', 14)}</a>
       </article>`);
     return `<section class="kpi-grid" aria-label="${t('insSub')}">${cards.join('')}</section>`;
   }
@@ -321,10 +333,12 @@
   function render() {
     const host = $('#dash-home');
     if (!host || !DATA) return;
-    host.innerHTML = renderHero() + renderKpis() + renderJamList() +
+    host.innerHTML = renderHero() + renderKpis() +
       `<div class="grid-2">${renderAnalytics()}${renderInsights()}</div>` +
       `<div class="grid-2 g-rev">${renderQuick()}${renderTop()}</div>`;
     paintBars(host);
+    const jp = $('#congested-section');
+    if (jp) { jp.innerHTML = renderJamPage(); paintBars(jp); }
     if (window.BMA_I18N && window.BMA_I18N.apply) {
       // เติมข้อความ finding1–5 จากพจนานุกรม i18n (th/en) โดยไม่ทำซ้ำข้อความไว้สองที่
       const dict = window.BMA_I18N.t;
@@ -412,7 +426,7 @@
     document.addEventListener('i18n:change', () => setTimeout(title, 0));
     setTimeout(title, 0);
 
-    // ค้นหาถนน → ตาราง 51 สาย
+    // ค้นหาถนน → ตารางข้อมูลรายถนน
     const form = $('#tbSearch'), inp = $('#tbSearchInput');
     if (form && inp) form.addEventListener('submit', (e) => {
       e.preventDefault();

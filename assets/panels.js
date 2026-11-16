@@ -14,7 +14,8 @@
         tabRoute: 'เส้นทางสำรวจ',
         tabTomtom: 'ดัชนี TomTom และการเปรียบเทียบ',
         tabZones: 'โซนพื้นที่และแนวโน้ม',
-        tabRoads: 'ตารางรายถนน 51 สาย',
+        tabRoads: 'ตารางแสดงข้อมูลรายถนน',
+        tabCongested: 'ถนนที่มีอัตราเร็วเฉลี่ยต่ำกว่า 10 กม./ชม.',
         tabForecast: 'คาดการณ์และข้อเสนอแนะ',
         tabAbout: 'ผู้จัดทำ'
       },
@@ -24,7 +25,8 @@
         tabRoute: 'Survey routes',
         tabTomtom: 'TomTom & comparison',
         tabZones: 'Zones & trends',
-        tabRoads: '51-road table',
+        tabRoads: 'Road data table',
+        tabCongested: 'Roads averaging below 10 km/h',
         tabForecast: 'Forecast & findings',
         tabAbout: 'About'
       }
@@ -38,6 +40,7 @@
     tomtom:   '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',
     zones:    '<path d="M3 17l5-6 4 4 4-8 5 6"/><path d="M3 21h18"/>',
     roads:    '<path d="M8 3L4 21M16 3l4 18M12 4v3M12 11v3M12 18v3"/>',
+    congested:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     forecast: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/><path d="M16 7h4v4"/>',
     about:    '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>'
   };
@@ -52,6 +55,7 @@
     { id: 'tomtom',   key: 'tabTomtom',   icon: '🌐', sel: ['#tomtom-index', '#compare-sjs-tomtom'] },
     { id: 'zones',    key: 'tabZones',    icon: '📈', sel: ['#zone-details-card', 'section[aria-labelledby="ctrlHead"]', '.cards-grid', '#trend-line'] },
     { id: 'roads',    key: 'tabRoads',    icon: '🛣️', sel: ['#road-table-section'] },
+    { id: 'congested', key: 'tabCongested', icon: '🚦', sel: ['#congested-section'] },
     { id: 'forecast', key: 'tabForecast', icon: '🔮', sel: ['#scenario-bau', 'section[aria-labelledby="cmpYearsHead"]', '.bottom-grid'] },
     { id: 'about',    key: 'tabAbout',    icon: '👤', sel: ['section[aria-labelledby="aboutHead"]'] }
   ];

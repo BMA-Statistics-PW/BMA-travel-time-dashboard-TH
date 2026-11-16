@@ -24,7 +24,7 @@
         routeLegend: 'โซนพื้นที่',
         routeSearchPh: 'ค้นหาชื่อถนน...',
         routeListHead: 'รายการถนน',
-        routeStatus: 'มีเส้นทางบนแผนที่ {n} จาก {t} สายถนน',
+        routeStatus: 'มีเส้นทางบนแผนที่ {n} จาก {t} เส้นทาง',
         routeNoGeom: 'ยังไม่มีข้อมูลเส้นทางของถนนสายนี้บนแผนที่',
         routeNoData: 'ยังไม่มีข้อมูลเส้นทางในไฟล์ survey-routes.geojson — ส่งออกแผนที่จาก Google My Maps เป็น KML แล้วแปลงด้วย tools/kml_to_geojson.py',
         routeLibFail: 'ไม่สามารถโหลดไลบรารีแผนที่ (Leaflet) ได้ — ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต',
