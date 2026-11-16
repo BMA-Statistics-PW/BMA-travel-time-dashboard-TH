@@ -26,7 +26,8 @@
       ht3: 'อันดับโลก (TomTom)', ht3s: 'ความแออัด {a}% · {b} จุดร้อยละจากปีก่อน', ht3u: '',
       ht4: 'เวลาเดินทางต่อ 10 กม. (พื้นที่ชั้นใน)', ht4s: 'ขาเข้า · อัตราเร็วเฉลี่ย {a} กม./ชม.', ht4u: 'นาที',
       kpiYearIn: 'ขาเข้า · ปี {y}', kpiVs: 'เทียบปี {y}', kpiScale: 'มาตราส่วน 0–{m} กม./ชม.',
-      kpiJam: 'จุดสำรวจที่การจราจรติดขัดรุนแรง', kpiJamSub: 'อัตราเร็ว < 10 กม./ชม. (ถนน × ช่วงเวลา × ทิศทาง)',
+      kpiJam: '{n} ลำดับที่การจราจรติดขัดมากที่สุด', kpiJamSub: 'อัตราเร็ว < 10 กม./ชม. (ถนน × ช่วงเวลา × ทิศทาง) · ดูตารางจัดอันดับด้านล่าง',
+      jamTitle: '{n} ลำดับที่การจราจรติดขัดมากที่สุด', jamSub: 'เรียงจากอัตราเร็วต่ำสุดไปสูงสุด · เฉพาะช่วงถนน-ช่วงเวลา-ทิศทางที่อัตราเร็วต่ำกว่า 10 กม./ชม. · ปี พ.ศ. 2569', jamAm: 'ช่วงเช้า', jamPm: 'ช่วงเย็น', jamUnit: 'ลำดับ',
       kpiJamOf: 'จากทั้งหมด {n} จุด', kpiJamF: 'อัตราเร็ว < 10 กม./ชม.', kpiJamPct: '{p}% ของจุดสำรวจ',
       anTitle: 'แนวโน้มอัตราเร็วเฉลี่ยรายปี', anSub: 'กม./ชม. · ช่วงเร่งด่วน (เฉลี่ยเช้าและเย็น) · มาตราส่วน 0–{m}',
       dirLabel: 'ทิศทาง', zoneLabel: 'โซนพื้นที่', dirIn: 'ขาเข้า', dirOut: 'ขาออก',
@@ -60,7 +61,8 @@
       ht3: 'TomTom world rank', ht3s: 'Congestion {a}% · {b} pp vs last year', ht3u: '',
       ht4: 'Time per 10 km (Inner)', ht4s: 'Inbound · speed {a} km/h', ht4u: 'min',
       kpiYearIn: 'Inbound · {y}', kpiVs: 'vs {y}', kpiScale: 'Scale 0–{m} km/h',
-      kpiJam: 'Heavily congested survey points', kpiJamSub: 'Speed < 10 km/h (road × period × direction)',
+      kpiJam: 'Top {n} most congested', kpiJamSub: 'Speed < 10 km/h (road × period × direction) · see ranking below',
+      jamTitle: 'Top {n} most congested', jamSub: 'Sorted from lowest to highest speed · road segment × period × direction with speed below 10 km/h · 2026', jamAm: 'AM peak', jamPm: 'PM peak', jamUnit: 'ranks',
       kpiJamOf: 'of {n} points', kpiJamF: 'Speed < 10 km/h', kpiJamPct: '{p}% of survey points',
       anTitle: 'Annual average speed trend', anSub: 'km/h · peak hours (AM+PM average) · scale 0–{m}',
       dirLabel: 'Direction', zoneLabel: 'Zone', dirIn: 'Inbound', dirOut: 'Outbound',
@@ -148,6 +150,13 @@
     }));
     return { n, tot };
   }
+  function jamRows() {
+    const rows = [];
+    DATA.roads_2569.forEach(r => [['speed_am_in', 'jamAm', 'dirIn'], ['speed_am_out', 'jamAm', 'dirOut'], ['speed_pm_in', 'jamPm', 'dirIn'], ['speed_pm_out', 'jamPm', 'dirOut']].forEach(([k, p, d]) => {
+      if (typeof r[k] === 'number' && r[k] < 10) rows.push({ r, v: r[k], p, d });
+    }));
+    return rows.sort((a, b) => a.v - b.v);
+  }
   const pct = (a, b) => (typeof a === 'number' && typeof b === 'number' && b !== 0) ? (a - b) / b * 100 : null;
 
   /* ───────── ส่วนประกอบ UI ───────── */
@@ -155,6 +164,18 @@
     if (p == null) return '<span class="badge neutral">—</span>';
     const up = p >= 0;
     return `<span class="badge ${up ? 'up' : 'down'}">${ico(up ? 'up' : 'down', 12)}${sign(p, 2)}%</span>`;
+  }
+
+  function renderJamList() {
+    const rows = jamRows();
+    return `<section class="card jam" aria-labelledby="jamH">
+      <div class="card-head"><div><h3 id="jamH" class="card-title">${t('jamTitle', { n: rows.length })}</h3><p class="card-sub">${t('jamSub')}</p></div></div>
+      <ol class="jam-list">${rows.map((x, i) => `<li class="jam-row">
+        <i class="jam-rank">${i + 1}</i>
+        <div class="jam-info"><b class="jam-n">${esc(disp(x.r.name))}</b><small>${esc(x.r.segment || '')}</small>
+          <small class="jam-m"><span class="zdot z-${x.r.zone}" aria-hidden="true"></span>${t(ZKEY[x.r.zone][1])} · ${t(x.p)} · ${t(x.d)}</small></div>
+        <div class="jam-v"><b>${fmt(x.v)}</b><small>${t('unitKmh')}</small></div></li>`).join('')}</ol>
+    </section>`;
   }
 
   function renderHero() {
@@ -205,8 +226,8 @@
     const j = jamStats(), jp = j.tot ? j.n / j.tot * 100 : 0;
     cards.push(`<article class="kpi z-jam">
         <div class="kpi-top"><span class="kpi-ico">${ico('alert', 22)}</span><span class="badge down">${t('kpiJamPct', { p: fmt(jp, 1) })}</span></div>
-        <div class="kpi-v">${j.n}<span class="kpi-u"> ${lang() === 'th' ? 'จุด' : 'points'}</span></div>
-        <h3 class="kpi-l">${t('kpiJam')}</h3>
+        <div class="kpi-v">${j.n}<span class="kpi-u"> ${t('jamUnit')}</span></div>
+        <h3 class="kpi-l">${t('kpiJam', { n: j.n })}</h3>
         <p class="kpi-s">${t('kpiJamSub')}</p>
         <div class="kpi-bar"><div class="kpi-bar-h"><span>${t('kpiJamOf', { n: j.tot })}</span><span>${fmt(jp, 0)}%</span></div>
           <div class="track" role="img" aria-label="${j.n} / ${j.tot}"><div class="fill" data-w="${jp.toFixed(1)}"></div></div></div>
@@ -300,7 +321,7 @@
   function render() {
     const host = $('#dash-home');
     if (!host || !DATA) return;
-    host.innerHTML = renderHero() + renderKpis() +
+    host.innerHTML = renderHero() + renderKpis() + renderJamList() +
       `<div class="grid-2">${renderAnalytics()}${renderInsights()}</div>` +
       `<div class="grid-2 g-rev">${renderQuick()}${renderTop()}</div>`;
     paintBars(host);
