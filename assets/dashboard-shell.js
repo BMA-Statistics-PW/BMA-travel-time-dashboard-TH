@@ -33,7 +33,7 @@
       zInner: 'ชั้นใน', zMiddle: 'ชั้นกลาง', zOuter: 'ชั้นนอก',
       zLInner: 'พื้นที่ชั้นใน', zLMiddle: 'พื้นที่ชั้นกลาง', zLOuter: 'พื้นที่ชั้นนอก',
       covid: 'โควิด-19', yoy: 'เทียบปีก่อน',
-      mt1: 'ปี {y}', mt2: 'ปี {y}', mt3: 'เปลี่ยนแปลง', mt4: 'สูงสุดในรอบ 9 ปี',
+      mt1: 'ปี {y}', mt2: 'ปี {y}', mt3: 'เปลี่ยนแปลง', mt4: 'สูงสุดในรอบ 10 ปี',
       unitKmh: 'กม./ชม.',
       insTitle: 'ข้อค้นพบสำคัญ', insSub: 'สรุปจากข้อมูลการสำรวจ ปี พ.ศ. 2569 (ม.ค.–ต.ค.)', insAll: 'ดูข้อเสนอแนะเชิงนโยบาย',
       qaTitle: 'เมนูลัด (Quick Actions)', qaSub: 'เข้าถึงส่วนที่ใช้งานบ่อย',
@@ -44,10 +44,6 @@
       topTitle: 'การจัดอันดับถนน ปี พ.ศ. 2569', topSub: 'อัตราเร็วเฉลี่ยรายถนน (เฉลี่ย 4 ช่วงเวลา/ทิศทาง)',
       topSlow: 'ช้าที่สุด', topFast: 'เร็วที่สุด', topAll: 'ดูทั้งหมด',
       topLen: 'ระยะทาง {l} กม.',
-      pdTitle: 'ประเด็นที่ควรติดตาม', pdSub: 'จากผลการวิเคราะห์ชุดข้อมูลนี้', pdBadge: '{n} ประเด็น',
-      pd1: 'ข้อเสนอแนะเชิงนโยบาย', pd1d: 'แนวทางลดความแออัดและส่งเสริมการใช้ระบบขนส่งสาธารณะ', pd1b: 'ดูข้อเสนอ',
-      pd2: 'คาดการณ์กรณีไม่มีมาตรการ (BAU)', pd2d: 'แนวโน้มอัตราเร็วเฉลี่ยปี พ.ศ. 2569 ของ 3 โซนพื้นที่', pd2b: 'ดูคาดการณ์',
-      pd3: 'บันทึกการแก้ไขข้อมูล', pd3d: 'ปรับปรุงล่าสุด {d} (เพิ่มข้อมูลปี 2569)', pd3b: 'ดูโซนและแนวโน้ม',
       noData: 'ไม่สามารถโหลดข้อมูลได้ โปรดตรวจสอบไฟล์ data/dashboard-data.json',
       asOf: 'ข้อมูล ณ {d}'
     },
@@ -71,7 +67,7 @@
       zInner: 'Inner', zMiddle: 'Middle', zOuter: 'Outer',
       zLInner: 'Inner zone', zLMiddle: 'Middle zone', zLOuter: 'Outer zone',
       covid: 'COVID-19', yoy: 'vs previous year',
-      mt1: '{y}', mt2: '{y}', mt3: 'Change', mt4: 'Peak in 9 years',
+      mt1: '{y}', mt2: '{y}', mt3: 'Change', mt4: 'Peak in 10 years',
       unitKmh: 'km/h',
       insTitle: 'Key findings', insSub: 'Summary of the 2026 survey (Jan–Oct)', insAll: 'View policy recommendations',
       qaTitle: 'Shortcuts', qaSub: 'Open frequently used sections',
@@ -82,10 +78,6 @@
       topTitle: 'Road ranking, 2026', topSub: 'Average speed per road (4 periods/directions)',
       topSlow: 'Slowest', topFast: 'Fastest', topAll: 'View all',
       topLen: '{l} km long',
-      pdTitle: 'Items to watch', pdSub: 'From the analysis of this dataset', pdBadge: '{n} items',
-      pd1: 'Policy recommendations', pd1d: 'Ways to reduce congestion and raise public-transport use', pd1b: 'View',
-      pd2: 'Business-as-usual scenario', pd2d: '2026 speed trend for the 3 zones (BAU)', pd2b: 'View scenario',
-      pd3: 'Data revision log', pd3d: 'Latest update {d} (added 2026 data)', pd3b: 'View zones & trends',
       noData: 'Could not load data/dashboard-data.json',
       asOf: 'Data as of {d}'
     }
@@ -300,28 +292,6 @@
     </section>`;
   }
 
-  function renderPending() {
-    const rev = (DATA.meta.revisions && DATA.meta.revisions[0]) || null;
-    let d = rev ? rev.date : '';
-    try { if (rev) d = new Date(rev.date + 'T00:00:00').toLocaleDateString(lang() === 'th' ? 'th-TH-u-ca-buddhist-nu-latn' : 'en-GB-u-nu-latn', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { /* keep ISO */ }
-    const nRev = (DATA.meta.revisions || []).length;
-    const items = [
-      { c: 'orange', n: 5, t: 'pd1', d: t('pd1d'), b: 'pd1b', h: '#panel-forecast' },
-      { c: 'blue', n: ZONES.length, t: 'pd2', d: t('pd2d'), b: 'pd2b', h: '#panel-forecast' },
-      { c: 'red', n: nRev, t: 'pd3', d: t('pd3d', { d }), b: 'pd3b', h: '#panel-zones' }
-    ];
-    const total = items.length;
-    return `
-    <section class="card pending" aria-labelledby="pdH">
-      <div class="card-head"><div><h3 id="pdH" class="card-title">${t('pdTitle')}</h3><p class="card-sub">${t('pdSub')}</p></div>
-        <span class="pill-red"><i aria-hidden="true"></i>${t('pdBadge', { n: total })}</span></div>
-      <div class="pd-grid">${items.map(x => `<article class="pd pd-${x.c}"><span class="pd-n">${x.n}</span>
-        <span class="pd-ico">${ico(x.c === 'orange' ? 'doc' : x.c === 'blue' ? 'chart' : 'file', 22)}</span>
-        <h4 class="pd-t">${t(x.t)}</h4><p class="pd-d">${x.d}</p>
-        <a class="pd-btn" href="${x.h}">${t(x.b)} ${ico('arrow', 14)}</a></article>`).join('')}</div>
-    </section>`;
-  }
-
   /* ───────── render ───────── */
   function paintBars(root) {
     $$('[data-w]', root).forEach(el => el.style.setProperty('--w', el.getAttribute('data-w') + '%'));
@@ -332,7 +302,7 @@
     if (!host || !DATA) return;
     host.innerHTML = renderHero() + renderKpis() +
       `<div class="grid-2">${renderAnalytics()}${renderInsights()}</div>` +
-      `<div class="grid-2 g-rev">${renderQuick()}${renderTop()}</div>` + renderPending();
+      `<div class="grid-2 g-rev">${renderQuick()}${renderTop()}</div>`;
     paintBars(host);
     if (window.BMA_I18N && window.BMA_I18N.apply) {
       // เติมข้อความ finding1–5 จากพจนานุกรม i18n (th/en) โดยไม่ทำซ้ำข้อความไว้สองที่
