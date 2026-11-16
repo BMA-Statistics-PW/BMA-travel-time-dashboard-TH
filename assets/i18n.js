@@ -137,7 +137,7 @@
       legInner: 'พื้นที่ชั้นใน',
 
       // road table
-      roadTableTitle: 'ตารางข้อมูลอัตราเร็วเฉลี่ยรายถนน 51 สาย ปี พ.ศ. 2569',
+      roadTableTitle: 'ตารางข้อมูลอัตราเร็วเฉลี่ยรายถนน ปี พ.ศ. 2569',
       rtIntro: 'เลือกที่ส่วนหัวของโซน <span class="rt-icon-hint">▼</span> เพื่อขยายดูรายละเอียดรายถนน · ตารางมีแผนภูมิขนาดย่อ (Mini-chart) แสดง 4 ช่วงเวลาและทิศทาง และแผนที่ความร้อน (Heatmap) แสดงระดับอัตราเร็ว',
   rtToggleShow: 'แสดงตาราง',
   rtToggleHide: 'ซ่อนตาราง',
@@ -332,7 +332,7 @@
       legMiddle: 'Middle Zone',
       legInner: 'Inner Zone',
 
-      roadTableTitle: 'Speed by road · 51 roads · 2026',
+      roadTableTitle: 'Average speed by road · 2026',
       rtIntro: 'Click a zone header <span class="rt-icon-hint">▼</span> to expand · Each row shows a 4-direction mini-chart and color-coded speed heatmap',
   rtToggleShow: 'Show Table',
   rtToggleHide: 'Hide Table',

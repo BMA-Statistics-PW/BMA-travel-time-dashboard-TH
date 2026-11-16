@@ -115,3 +115,7 @@ a{text-underline-offset:2px}
   a{color:#000;text-decoration:none}
   :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{content:counter(sec,decimal) '.'}
 }
+
+/* หัวข้อตารางรายถนน: ไม่แสดงเลขลำดับหัวข้อ */
+#roadTableHead{counter-increment:none}
+#roadTableHead::before{content:none!important;display:none!important}
