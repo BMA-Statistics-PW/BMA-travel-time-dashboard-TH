@@ -58,9 +58,11 @@ body{background:#eceff4;font-variant-numeric:lining-nums}
 .section-eyebrow::before{display:none}
 .section-heading,.section-title{border-bottom:2px solid var(--f-navy);padding-bottom:6px;margin-bottom:12px}
 :root[data-theme='dark'] .section-heading,:root[data-theme='dark'] .section-title{border-bottom-color:var(--f-rule)}
-.a4-body{counter-reset:sec}
-:is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title){counter-increment:sec}
-:is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{
+/* เลขลำดับหัวข้อ: แสดงเฉพาะหน้า TomTom (body.page-tomtom) — หน้า index.html ไม่แสดงเลข */
+body:not(.page-tomtom) :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{display:none}
+body.page-tomtom .a4-body{counter-reset:sec}
+body.page-tomtom :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title){counter-increment:sec}
+body.page-tomtom :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{
   content:counter(sec) '.';display:inline-block;width:auto;height:auto;background:none;border-radius:0;
   color:var(--f-gold-text);font-weight:700;margin-right:.4em}
 .compare-title{background:var(--f-head-bg);color:var(--f-head-text)}
@@ -113,9 +115,5 @@ a{text-underline-offset:2px}
   .data-card,.zd-item,.scenario-item,.tomtom-stat,.source-note,.about-card{break-inside:avoid}
   .footer{padding:4mm 0 0;font-size:12pt}
   a{color:#000;text-decoration:none}
-  :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{content:counter(sec,decimal) '.'}
+  body.page-tomtom :is(.section-heading,.compare-title,.zone-district-header h2,.line-title,.section-title,.scenario-title)::before{content:counter(sec,decimal) '.'}
 }
-
-/* หัวข้อตารางรายถนน: ไม่แสดงเลขลำดับหัวข้อ */
-#roadTableHead{counter-increment:none}
-#roadTableHead::before{content:none!important;display:none!important}
