@@ -87,7 +87,7 @@
       m393: '39.29 นาที', m287: '28.7 นาที', m231: '23.09 นาที',
       m350: '34.97 นาที', m221: '22.1 นาที', m170: '16.96 นาที',
       m270: '27.03 นาที', m211: '21.09 นาที',
-      sourceNote: '<strong>* หมายเหตุ:</strong> ข้อมูล <strong>สจส.</strong> สำรวจเฉพาะถนนสายหลัก 51 สายด้วย <strong>Floating Car Method</strong> ในช่วงเร่งด่วนเช้าและเย็น แยกทิศทางขาเข้าและขาออก · ตัวเลขในตารางเป็นค่าเฉลี่ยช่วงเร่งด่วน (เฉลี่ยเช้าและเย็น) ตามแผ่นงาน Report sheet ของรายงานต้นฉบับ · เวลาเดินทางคำนวณจาก 10 ÷ อัตราเร็วเฉลี่ย × 60 นาที<br><strong>** ข้อมูล TomTom</strong> มาจากข้อมูล GPS ขนาดใหญ่ (Big Data) ครอบคลุมถนนทุกสายตลอด 24 ชั่วโมง · (*) อัตราเร็ว TomTom ช่วงเช้าคำนวณจากเวลาเดินทาง 10 กม. (25:45 นาที) · (**) อัตราเร็ว TomTom ช่วงเย็น 19.10 กม./ชม. เป็นค่าอัตราเร็วเฉลี่ย (Average Speed) ในช่วงเร่งด่วนเย็น (Evening Rush Hour) ที่รายงานโดยตรง',
+      sourceNote: '<strong>* หมายเหตุ:</strong> ข้อมูล <strong>สจส.</strong> สำรวจเฉพาะถนนสายหลัก 51 สาย ด้วยวิธี <strong>Floating Car Method</strong> ในช่วงเร่งด่วนเช้าและเย็น แยกทิศทางขาเข้าและขาออก<br><strong>** ข้อมูล TomTom</strong> มาจากข้อมูล GPS ขนาดใหญ่ (Big Data) ครอบคลุมถนนทุกสายตลอด 24 ชั่วโมง · โดยอัตราเร็วของ TomTom ช่วงเช้าคำนวณจากเวลาเดินทาง 10 กม. (25:45 นาที) · และช่วงเย็นเป็นค่าอัตราเร็วเฉลี่ย (Average Speed) ในช่วงเร่งด่วนเย็น (Evening Rush Hour)',
 
       // zone-district
       zdHeader: 'รายละเอียดพื้นที่ชั้นใน · ชั้นกลาง · ชั้นนอก',
@@ -287,7 +287,7 @@
       m393: '39.29 min', m287: '28.7 min', m231: '23.09 min',
       m350: '34.97 min', m221: '22.1 min', m170: '16.96 min',
       m270: '27.03 min', m211: '21.09 min',
-      sourceNote: '<strong>* Notes:</strong> <strong>BMA</strong> data covers only 51 main roads, surveyed by <strong>Floating Car Method</strong> during AM/PM rush hours, separated by direction. Rush-hour figures shown are the AM+PM average from the original Report sheet. Travel time = 10 ÷ avg speed × 60 (min).<br><strong>** TomTom</strong> data is from GPS Big Data covering all roads 24/7 · (*) AM speed derived from 25:45 min per 10 km · (**) PM 19.10 km/h is the direct evening-rush average from TomTom 2025.',
+      sourceNote: '<strong>* Notes:</strong> <strong>BMA</strong> data covers only 51 main roads, surveyed by <strong>Floating Car Method</strong> during AM/PM rush hours, separated by inbound and outbound directions.<br><strong>** TomTom</strong> data is from GPS Big Data covering all roads 24/7 · The TomTom AM speed is derived from the 10 km travel time (25:45 min) · and the PM figure is the average speed during the evening rush hour.',
 
       zdHeader: 'Inner / Middle / Outer Zone Districts',
       zdBadge: '3 groups · 50 districts',
